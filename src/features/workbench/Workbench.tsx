@@ -16,6 +16,7 @@ import { Header } from "./Header";
 import { Messages } from "./Messages";
 import { draftCopy, providerConsentCopy } from "./retryCopy";
 import { Sidebar } from "./Sidebar";
+import { voiceConsentCopy } from "./voiceConsentCopy";
 import w from "./WorkbenchStyles.module.css";
 import { type MobilePanel, WorkspacePanels } from "./WorkspacePanels";
 export function Workbench() {
@@ -227,6 +228,7 @@ export function Workbench() {
             <div ref={end} />
           </div>
           <Composer
+            voiceConsentText={voiceConsentCopy[prefs.language]}
             providerConsentText={providerConsentCopy[prefs.language]}
             draftStatus={
               input

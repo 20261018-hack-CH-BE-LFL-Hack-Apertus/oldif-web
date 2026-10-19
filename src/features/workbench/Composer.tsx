@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { RefObject } from "react";
+import { type RefObject, useState } from "react";
 import type { useResearch } from "@/hooks/useResearch";
 import type { useVoice } from "@/hooks/useVoice";
 import type { Copy } from "@/lib/i18n";
@@ -16,6 +16,7 @@ export function Composer({
   send,
   draftStatus,
   providerConsentText,
+  voiceConsentText,
 }: {
   research: ReturnType<typeof useResearch>;
   voice: ReturnType<typeof useVoice>;
@@ -26,7 +27,9 @@ export function Composer({
   send: () => void;
   draftStatus?: string;
   providerConsentText: string;
+  voiceConsentText: string;
 }) {
+  const [voiceConsent, setVoiceConsent] = useState(false);
   return (
     <div className={`${s.composerWrap} ${w.composerWrap}`}>
       {research.needsProviderConsent && (
@@ -41,6 +44,17 @@ export function Composer({
           <span>{providerConsentText}</span>
         </label>
       )}
+      <label className={s.sideItem}>
+        <input
+          type="checkbox"
+          checked={voiceConsent}
+          onChange={(event) => {
+            setVoiceConsent(event.target.checked);
+            if (!event.target.checked) voice.stop();
+          }}
+        />
+        <span>{voiceConsentText}</span>
+      </label>
       {research.error && (
         <p role="alert" className={s.error}>
           {research.error}{" "}
@@ -173,7 +187,8 @@ export function Composer({
               disabled={
                 voice.status === "connecting" ||
                 voice.status === "connected" ||
-                !research.ready
+                !research.ready ||
+                !voiceConsent
               }
               aria-label={t.voice}
               title={t.voice}
