@@ -66,11 +66,11 @@
     {
       "label": "01 / Ziel",
       "title": "Archive nutzbar machen. Belege erhalten.",
-      "intro": "Oldif verbindet öffentliche historische Datensätze mit einem Apertus-Forschungsraum. Die erste verifizierte Sammlung enthält 105 veröffentlichte Stapfer-Transkriptionen.",
+      "intro": "Die erste Sammlung bewahrt 105 veröffentlichte Stapfer-Transkriptionen. Eine zweite Arbeitsmappe liefert nun 2.245 Transkriptionsgruppen mit 14.743 Antwortzeilen.",
       "bullets": [
         "Die Quelle bleibt neben der Antwort einsehbar.",
         "Eine Frage erzeugt Ablaufspur, Zitate und prüfbares Ergebnis.",
-        "Ausgeführte Prüfungen bleiben von ungemessenen Zielen getrennt."
+        "Alle 19 lokalen Sammlungsprüfungen bestanden. Die 58 Zeilen ohne Antwort bleiben dokumentiert; sie sind kein historischer Gegenbeleg."
       ],
       "caption": "Tatsächlicher neuer Arbeitsbereich, 19. Oktober 2026. Diese Aufnahme nutzte 8B vor der Auswahl von 70B als Standard."
     },
@@ -130,5 +130,7 @@
       "caption": "Referenzen beschreiben externe Methoden. Deren veröffentlichte Leistung ist kein Oldif-Ergebnis."
     }
   ],
-  "referencePasses": "Referenzfälle"
+  "referencePasses": "Referenzfälle",
+  "collectionGroups": "Gruppen der zweiten Sammlung",
+  "answerRows": "Antwortzeilen"
 }

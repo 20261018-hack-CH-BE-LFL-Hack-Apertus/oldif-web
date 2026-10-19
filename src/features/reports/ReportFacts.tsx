@@ -4,8 +4,8 @@ import s from "./styles";
 export function Metrics({ copy }: { copy: ReportCopy }) {
   const items = [
     [evidence.dataset.records, copy.records],
-    [evidence.public_checks.http_preflight_passed, copy.checks],
-    [evidence.public_checks.provider_attempts, copy.runs],
+    [evidence.second_collection.records, copy.collectionGroups],
+    [evidence.second_collection.accepted_answer_rows, copy.answerRows],
     [7, copy.languages],
   ];
   return (

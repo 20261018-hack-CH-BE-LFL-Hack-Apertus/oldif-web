@@ -66,11 +66,11 @@
     {
       "label": "01 / Objectif",
       "title": "Rendre les archives utilisables. Préserver les preuves.",
-      "intro": "Oldif relie des archives publiques à un espace de recherche alimenté par Apertus. La première collection vérifiée contient 105 transcriptions publiées de l’enquête Stapfer.",
+      "intro": "La collection initiale conserve 105 transcriptions publiées de Stapfer. Un second classeur fournit désormais 2 245 groupes de transcriptions et 14 743 lignes de réponses.",
       "bullets": [
         "La source reste consultable à côté de la réponse.",
         "Une question produit une trace, des citations et un résultat révisable.",
-        "Le rapport distingue les contrôles réalisés des objectifs non mesurés."
+        "Les 19 contrôles locaux de la collection ont réussi. Les 58 lignes sans réponse restent consignées ; elles ne constituent pas une preuve historique négative."
       ],
       "caption": "Véritable espace de travail remanié, 19 octobre 2026. Cette capture utilisait 8B avant le choix de 70B par défaut."
     },
@@ -130,5 +130,7 @@
       "caption": "Les références décrivent des méthodes externes. Leurs performances publiées ne sont pas des résultats Oldif."
     }
   ],
-  "referencePasses": "Cas de référence"
+  "referencePasses": "Cas de référence",
+  "collectionGroups": "groupes de la seconde collection",
+  "answerRows": "lignes de réponses"
 }

@@ -4,7 +4,7 @@
     "id": "stapfer-1799",
     "records": 105,
     "source_id": "stapfer-2027",
-    "quote": "diese sollen im schreiben l\u00e4sen und rechnen unterrichtet werden",
+    "quote": "diese sollen im schreiben läsen und rechnen unterrichtet werden",
     "page": null,
     "char_start": 2410,
     "char_end": 2473,
@@ -116,7 +116,8 @@
     "diarization/api-validation.json",
     "bern-reference-upgrade/summary.json",
     "bern-apertus-variants/summary.json",
-    "frontend-workbench-browser.json"
+    "frontend-workbench-browser.json",
+    "stapfer-collection-validation.json"
   ],
   "screenshot_manifest": [
     {
@@ -315,6 +316,21 @@
       "document-ocr-validation.json"
     ]
   },
-  "updated_at": "2026-10-19T13:18:34.130730+00:00",
-  "baseline_observed_at": "2026-10-19T11:59:49.149271+00:00"
+  "updated_at": "2026-10-19T13:26:02.105499+00:00",
+  "baseline_observed_at": "2026-10-19T11:59:49.149271+00:00",
+  "second_collection": {
+    "validation_class": "actual local HTTP collection export and provenance checks",
+    "records": 2245,
+    "accepted_answer_rows": 14743,
+    "missing_answer_rows": 58,
+    "provider_calls": 0,
+    "historical_accuracy": "NOT_RUN",
+    "checks_passed": 19,
+    "checks_failed": 0,
+    "source_receipt": "project-deciphering-archives/oldif-back/evidence/stapfer-collection-validation.json",
+    "source_receipt_sha256": "a2f49e1ccf773cd09842582edd2d75557c70a9276b42c3db4a1849502627b699",
+    "overlaps_initial_collection": true,
+    "independent_total_not_claimed": true,
+    "azure_validation": "NOT_RUN"
+  }
 }

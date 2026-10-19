@@ -66,11 +66,11 @@
     {
       "label": "01 / Objetivo",
       "title": "Hacer utilizable el archivo. Conservar las pruebas.",
-      "intro": "Oldif conecta registros históricos públicos con un espacio de investigación basado en Apertus. La primera colección verificada contiene 105 transcripciones publicadas de la encuesta Stapfer.",
+      "intro": "La colección inicial conserva 105 transcripciones publicadas de Stapfer. Un segundo libro aporta ahora 2.245 grupos de transcripciones con 14.743 filas de respuestas.",
       "bullets": [
         "El registro fuente permanece visible junto a la respuesta.",
         "Cada pregunta genera una traza, citas y un resultado revisable.",
-        "El informe separa comprobaciones ejecutadas de objetivos aún no medidos."
+        "Pasaron las 19 comprobaciones locales de la colección. Se conservan las 58 filas sin respuesta; no son evidencia histórica negativa."
       ],
       "caption": "Espacio de trabajo rediseñado real, 19 de octubre de 2026. La captura usó 8B antes de elegir 70B como predeterminado."
     },
@@ -130,5 +130,7 @@
       "caption": "Las referencias describen métodos externos. Su rendimiento publicado no es un resultado de Oldif."
     }
   ],
-  "referencePasses": "Casos de referencia"
+  "referencePasses": "Casos de referencia",
+  "collectionGroups": "grupos de la segunda colección",
+  "answerRows": "filas de respuestas"
 }

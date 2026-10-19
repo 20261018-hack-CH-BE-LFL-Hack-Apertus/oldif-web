@@ -66,11 +66,11 @@
     {
       "label": "01 / Ziil",
       "title": "Archiv nutzbar mache. D Beläg erhalte.",
-      "intro": "Oldif verbindet öffentlechi historischi Datensätz mit eme Apertus-Forschigsraum. D erscht verifizierte Sammlig het 105 publizierti Stapfer-Transkriptione.",
+      "intro": "Die erschti Sammlig bewahrt 105 publizierti Stapfer-Transkriptione. E zweiti Arbeitsmappe liefert jetzt 2’245 Transkriptionsgruppe mit 14’743 Antwortziile.",
       "bullets": [
         "D Quälle bliibt nebed de Antwort sichtbar.",
         "E Frag git en Ablauf, Zitat und es prüefbars Resultat.",
-        "De Bricht trennt gmacht Prüefige vo nöd gmessne Ziil."
+        "Alli 19 lokale Sammligsprüefige sind bestande. Die 58 Ziile ohni Antwort bliibed dokumentiert; sie sind kei historische Gägebewiis."
       ],
       "caption": "De echt neu Arbeitsbereich, 19. Oktober 2026. D Ufnahm het 8B bruucht, bevor 70B als Standard gwählt worde isch."
     },
@@ -130,5 +130,7 @@
       "caption": "D Referenze beschriibed externi Methode. Ihri publizierti Leistig isch kei Oldif-Resultat."
     }
   ],
-  "referencePasses": "Referenzfäll"
+  "referencePasses": "Referenzfäll",
+  "collectionGroups": "Gruppe vo de zweite Sammlig",
+  "answerRows": "Antwortziile"
 }

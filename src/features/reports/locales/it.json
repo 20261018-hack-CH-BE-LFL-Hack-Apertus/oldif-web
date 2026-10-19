@@ -66,11 +66,11 @@
     {
       "label": "01 / Obiettivo",
       "title": "Rendere utilizzabili gli archivi. Preservare le prove.",
-      "intro": "Oldif collega record storici pubblici a uno spazio di ricerca basato su Apertus. La prima raccolta verificata contiene 105 trascrizioni pubblicate dell’inchiesta Stapfer.",
+      "intro": "La raccolta iniziale conserva 105 trascrizioni pubblicate di Stapfer. Un secondo foglio di lavoro offre ora 2.245 gruppi di trascrizioni con 14.743 righe di risposte.",
       "bullets": [
         "Il record fonte resta visibile accanto alla risposta.",
         "Ogni domanda produce una traccia, citazioni e un risultato revisionabile.",
-        "Il rapporto distingue controlli eseguiti e obiettivi non misurati."
+        "Superati tutti i 19 controlli locali della raccolta. Le 58 righe senza risposta restano registrate; non sono prove storiche negative."
       ],
       "caption": "Area di lavoro ridisegnata reale, 19 ottobre 2026. La cattura usava 8B prima di scegliere 70B come predefinito."
     },
@@ -130,5 +130,7 @@
       "caption": "I riferimenti descrivono metodi esterni. Le loro prestazioni pubblicate non sono risultati Oldif."
     }
   ],
-  "referencePasses": "Casi di riferimento"
+  "referencePasses": "Casi di riferimento",
+  "collectionGroups": "gruppi della seconda raccolta",
+  "answerRows": "righe di risposte"
 }

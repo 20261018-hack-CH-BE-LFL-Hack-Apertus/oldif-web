@@ -66,11 +66,11 @@
     {
       "label": "01 / Purpose",
       "title": "Make the archive usable. Keep the evidence intact.",
-      "intro": "Oldif connects public historical records to a research workspace powered by Apertus. Its first verified collection contains 105 published Stapfer survey transcriptions.",
+      "intro": "The initial collection retains 105 published Stapfer transcriptions. A second workbook now supplies 2,245 transcription groups with 14,743 answer rows.",
       "bullets": [
         "The source record remains inspectable beside the answer.",
         "A question produces a trace, citations and a reviewable result.",
-        "This report separates executed checks from challenge targets still unmeasured."
+        "All 19 local collection checks passed. The 58 missing-answer rows remain recorded; they are not negative historical evidence."
       ],
       "caption": "Actual redesigned workspace, 19 October 2026. This capture used 8B before 70B was selected as default."
     },
@@ -130,5 +130,7 @@
       "caption": "References describe external methods and models. Their published performance is not an Oldif result."
     }
   ],
-  "referencePasses": "Reference passes"
+  "referencePasses": "Reference passes",
+  "collectionGroups": "second collection groups",
+  "answerRows": "answer rows"
 }

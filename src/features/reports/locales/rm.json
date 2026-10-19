@@ -66,11 +66,11 @@
     {
       "label": "01 / Finamira",
       "title": "Render ils archivs utilisabels. Preservar las cumprovas.",
-      "intro": "Oldif collia endataziuns istoricas publicas cun in spazi da perscrutaziun cun Apertus. L’emprima collecziun verifitgada cuntegna 105 transcripziuns publitgadas da l’enquista Stapfer.",
+      "intro": "La collecziun iniziala conserva 105 transcripziuns publitgadas da Stapfer. In segund cudesch da lavur furnescha ussa 2 245 gruppas da transcripziuns cun 14 743 lingias da respostas.",
       "bullets": [
         "La funtauna resta visibla sper la resposta.",
         "Mintga dumonda producescha ina fastizia, citats ed in resultat controllabel.",
-        "Il rapport separa controllas fatgas da finamiras betg mesiradas."
+        "Tut ils 19 controlls locals da la collecziun èn reussids. Las 58 lingias senza resposta restan registradas; ellas n’èn betg cumprovas istoricas negativas."
       ],
       "caption": "Spazi da lavur redesignà real, 19 d’october 2026. La captura ha duvrà 8B avant la selecziun da 70B sco standard."
     },
@@ -130,5 +130,7 @@
       "caption": "Las referenzas descrivan metodas externas. Lur prestaziuns publitgadas n’èn betg resultats Oldif."
     }
   ],
-  "referencePasses": "Cas da referenza"
+  "referencePasses": "Cas da referenza",
+  "collectionGroups": "gruppas da la segunda collecziun",
+  "answerRows": "lingias da respostas"
 }
