@@ -26,6 +26,8 @@ export function SpatialGraph({
       setError(true);
       return;
     }
+    setError(false);
+    let lost = false;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -78,7 +80,7 @@ export function SpatialGraph({
       previous = e.clientX;
     }
     function move(e: PointerEvent) {
-      if (dragging) {
+      if (dragging && !lost) {
         group.rotation.y += (e.clientX - previous) * 0.008;
         previous = e.clientX;
         renderer.render(scene, camera);
@@ -88,11 +90,29 @@ export function SpatialGraph({
       dragging = false;
     }
     function resize() {
+      if (lost) return;
       camera.aspect = host!.clientWidth / host!.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(host!.clientWidth, host!.clientHeight);
       renderer.render(scene, camera);
     }
+    function contextLost(event: Event) {
+      event.preventDefault();
+      lost = true;
+      setError(true);
+      renderer.domElement.style.display = "none";
+    }
+    function contextRestored() {
+      lost = false;
+      setError(false);
+      renderer.domElement.style.display = "";
+      resize();
+    }
+    renderer.domElement.addEventListener("webglcontextlost", contextLost);
+    renderer.domElement.addEventListener(
+      "webglcontextrestored",
+      contextRestored,
+    );
     const observer = new ResizeObserver(resize);
     observer.observe(host);
     host.addEventListener("click", click);
@@ -102,6 +122,11 @@ export function SpatialGraph({
     renderer.render(scene, camera);
     return () => {
       observer.disconnect();
+      renderer.domElement.removeEventListener("webglcontextlost", contextLost);
+      renderer.domElement.removeEventListener(
+        "webglcontextrestored",
+        contextRestored,
+      );
       host.removeEventListener("click", click);
       host.removeEventListener("pointerdown", down);
       host.removeEventListener("pointermove", move);
@@ -114,7 +139,7 @@ export function SpatialGraph({
   }, [nodes]);
   return (
     <div ref={ref} className={s.viewer} role="img" aria-label={unavailable}>
-      {error && <p>{unavailable}</p>}
+      {error && <output>{unavailable}</output>}
     </div>
   );
 }
