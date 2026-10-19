@@ -18,6 +18,9 @@ export function ReportToolbar({
         </div>
         <Button onClick={print}>{copy.exportPdf} ↓</Button>
         <Link href="/app">{copy.openWorkspace} ↗</Link>
+        <a href="/reports/oldif-demo-en.mp4" target="_blank" rel="noreferrer">
+          {copy.watchWalkthrough} ↗
+        </a>
       </div>
       <nav className={s.contents} aria-label={copy.contents}>
         {copy.pages.map((p, i) => (

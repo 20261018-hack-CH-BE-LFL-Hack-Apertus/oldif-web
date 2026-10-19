@@ -49,6 +49,9 @@ export function DeckControls(props: Controls) {
         {copy.exportPdf} ↓
       </Button>
       <Link href="/tech-report">{copy.technical} ↗</Link>
+      <a href="/reports/oldif-demo-en.mp4" target="_blank" rel="noreferrer">
+        {copy.watchWalkthrough} ↗
+      </a>
     </nav>
   );
 }
