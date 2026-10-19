@@ -19,7 +19,8 @@
   border-radius: var(--s2);
   background: var(--surface);
   color: var(--secondary);
-  min-height: var(--s8);
+  min-height: var(--control);
+  min-width: var(--control);
   padding: var(--s1) var(--s3);
   font-size: var(--meta);
 }
@@ -94,6 +95,7 @@
   width: 100%;
 }
 .sidebar details > summary {
+  min-height: var(--control);
   color: var(--secondary);
   cursor: pointer;
   font-size: var(--meta);

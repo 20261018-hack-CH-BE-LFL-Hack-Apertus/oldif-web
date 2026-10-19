@@ -8,6 +8,7 @@
   min-width: 0;
 }
 .group > summary {
+  min-height: var(--control);
   cursor: pointer;
   color: var(--secondary);
   font-size: var(--meta);
