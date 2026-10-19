@@ -54,7 +54,7 @@
     "AutoData: ciclos versionados de generación, inspección y evaluación. No se reprodujo metaentrenamiento.",
     "MDASH: agentes especialistas, validación y deduplicación de un sistema de seguridad. Sin integración MDASH.",
     "NVIDIA: la diarización Nemotron 3 fijada pasó una prueba local sintética con dos hablantes. El análisis de páginas y la recuperación multimodal siguen siendo integraciones estudiadas.",
-    "OpenShell 0.1.x y NemoClaw alfa son opciones de aislamiento estudiadas; el proceso OpenClaw desplegado no es un entorno OpenShell verificado."
+    "OpenShell 0.1.4 superó 7 pruebas locales de aislamiento; el cliente NemoClaw fijado aplicó una política real. OpenClaw en Azure aún no tiene aislamiento OpenShell verificado."
   ],
   "limits": [
     "Sin medición de 1.000 páginas en dos horas.",

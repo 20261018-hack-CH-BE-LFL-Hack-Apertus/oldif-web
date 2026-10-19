@@ -54,7 +54,7 @@
     "AutoData: versionierte Erzeugungs-, Inspektions- und Evaluationsschleifen. Kein Meta-Training reproduziert.",
     "MDASH: spezialisierte Agenten, Validierung und Deduplizierung aus der Sicherheitsanalyse. Keine MDASH-Integration.",
     "NVIDIA: Die festgelegte Nemotron 3-Diarisierung bestand einen lokalen synthetischen Zwei-Sprecher-Test. Seitenanalyse und multimodale Suche bleiben untersuchte Erweiterungen.",
-    "OpenShell 0.1.x und NemoClaw Alpha sind untersuchte Sandbox-Optionen; der bereitgestellte OpenClaw-Prozess ist keine verifizierte OpenShell-Sandbox."
+    "OpenShell 0.1.4 bestand 7 lokale Grenzprüfungen; der festgelegte NemoClaw-Client setzte eine echte Policy. OpenClaw in Azure hat weiterhin keine verifizierte OpenShell-Isolation."
   ],
   "limits": [
     "Keine Messung von 1.000 Seiten in zwei Stunden.",

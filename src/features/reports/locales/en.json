@@ -54,7 +54,7 @@
     "AutoData: versioned generation, inspection and evaluation loops. No meta-training reproduced.",
     "MDASH: specialist agents, validation and deduplication from a security-scanning system. No MDASH integration.",
     "NVIDIA: pinned Nemotron 3 diarization passed a local synthetic two-speaker test. Parsing and multimodal retrieval remain optional researched integrations.",
-    "OpenShell 0.1.x and NemoClaw alpha are researched sandbox options; the deployed OpenClaw process is not a verified OpenShell sandbox."
+    "OpenShell 0.1.4 passed 7 local boundary checks; the pinned NemoClaw policy client applied a real policy. Azure OpenClaw still has no verified OpenShell isolation."
   ],
   "limits": [
     "No measured 1,000-page / two-hour throughput result.",

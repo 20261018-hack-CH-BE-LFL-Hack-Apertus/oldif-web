@@ -54,7 +54,7 @@
     "AutoData: ciclus versionads da generaziun, inspecziun ed evaluaziun. Nagin meta-trenament reproducì.",
     "MDASH: agents spezialisads, validaziun e deduplicaziun d’in sistem da segirezza. Nagina integraziun MDASH.",
     "NVIDIA: la diarisation Nemotron 3 fixada ha reussì in test local sintetic cun dus pledaders. L’analisa da paginas e la tschertga multimodala restan integraziuns studegiadas.",
-    "OpenShell 0.1.x e NemoClaw alfa èn opziuns da sandbox studegiadas; il process OpenClaw installà n’è betg ina sandbox OpenShell verifitgada."
+    "OpenShell 0.1.4 ha superà 7 controllas localas; il client NemoClaw fixà ha applitgà ina politica reala. OpenClaw en Azure n’ha anc nagina isolaziun OpenShell verifitgada."
   ],
   "limits": [
     "Naginas mesiraziuns da 1.000 paginas en duas uras.",
