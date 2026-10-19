@@ -22,7 +22,7 @@ export function Metrics({ copy }: { copy: ReportCopy }) {
 export function Provenance({ copy }: { copy: ReportCopy }) {
   const source = evidence.dataset;
   return (
-    <div className={s.provenance}>
+    <div className={s.provenance} data-provenance>
       <span className={s.eyebrow}>{copy.quoteLabel}</span>
       <blockquote lang="de">“{source.quote}”</blockquote>
       <p>{copy.intention}</p>

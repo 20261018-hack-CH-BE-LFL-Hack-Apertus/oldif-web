@@ -102,6 +102,7 @@ export function ReportPage({
       id={`report-${index + 1}`}
       className={deck ? s.slide : s.sheet}
       data-active={active}
+      data-page={index + 1}
       aria-label={`${copy.page} ${index + 1}: ${copy.pages[index].title}`}
     >
       <PageHeading {...props} />

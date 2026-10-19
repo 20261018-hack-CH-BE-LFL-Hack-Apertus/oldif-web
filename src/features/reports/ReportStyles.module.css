@@ -262,4 +262,33 @@
   .slide .story li {
     font-size: 10pt;
   }
+  .sheet[data-page="2"] .visual {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+    gap: 4mm;
+  }
+  .slide[data-page="2"] .pageBody {
+    grid-template-columns: 0.9fr 1fr 1.15fr;
+    gap: 5mm;
+  }
+  .slide[data-page="2"] .visual {
+    display: contents;
+  }
+  .sheet[data-page="2"] [data-provenance],
+  .slide[data-page="2"] [data-provenance] {
+    padding: 3mm;
+  }
+  .sheet[data-page="2"] [data-provenance] blockquote,
+  .slide[data-page="2"] [data-provenance] blockquote {
+    font-size: 16pt;
+    margin: 3mm 0;
+  }
+  .sheet[data-page="2"] [data-provenance] dl,
+  .slide[data-page="2"] [data-provenance] dl {
+    margin: 2mm 0;
+  }
+  .sheet[data-page="2"] img {
+    max-height: 78mm;
+  }
 }
