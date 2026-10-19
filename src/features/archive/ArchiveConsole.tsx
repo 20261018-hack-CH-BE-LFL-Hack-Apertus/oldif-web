@@ -12,6 +12,8 @@ import { processingCopy } from "./processingCopy";
 import { StructurePanel } from "./StructurePanel";
 import { DiarizationPanel } from "./DiarizationPanel";
 import { SourceExplorer } from "./SourceExplorer";
+import { RightsReview } from "./RightsReview";
+import { acquisitionCopy } from "./acquisitionCopy";
 import s from "./ArchiveStyles.module.css";
 export function ArchiveConsole({ path = "/archive" }: { path?: string }) {
   const prefs = usePreferences();
@@ -19,6 +21,8 @@ export function ArchiveConsole({ path = "/archive" }: { path?: string }) {
   const data = useArchive(prefs.language);
   const d = detailCopy(prefs.language);
   const processing = processingCopy(prefs.language);
+  const acquisition = acquisitionCopy(prefs.language);
+  const quarantined = data.detail?.document.status === "quarantined";
   return (
     <main className={s.shell}>
       <Header prefs={prefs} workspace />
@@ -43,7 +47,7 @@ export function ArchiveConsole({ path = "/archive" }: { path?: string }) {
             </p>
           )}
           <div className={s.grid}>
-            <ImportDocument data={data} t={t} d={d} />
+            <ImportDocument data={data} t={t} d={d} a={acquisition} />
             <section className={`${s.panel} ${s.stack}`}>
               <h2>
                 {t.document} · {data.documents.length}
@@ -84,14 +88,36 @@ export function ArchiveConsole({ path = "/archive" }: { path?: string }) {
             </section>
           </div>
           {path === "/data" && <SourceExplorer data={data} t={t} d={d} />}
-          <PageWorkspace data={data} t={t} d={d} />
-          {data.detail?.document.media_type === "application/pdf" && (
-            <StructurePanel
-              key={data.detail.document.id}
+          {quarantined && (
+            <RightsReview
+              key={data.detail!.document.id}
               data={data}
-              t={processing}
+              t={t}
+              a={acquisition}
             />
           )}
+          {!quarantined && (
+            <PageWorkspace data={data} t={t} d={d} language={prefs.language} />
+          )}
+          {!quarantined && data.detail && (
+            <details className={s.panel}>
+              <summary>{acquisition.permissions}</summary>
+              <RightsReview
+                key={`${data.detail.document.id}:${data.detail.document.version}`}
+                data={data}
+                t={t}
+                a={acquisition}
+              />
+            </details>
+          )}
+          {!quarantined &&
+            data.detail?.document.media_type === "application/pdf" && (
+              <StructurePanel
+                key={data.detail.document.id}
+                data={data}
+                t={processing}
+              />
+            )}
           <DiarizationPanel t={processing} ready={data.ready} />
         </div>
       </div>

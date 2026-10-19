@@ -1,0 +1,609 @@
+{
+  "document": {
+    "annotations": [],
+    "blob_chunks": 1,
+    "byte_count": 53037,
+    "dataset_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+    "enrichments": [],
+    "extraction": {
+      "extractor": "poppler-pdftotext",
+      "mode": "layout",
+      "ocr_performed": false,
+      "pdf_author": "anonymous",
+      "pdf_creation_date": "Mon Oct 19 14:51:38 2026 CEST",
+      "pdf_title": "untitled"
+    },
+    "filename": "synthetic-ocr.pdf",
+    "flags": {
+      "empty_pages": 1,
+      "handwriting_status": "unknown",
+      "ocr_performed": false,
+      "pagination": "physical_page_order",
+      "privacy_review_required": true,
+      "suspect_pages": 0
+    },
+    "labels": [],
+    "licence": "CC0-synthetic",
+    "media_type": "application/pdf",
+    "metadata": {
+      "pdf_author": "anonymous",
+      "pdf_creation_date": "Mon Oct 19 14:51:38 2026 CEST",
+      "pdf_title": "untitled"
+    },
+    "metadata_provenance": {
+      "method": "embedded_pdf_metadata",
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "verification": "unverified_document_claim"
+    },
+    "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+    "page_count": 2,
+    "review": {
+      "decision": "needs_review",
+      "reason": "New ingestion requires human review"
+    },
+    "rights_confirmed": true,
+    "schema_version": "1.0",
+    "status": "ready",
+    "title": "Place    Year",
+    "title_method": "first_nonempty_extracted_line",
+    "transformation": {
+      "operation": "extract_text_without_modifying_original",
+      "page_numbering": "one_based_physical_order",
+      "version": "1"
+    },
+    "id": "0e3a327c-124b-41ef-a105-965cea96990c",
+    "version": 2,
+    "created_at": 1792414455050
+  },
+  "pages": [
+    {
+      "dataset_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "flags": {
+        "bias": "not_assessed",
+        "empty_text": true,
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "illegibility_suspected": false,
+        "legibility_status": "empty_or_image_only",
+        "missingness": "no_extractable_text; image-only, blank, or other cause unknown",
+        "model_context_limit_exceeded": false,
+        "printed_page_label": "not_assessed"
+      },
+      "id": "0e3a327c-124b-41ef-a105-965cea96990c-p0001",
+      "licence": "CC0-synthetic",
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "page": 1,
+      "provenance": "user-attested-original-upload",
+      "record_hash_scope": "original-file-bytes",
+      "record_locator": {
+        "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+        "kind": "document-page",
+        "page": 1
+      },
+      "sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "title": "Place    Year · page 1",
+      "url": "http://localhost:3050/api/documents/0e3a327c-124b-41ef-a105-965cea96990c/pages/1",
+      "version": 1,
+      "created_at": 1792414455048
+    },
+    {
+      "dataset_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "flags": {
+        "bias": "not_assessed",
+        "empty_text": false,
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "illegibility_suspected": false,
+        "legibility_status": "text_extracted",
+        "missingness": "text_layer_only; visual omissions not assessed",
+        "model_context_limit_exceeded": false,
+        "printed_page_label": "not_assessed"
+      },
+      "id": "0e3a327c-124b-41ef-a105-965cea96990c-p0002",
+      "licence": "CC0-synthetic",
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "page": 2,
+      "provenance": "user-attested-original-upload",
+      "record_hash_scope": "original-file-bytes",
+      "record_locator": {
+        "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+        "kind": "document-page",
+        "page": 2
+      },
+      "sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "text": "Place    Year\n\n\nBern     1799\n\n\nZurich   1800\n\n\nBasel    1801\n",
+      "text_sha256": "a2cdc13e23b4b953d492ab4a78a0744fba518826957247bd67fb0a7f1941ac0d",
+      "title": "Place    Year · page 2",
+      "url": "http://localhost:3050/api/documents/0e3a327c-124b-41ef-a105-965cea96990c/pages/2",
+      "version": 1,
+      "created_at": 1792414455048
+    }
+  ],
+  "derived_sources": [
+    {
+      "dataset_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "derived_from": "0e3a327c-124b-41ef-a105-965cea96990c-p0001",
+      "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "extraction_id": "6fc2bf41-fe42-4e14-ab79-ec2b6c1151c8",
+      "flags": {
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "ocr_performed": true
+      },
+      "id": "0e3a327c-124b-41ef-a105-965cea96990c-ocr-6fc2bf41",
+      "licence": "CC0-synthetic",
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "page": 1,
+      "queryable_by_default": false,
+      "record_hash_scope": "original-file-bytes",
+      "sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "text": "SYNTHETIC ARCHIVE RECORD\nReading and arithmetic\nwere proposed in 1799.\nNo outcome is stated.",
+      "text_sha256": "12dec73a4787c8409a8086dce71f8aa1e24b91c561421869c29d9bd44253091a",
+      "title": "Place    Year · OCR page 1",
+      "transcription_method": "tesseract-ocr",
+      "transcription_review_status": "unverified",
+      "url": "http://localhost:3050/api/documents/0e3a327c-124b-41ef-a105-965cea96990c/pages/1",
+      "version": 1,
+      "created_at": 1792414458467
+    }
+  ],
+  "extractions": [
+    {
+      "coordinate_system": "image_pixels",
+      "dimensions": {
+        "height": 1400.0,
+        "width": 1050.0
+      },
+      "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "engine_version": "tesseract 5.3.0",
+      "handwriting_status": "unknown",
+      "human_review_required": true,
+      "language": "eng",
+      "lines": [
+        {
+          "bbox": [
+            87.0,
+            510.0,
+            681.0,
+            541.0
+          ],
+          "id": "1-1-1",
+          "text": "SYNTHETIC ARCHIVE RECORD"
+        },
+        {
+          "bbox": [
+            88.0,
+            613.0,
+            532.0,
+            654.0
+          ],
+          "id": "1-1-2",
+          "text": "Reading and arithmetic"
+        },
+        {
+          "bbox": [
+            85.0,
+            717.0,
+            537.0,
+            758.0
+          ],
+          "id": "1-1-3",
+          "text": "were proposed in 1799."
+        },
+        {
+          "bbox": [
+            88.0,
+            822.0,
+            497.0,
+            854.0
+          ],
+          "id": "2-1-1",
+          "text": "No outcome is stated."
+        }
+      ],
+      "method": "tesseract-ocr",
+      "ocr_performed": true,
+      "ocr_source_id": "0e3a327c-124b-41ef-a105-965cea96990c-ocr-6fc2bf41",
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "page": 1,
+      "processing_ms": 3405,
+      "raster_max_dimension": 1400,
+      "review_status": "unverified",
+      "segmentation_mode": 3,
+      "table_candidates": [],
+      "text": "SYNTHETIC ARCHIVE RECORD\nReading and arithmetic\nwere proposed in 1799.\nNo outcome is stated.",
+      "text_sha256": "12dec73a4787c8409a8086dce71f8aa1e24b91c561421869c29d9bd44253091a",
+      "words": [
+        {
+          "bbox": [
+            87.0,
+            510.0,
+            313.0,
+            541.0
+          ],
+          "confidence": 94.609138,
+          "line_id": "1-1-1",
+          "text": "SYNTHETIC"
+        },
+        {
+          "bbox": [
+            326.0,
+            510.0,
+            503.0,
+            541.0
+          ],
+          "confidence": 94.609138,
+          "line_id": "1-1-1",
+          "text": "ARCHIVE"
+        },
+        {
+          "bbox": [
+            517.0,
+            510.0,
+            681.0,
+            541.0
+          ],
+          "confidence": 96.451118,
+          "line_id": "1-1-1",
+          "text": "RECORD"
+        },
+        {
+          "bbox": [
+            88.0,
+            613.0,
+            243.0,
+            654.0
+          ],
+          "confidence": 96.036804,
+          "line_id": "1-1-2",
+          "text": "Reading"
+        },
+        {
+          "bbox": [
+            257.0,
+            613.0,
+            328.0,
+            646.0
+          ],
+          "confidence": 96.31488,
+          "line_id": "1-1-2",
+          "text": "and"
+        },
+        {
+          "bbox": [
+            342.0,
+            613.0,
+            532.0,
+            646.0
+          ],
+          "confidence": 96.192604,
+          "line_id": "1-1-2",
+          "text": "arithmetic"
+        },
+        {
+          "bbox": [
+            85.0,
+            726.0,
+            177.0,
+            750.0
+          ],
+          "confidence": 96.113632,
+          "line_id": "1-1-3",
+          "text": "were"
+        },
+        {
+          "bbox": [
+            191.0,
+            717.0,
+            371.0,
+            758.0
+          ],
+          "confidence": 95.87693,
+          "line_id": "1-1-3",
+          "text": "proposed"
+        },
+        {
+          "bbox": [
+            386.0,
+            719.0,
+            416.0,
+            749.0
+          ],
+          "confidence": 95.87693,
+          "line_id": "1-1-3",
+          "text": "in"
+        },
+        {
+          "bbox": [
+            435.0,
+            719.0,
+            537.0,
+            750.0
+          ],
+          "confidence": 96.610504,
+          "line_id": "1-1-3",
+          "text": "1799."
+        },
+        {
+          "bbox": [
+            88.0,
+            824.0,
+            140.0,
+            854.0
+          ],
+          "confidence": 94.685371,
+          "line_id": "2-1-1",
+          "text": "No"
+        },
+        {
+          "bbox": [
+            151.0,
+            826.0,
+            320.0,
+            854.0
+          ],
+          "confidence": 94.685371,
+          "line_id": "2-1-1",
+          "text": "outcome"
+        },
+        {
+          "bbox": [
+            333.0,
+            823.0,
+            360.0,
+            854.0
+          ],
+          "confidence": 95.695633,
+          "line_id": "2-1-1",
+          "text": "is"
+        },
+        {
+          "bbox": [
+            371.0,
+            822.0,
+            497.0,
+            854.0
+          ],
+          "confidence": 96.399536,
+          "line_id": "2-1-1",
+          "text": "stated."
+        }
+      ],
+      "id": "6fc2bf41-fe42-4e14-ab79-ec2b6c1151c8",
+      "version": 1,
+      "created_at": 1792414458466
+    },
+    {
+      "coordinate_system": "pdf_points",
+      "dimensions": {
+        "height": 800.0,
+        "width": 600.0
+      },
+      "document_id": "0e3a327c-124b-41ef-a105-965cea96990c",
+      "handwriting_status": "unknown",
+      "human_review_required": true,
+      "language": null,
+      "lines": [
+        {
+          "bbox": [
+            50.0,
+            67.076,
+            95.018,
+            83.726
+          ],
+          "id": "line-00000",
+          "text": "Place"
+        },
+        {
+          "bbox": [
+            350.0,
+            67.076,
+            388.016,
+            83.726
+          ],
+          "id": "line-00001",
+          "text": "Year"
+        },
+        {
+          "bbox": [
+            50.0,
+            127.076,
+            88.016,
+            143.726
+          ],
+          "id": "line-00002",
+          "text": "Bern"
+        },
+        {
+          "bbox": [
+            350.0,
+            127.076,
+            390.032,
+            143.726
+          ],
+          "id": "line-00003",
+          "text": "1799"
+        },
+        {
+          "bbox": [
+            50.0,
+            187.076,
+            100.004,
+            203.726
+          ],
+          "id": "line-00004",
+          "text": "Zurich"
+        },
+        {
+          "bbox": [
+            350.0,
+            187.076,
+            390.032,
+            203.726
+          ],
+          "id": "line-00005",
+          "text": "1800"
+        },
+        {
+          "bbox": [
+            50.0,
+            247.076,
+            95.018,
+            263.726
+          ],
+          "id": "line-00006",
+          "text": "Basel"
+        },
+        {
+          "bbox": [
+            350.0,
+            247.076,
+            390.032,
+            263.726
+          ],
+          "id": "line-00007",
+          "text": "1801"
+        }
+      ],
+      "method": "poppler-bbox-layout",
+      "ocr_performed": false,
+      "ocr_source_id": null,
+      "original_sha256": "ff3c30a042fe7e4cffa5255482da738430c945aabae999ea93603d3956df9264",
+      "page": 2,
+      "processing_ms": 21,
+      "table_candidates": [
+        {
+          "bbox": [
+            50.0,
+            67.076,
+            390.032,
+            263.726
+          ],
+          "column_count": 2,
+          "method": "aligned-text-gaps",
+          "row_count": 4,
+          "rows": [
+            [
+              "Place",
+              "Year"
+            ],
+            [
+              "Bern",
+              "1799"
+            ],
+            [
+              "Zurich",
+              "1800"
+            ],
+            [
+              "Basel",
+              "1801"
+            ]
+          ],
+          "semantic_table_claim": false,
+          "status": "unverified"
+        }
+      ],
+      "text": "Place\nYear\nBern\n1799\nZurich\n1800\nBasel\n1801",
+      "text_sha256": "cbfef9c883c6ebc5ecb7111ff0ece9c666e6b138fcf130571222698e1c9669c7",
+      "words": [
+        {
+          "bbox": [
+            50.0,
+            67.076,
+            95.018,
+            83.726
+          ],
+          "confidence": null,
+          "line_id": "line-00000",
+          "text": "Place"
+        },
+        {
+          "bbox": [
+            350.0,
+            67.076,
+            388.016,
+            83.726
+          ],
+          "confidence": null,
+          "line_id": "line-00001",
+          "text": "Year"
+        },
+        {
+          "bbox": [
+            50.0,
+            127.076,
+            88.016,
+            143.726
+          ],
+          "confidence": null,
+          "line_id": "line-00002",
+          "text": "Bern"
+        },
+        {
+          "bbox": [
+            350.0,
+            127.076,
+            390.032,
+            143.726
+          ],
+          "confidence": null,
+          "line_id": "line-00003",
+          "text": "1799"
+        },
+        {
+          "bbox": [
+            50.0,
+            187.076,
+            100.004,
+            203.726
+          ],
+          "confidence": null,
+          "line_id": "line-00004",
+          "text": "Zurich"
+        },
+        {
+          "bbox": [
+            350.0,
+            187.076,
+            390.032,
+            203.726
+          ],
+          "confidence": null,
+          "line_id": "line-00005",
+          "text": "1800"
+        },
+        {
+          "bbox": [
+            50.0,
+            247.076,
+            95.018,
+            263.726
+          ],
+          "confidence": null,
+          "line_id": "line-00006",
+          "text": "Basel"
+        },
+        {
+          "bbox": [
+            350.0,
+            247.076,
+            390.032,
+            263.726
+          ],
+          "confidence": null,
+          "line_id": "line-00007",
+          "text": "1801"
+        }
+      ],
+      "id": "930212c0-1dd2-4a6d-a593-aa89c09757cc",
+      "version": 1,
+      "created_at": 1792414458512
+    }
+  ],
+  "revisions": []
+}

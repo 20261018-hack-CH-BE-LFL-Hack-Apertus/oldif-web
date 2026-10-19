@@ -1,3 +1,4 @@
+import { validateArchiveResponse } from "../models/archiveValidation";
 import { validateResearchResponse } from "../models/researchValidation";
 export class ApiError extends Error {
   constructor(
@@ -33,7 +34,7 @@ export async function api<T>(
   if (response.status === 204) return {} as T;
   const method = options.method ?? "GET";
   const value = validateResearchResponse(path, method, await response.json());
-  return value as T;
+  return validateArchiveResponse(path, method, value) as T;
 }
 export function post<T>(path: string, body: unknown = {}) {
   return api<T>(path, { method: "POST", body: JSON.stringify(body) });

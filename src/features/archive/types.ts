@@ -14,6 +14,11 @@ export type ArchiveDocument = {
   dataset_id: string;
   title: string;
   filename: string;
+  title_method?:
+    | "user_supplied"
+    | "first_nonempty_extracted_line"
+    | "filename"
+    | "human_review";
   media_type: string;
   original_sha256: string;
   page_count: number;
@@ -23,6 +28,9 @@ export type ArchiveDocument = {
   metadata: Record<string, string>;
   flags: Record<string, unknown>;
   review?: { decision: string; reason: string };
+  acquisition?: Partial<Acquisition>;
+  licence?: string;
+  missing_fields?: string[];
 };
 export type DocumentDetail = {
   document: ArchiveDocument;
@@ -38,3 +46,4 @@ export type PageAnnotation = {
   legibility_status: string;
   note: string;
 };
+import type { Acquisition } from "./acquisition";

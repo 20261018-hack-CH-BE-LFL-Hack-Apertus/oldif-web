@@ -5,25 +5,31 @@ import type { ArchiveCopy } from "./copy";
 import type { detailCopy } from "./detailCopy";
 import type { ArchiveState } from "./useArchive";
 import s from "./ArchiveStyles.module.css";
+import { AcquisitionFields } from "./AcquisitionFields";
+import { newAcquisition } from "./acquisition";
+import type { acquisitionCopy } from "./acquisitionCopy";
 export function ImportDocument({
   data,
   t,
   d,
+  a,
 }: {
   data: ArchiveState;
   t: ArchiveCopy;
   d: ReturnType<typeof detailCopy>;
+  a: ReturnType<typeof acquisitionCopy>;
 }) {
   const [file, setFile] = useState<File>();
   const [licence, setLicence] = useState("");
   const [title, setTitle] = useState("");
   const [rights, setRights] = useState(false);
+  const [acquisition, setAcquisition] = useState(newAcquisition);
   return (
     <form
       className={`${s.panel} ${s.stack}`}
       onSubmit={(e) => {
         e.preventDefault();
-        if (file && rights) void data.upload(file, licence, title);
+        if (file) void data.upload(file, licence, title, rights, acquisition);
       }}
     >
       <h2>{t.upload}</h2>
@@ -50,11 +56,16 @@ export function ImportDocument({
         {t.licence}
         <input
           value={licence}
-          required
           onChange={(e) => setLicence(e.target.value)}
-          maxLength={1000}
+          maxLength={200}
         />
       </label>
+      <AcquisitionFields
+        value={acquisition}
+        change={setAcquisition}
+        t={a}
+        disabled={data.busy}
+      />
       <label className={s.check}>
         <input
           type="checkbox"
@@ -66,11 +77,16 @@ export function ImportDocument({
       <Button
         variant="primary"
         type="submit"
-        disabled={
-          !data.ready || !file || !rights || !licence.trim() || data.busy
-        }
+        disabled={!data.ready || !file || data.busy}
       >
-        {data.busy ? t.working : t.upload}
+        {data.busy
+          ? t.working
+          : rights &&
+              acquisition.dataset_uri &&
+              acquisition.distribution_uri &&
+              licence.trim()
+            ? t.upload
+            : a.retain}
       </Button>
       {data.busy && <progress className={s.progress} aria-label={t.working} />}
     </form>

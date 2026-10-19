@@ -7,17 +7,24 @@ import { PageReview } from "./PageReview";
 import type { ArchiveState } from "./useArchive";
 import type { detailCopy } from "./detailCopy";
 import { useArchiveLayout } from "./useArchiveLayout";
+import { LayoutSyncStatus } from "@/features/preferences/LayoutSyncStatus";
+import type { Language } from "@/lib/models/types";
+import { acquisitionCopy } from "./acquisitionCopy";
 import s from "./ArchiveStyles.module.css";
 export function PageWorkspace({
   data,
   t,
   d,
+  language,
 }: {
   data: ArchiveState;
   t: ArchiveCopy;
   d: ReturnType<typeof detailCopy>;
+  language: Language;
 }) {
-  const { layout, change, reset } = useArchiveLayout(data.userId);
+  const settings = useArchiveLayout(data.userId);
+  const { layout, change, reset } = settings;
+  const a = acquisitionCopy(language);
   const [consent, setConsent] = useState(false);
   const [failed, setFailed] = useState("");
   const documentId = data.detail?.document.id;
@@ -32,6 +39,10 @@ export function PageWorkspace({
       </section>
     );
   const doc = detail.document;
+  const exportAllowed =
+    doc.acquisition?.allowed_uses?.includes("private_export") === true;
+  const providerAllowed =
+    doc.acquisition?.allowed_uses?.includes("provider_processing") === true;
   const source = detail.pages.find((p) => p.page === data.page);
   const path = `/api/documents/${doc.id}`;
   const preview = `${path}/pages/${data.page}/preview`;
@@ -147,6 +158,7 @@ export function PageWorkspace({
         </Button>
         <Button onClick={reset}>{d.reset}</Button>
       </div>
+      <LayoutSyncStatus settings={settings} language={language} />
       <div className={s.viewer}>
         {layout.source ? (
           <SplitPane
@@ -166,6 +178,11 @@ export function PageWorkspace({
       <div className={s.grid}>
         <section className={`${s.panel} ${s.stack}`}>
           <h2>{t.provenance}</h2>
+          {doc.title_method && (
+            <p>
+              {a.titleOrigin}: {a[doc.title_method]}
+            </p>
+          )}
           <p className={s.hash}>SHA-256 · {doc.original_sha256}</p>
           <p className={s.hash}>
             {t.text} · {source?.text_sha256}
@@ -189,17 +206,28 @@ export function PageWorkspace({
         <section className={`${s.panel} ${s.stack}`}>
           <h2>{t.exports}</h2>
           <div className={s.row}>
-            {["json", "tsv", "csv", "manifest"].map((format) => (
-              <a
-                key={format}
-                className={s.badge}
-                href={`${path}/export?format=${format}`}
-                download
-              >
-                {format.toUpperCase()} ↓
-              </a>
-            ))}
+            {exportAllowed &&
+              ["json", "jsonl", "tsv", "csv", "manifest"].map((format) => (
+                <a
+                  key={format}
+                  className={s.badge}
+                  href={`${path}/export?format=${format}`}
+                  download
+                >
+                  {format.toUpperCase()} ↓
+                </a>
+              ))}
           </div>
+          {!exportAllowed && (
+            <p className={s.muted}>
+              {a.private_export}: {a.blocked}
+            </p>
+          )}
+          {!providerAllowed && (
+            <p className={s.muted}>
+              {a.provider_processing}: {a.blocked}
+            </p>
+          )}
           <label className={s.check}>
             <input
               type="checkbox"
@@ -209,7 +237,9 @@ export function PageWorkspace({
             {t.consent}
           </label>
           <Button
-            disabled={!consent || data.busy || !source?.text}
+            disabled={
+              !consent || data.busy || !source?.text || !providerAllowed
+            }
             onClick={() => data.enrich()}
           >
             {t.enrich}

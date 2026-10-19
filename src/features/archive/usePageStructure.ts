@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { post } from "@/lib/api/client";
 import type { PageStructure } from "./structureTypes";
+import { validateArchiveResponse } from "@/lib/models/archiveValidation";
 export function usePageStructure(documentId: string, page: number) {
   const [structure, setStructure] = useState<PageStructure>();
   const [error, setError] = useState("");
@@ -24,6 +25,7 @@ export function usePageStructure(documentId: string, page: number) {
         const body = await response.json();
         if (!response.ok)
           throw new Error(body.error || `Request failed (${response.status})`);
+        validateArchiveResponse(`${path}/structure`, "GET", body);
         if (attempt === generation.current) setStructure(body.structure);
       })
       .catch((e) => {

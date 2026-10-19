@@ -1,0 +1,335 @@
+{
+  "document": {
+    "acquisition": {
+      "allowed_uses": ["local_processing", "private_export"],
+      "dataset_uri": "urn:oldif:qa:synthetic-three-pages",
+      "distribution_uri": "urn:oldif:qa:synthetic-archive-fixture.pdf",
+      "retrieved_at": "2026-10-19T14:47:59.192Z",
+      "rights_identifier": "CC0-1.0",
+      "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05"
+    },
+    "annotations": [],
+    "blob_chunks": 1,
+    "byte_count": 4564,
+    "code": null,
+    "created_at": 1792421280170,
+    "dataset_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+    "enrichments": [],
+    "extraction": {
+      "extractor": "poppler-pdftotext",
+      "mode": "layout",
+      "ocr_performed": false,
+      "pdf_author": "anonymous",
+      "pdf_creation_date": "Mon Oct 19 15:13:55 2026 CEST",
+      "pdf_title": "Synthetic archive acceptance fixture"
+    },
+    "filename": "synthetic-archive-fixture.pdf",
+    "flags": {
+      "empty_pages": 0,
+      "handwriting_status": "unknown",
+      "ocr_performed": false,
+      "pagination": "physical_page_order",
+      "privacy_review_required": true,
+      "suspect_pages": 0
+    },
+    "id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+    "ingest_fingerprint": "a0cc68eb41a46a76fd0b68097debeadd52f49b591fc15693017d694defd39520",
+    "initial_transformation": {
+      "actor": "d8a1d7ad-bafe-4d46-b94e-602f6a22815c",
+      "normalized": {
+        "missing_fields": [
+          "dataset_uri",
+          "distribution_uri",
+          "rights_identifier",
+          "rights_confirmed"
+        ],
+        "status": "quarantined"
+      },
+      "operation": "quarantine_original",
+      "original": {
+        "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+        "upload_metadata": {
+          "acquisition": {
+            "allowed_uses": ["local_processing"],
+            "dataset_uri": "",
+            "distribution_uri": "",
+            "retrieved_at": "2026-10-19T14:47:59.192Z",
+            "rights_identifier": "",
+            "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05"
+          },
+          "licence": "",
+          "rights_confirmed": false,
+          "title": null
+        }
+      },
+      "parent_revision": null,
+      "reason": "Acquisition rights unresolved; no extraction or model processing",
+      "run_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "schema_version": "1.0",
+      "timestamp": 1792421279,
+      "timestamp_unit": "unix_seconds"
+    },
+    "labels": [],
+    "licence": "CC0-1.0",
+    "media_type": "application/pdf",
+    "metadata": {
+      "pdf_author": "anonymous",
+      "pdf_creation_date": "Mon Oct 19 15:13:55 2026 CEST",
+      "pdf_title": "Synthetic archive acceptance fixture"
+    },
+    "metadata_provenance": {
+      "method": "embedded_pdf_metadata",
+      "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "verification": "unverified_document_claim"
+    },
+    "missing_fields": [],
+    "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+    "page_count": 3,
+    "review": {
+      "decision": "needs_review",
+      "reason": "New ingestion requires human review"
+    },
+    "rights_confirmed": true,
+    "schema_version": "1.0",
+    "status": "ready",
+    "title": "OLDIF / SYNTHETIC ARCHIVE",
+    "title_method": "first_nonempty_extracted_line",
+    "transformation": {
+      "actor": "d8a1d7ad-bafe-4d46-b94e-602f6a22815c",
+      "normalized": {
+        "acquisition": {
+          "allowed_uses": ["local_processing", "private_export"],
+          "dataset_uri": "urn:oldif:qa:synthetic-three-pages",
+          "distribution_uri": "urn:oldif:qa:synthetic-archive-fixture.pdf",
+          "retrieved_at": "2026-10-19T14:47:59.192Z",
+          "rights_identifier": "CC0-1.0",
+          "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05"
+        },
+        "licence": "CC0-1.0",
+        "status": "processing"
+      },
+      "operation": "resolve_acquisition",
+      "original": {
+        "acquisition": {
+          "allowed_uses": ["local_processing"],
+          "dataset_uri": "",
+          "distribution_uri": "",
+          "retrieved_at": "2026-10-19T14:47:59.192Z",
+          "rights_identifier": "",
+          "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05"
+        },
+        "licence": "",
+        "status": "quarantined"
+      },
+      "parent_revision": {
+        "id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+        "kind": "document",
+        "version": 1
+      },
+      "reason": "User supplied complete acquisition rights declaration",
+      "run_id": "286a7b8c-40db-4b49-80e2-6bdb70cdd193",
+      "schema_version": "1.0",
+      "timestamp": 1792421280,
+      "timestamp_unit": "unix_seconds"
+    },
+    "upload_metadata": {
+      "acquisition": {
+        "allowed_uses": ["local_processing", "private_export"],
+        "dataset_uri": "urn:oldif:qa:synthetic-three-pages",
+        "distribution_uri": "urn:oldif:qa:synthetic-archive-fixture.pdf",
+        "retrieved_at": "2026-10-19T14:47:59.192Z",
+        "rights_identifier": "CC0-1.0",
+        "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05"
+      },
+      "licence": "CC0-1.0",
+      "rights_confirmed": true,
+      "title": null
+    },
+    "version": 3
+  },
+  "pages": [
+    {
+      "dataset_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "file_page_index": 0,
+      "flags": {
+        "bias": "not_assessed",
+        "empty_text": false,
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "illegibility_suspected": false,
+        "legibility_status": "text_extracted",
+        "missingness": "text_layer_only; visual omissions not assessed",
+        "model_context_limit_exceeded": false,
+        "printed_page_label": "not_assessed"
+      },
+      "id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0001",
+      "licence": "CC0-1.0",
+      "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "page": 1,
+      "printed_page_label": null,
+      "printed_page_label_missing_reason": "not_assessed",
+      "provenance": "user-attested-original-upload",
+      "record_hash_scope": "original-file-bytes",
+      "record_locator": {
+        "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+        "kind": "document-page",
+        "page": 1
+      },
+      "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "text": "OLDIF / SYNTHETIC ARCHIVE\nInterface test data. No historical facts or personal information.\n\n\n\n\nPage 1: Classroom inventory example\nThis is a deliberately synthetic document for software acceptance.\nThe example lists intended teaching materials, not learning outcomes.\nNo dates, people or measurements should be treated as historical evidence.\n\n\n\n\n  Item                                                   Count      Status\n\n  Reading books                                          12         Synthetic\n\n  Writing slates                                         8          Synthetic\n\n  Arithmetic cards                                       6          Synthetic\n\n\n\n\nSynthetic acceptance fixture - page 1 of 3 - 19 October 2026\n",
+      "text_sha256": "20ebc619429ac8b4d872d851133e838105cc83b2425dd600146d2f96ed9c9e08",
+      "title": "OLDIF / SYNTHETIC ARCHIVE · page 1",
+      "transformation": {
+        "actor": "d8a1d7ad-bafe-4d46-b94e-602f6a22815c",
+        "normalized": {
+          "field": "text",
+          "source_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0001",
+          "text_sha256": "20ebc619429ac8b4d872d851133e838105cc83b2425dd600146d2f96ed9c9e08",
+          "value_kind": "immutable_record_reference",
+          "version": 1
+        },
+        "operation": "extract_original_page_text",
+        "original": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "file_page_index": 0,
+          "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+          "value_kind": "immutable_original_reference"
+        },
+        "parent_revision": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "kind": "document_blob",
+          "version": 1
+        },
+        "reason": "User supplied complete acquisition rights declaration",
+        "run_id": "286a7b8c-40db-4b49-80e2-6bdb70cdd193",
+        "schema_version": "1.0",
+        "timestamp": 1792421280,
+        "timestamp_unit": "unix_seconds"
+      },
+      "url": "http://localhost:3050/api/documents/4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd/pages/1"
+    },
+    {
+      "dataset_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "file_page_index": 1,
+      "flags": {
+        "bias": "not_assessed",
+        "empty_text": false,
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "illegibility_suspected": false,
+        "legibility_status": "text_extracted",
+        "missingness": "text_layer_only; visual omissions not assessed",
+        "model_context_limit_exceeded": false,
+        "printed_page_label": "not_assessed"
+      },
+      "id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0002",
+      "licence": "CC0-1.0",
+      "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "page": 2,
+      "printed_page_label": null,
+      "printed_page_label_missing_reason": "not_assessed",
+      "provenance": "user-attested-original-upload",
+      "record_hash_scope": "original-file-bytes",
+      "record_locator": {
+        "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+        "kind": "document-page",
+        "page": 2
+      },
+      "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "text": "OLDIF / SYNTHETIC ARCHIVE\nInterface test data. No historical facts or personal information.\n\n\n\n\nPage 2: Classroom inventory example\nThis is a deliberately synthetic document for software acceptance.\nThe example lists intended teaching materials, not learning outcomes.\nNo dates, people or measurements should be treated as historical evidence.\n\n\n\n\n  Item                                                   Count      Status\n\n  Reading books                                          12         Synthetic\n\n  Writing slates                                         8          Synthetic\n\n  Arithmetic cards                                       6          Synthetic\n\n\n\n\nSynthetic acceptance fixture - page 2 of 3 - 19 October 2026\n",
+      "text_sha256": "e690421252ebcee30fe5cc6bba0f49708c4cb49606cec88f430f974d938f8f41",
+      "title": "OLDIF / SYNTHETIC ARCHIVE · page 2",
+      "transformation": {
+        "actor": "d8a1d7ad-bafe-4d46-b94e-602f6a22815c",
+        "normalized": {
+          "field": "text",
+          "source_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0002",
+          "text_sha256": "e690421252ebcee30fe5cc6bba0f49708c4cb49606cec88f430f974d938f8f41",
+          "value_kind": "immutable_record_reference",
+          "version": 1
+        },
+        "operation": "extract_original_page_text",
+        "original": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "file_page_index": 1,
+          "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+          "value_kind": "immutable_original_reference"
+        },
+        "parent_revision": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "kind": "document_blob",
+          "version": 1
+        },
+        "reason": "User supplied complete acquisition rights declaration",
+        "run_id": "286a7b8c-40db-4b49-80e2-6bdb70cdd193",
+        "schema_version": "1.0",
+        "timestamp": 1792421280,
+        "timestamp_unit": "unix_seconds"
+      },
+      "url": "http://localhost:3050/api/documents/4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd/pages/2"
+    },
+    {
+      "dataset_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+      "file_page_index": 2,
+      "flags": {
+        "bias": "not_assessed",
+        "empty_text": false,
+        "handwriting_status": "unknown",
+        "human_review_required": true,
+        "illegibility_suspected": false,
+        "legibility_status": "text_extracted",
+        "missingness": "text_layer_only; visual omissions not assessed",
+        "model_context_limit_exceeded": false,
+        "printed_page_label": "not_assessed"
+      },
+      "id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0003",
+      "licence": "CC0-1.0",
+      "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "page": 3,
+      "printed_page_label": null,
+      "printed_page_label_missing_reason": "not_assessed",
+      "provenance": "user-attested-original-upload",
+      "record_hash_scope": "original-file-bytes",
+      "record_locator": {
+        "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+        "kind": "document-page",
+        "page": 3
+      },
+      "sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+      "text": "OLDIF / SYNTHETIC ARCHIVE\nInterface test data. No historical facts or personal information.\n\n\n\n\nPage 3: Classroom inventory example\nThis is a deliberately synthetic document for software acceptance.\nThe example lists intended teaching materials, not learning outcomes.\nNo dates, people or measurements should be treated as historical evidence.\n\n\n\n\n  Item                                                   Count      Status\n\n  Reading books                                          12         Synthetic\n\n  Writing slates                                         8          Synthetic\n\n  Arithmetic cards                                       6          Synthetic\n\n\n\n\nSynthetic acceptance fixture - page 3 of 3 - 19 October 2026\n",
+      "text_sha256": "d6336e7aa8eec698f24c10fd4414f8472c8efc8fffb2b4e1bfe9e042f6da2860",
+      "title": "OLDIF / SYNTHETIC ARCHIVE · page 3",
+      "transformation": {
+        "actor": "d8a1d7ad-bafe-4d46-b94e-602f6a22815c",
+        "normalized": {
+          "field": "text",
+          "source_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd-p0003",
+          "text_sha256": "d6336e7aa8eec698f24c10fd4414f8472c8efc8fffb2b4e1bfe9e042f6da2860",
+          "value_kind": "immutable_record_reference",
+          "version": 1
+        },
+        "operation": "extract_original_page_text",
+        "original": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "file_page_index": 2,
+          "original_sha256": "f1ecfaf3317ff61c23ffc64ffc671aa2e19ad55780682a0c1e71b0ba71992b05",
+          "value_kind": "immutable_original_reference"
+        },
+        "parent_revision": {
+          "document_id": "4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd",
+          "kind": "document_blob",
+          "version": 1
+        },
+        "reason": "User supplied complete acquisition rights declaration",
+        "run_id": "286a7b8c-40db-4b49-80e2-6bdb70cdd193",
+        "schema_version": "1.0",
+        "timestamp": 1792421280,
+        "timestamp_unit": "unix_seconds"
+      },
+      "url": "http://localhost:3050/api/documents/4376dc727693a236aa4c7b42052a26bff298cc9acda3939d8b9beb1f414bd3bd/pages/3"
+    }
+  ]
+}

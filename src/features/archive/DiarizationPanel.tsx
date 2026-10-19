@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "oldif-web-ui-components";
 import type { ProcessingCopy } from "./processingCopy";
 import s from "./ArchiveStyles.module.css";
+import { validateArchiveResponse } from "@/lib/models/archiveValidation";
 type Receipt = {
   status: string;
   model: string;
@@ -60,6 +61,7 @@ export function DiarizationPanel({
       const body = await response.json();
       if (!response.ok)
         throw new Error(body.error || `Processing failed (${response.status})`);
+      validateArchiveResponse("/diarization", "POST", body);
       setReceipt(body);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Processing failed");
