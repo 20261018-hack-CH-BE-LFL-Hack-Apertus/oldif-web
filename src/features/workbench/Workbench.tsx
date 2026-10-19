@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useLocalDraft } from "@/hooks/useLocalDraft";
 import { usePreferences } from "@/hooks/usePreferences";
 import { useResearch } from "@/hooks/useResearch";
 import { useVoice } from "@/hooks/useVoice";
@@ -13,6 +14,7 @@ import { Composer } from "./Composer";
 import { Evidence } from "./Evidence";
 import { Header } from "./Header";
 import { Messages } from "./Messages";
+import { draftCopy, providerConsentCopy } from "./retryCopy";
 import { Sidebar } from "./Sidebar";
 import w from "./WorkbenchStyles.module.css";
 import { type MobilePanel, WorkspacePanels } from "./WorkspacePanels";
@@ -23,7 +25,9 @@ export function Workbench() {
   const settings = useWorkbenchLayout(research.userId);
   const [mobilePanel, setMobilePanel] = useState<MobilePanel>("research");
   const followConversation = useRef(true);
-  const [input, setInput] = useState("");
+  const draft = useLocalDraft(research.userId, research.sessionId);
+  const input = draft.text;
+  const setInput = draft.setText;
   const [citation, setCitation] = useState<Citation>();
   const router = useRouter();
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -32,7 +36,16 @@ export function Workbench() {
   const voice = useVoice({
     language: prefs.language,
     onTranscript: research.setTranscript,
-    onTool: (message) => void research.send(message),
+    onTool: (message) => {
+      void research.send(message).then((accepted) => {
+        if (!accepted)
+          voice.deliverResult({
+            abstained: true,
+            error:
+              "Research request was not accepted; check the visible request status.",
+          });
+      });
+    },
   });
   const latestRun = research.runs.at(-1);
   const latest = latestRun?.result;
@@ -72,7 +85,7 @@ export function Workbench() {
     link.click();
     URL.revokeObjectURL(url);
   }
-  function send() {
+  async function send() {
     const text = input.trim();
     if (!text) return;
     if (text === "/clear") {
@@ -83,7 +96,11 @@ export function Workbench() {
       settings.update({ navigation: true });
       setMobilePanel("navigation");
       requestAnimationFrame(() => sourceRef.current?.focus());
-    } else void research.send(text);
+    } else {
+      const accepted = await research.send(text);
+      if (accepted) draft.clearIf(input);
+      return;
+    }
     setInput("");
   }
   function selectCitation(value: Citation) {
@@ -172,6 +189,8 @@ export function Workbench() {
           >
             {research.runs.length ? (
               <Messages
+                onRetry={(id) => void research.retry(id)}
+                canRetry={research.canRetry}
                 runs={research.runs}
                 t={t}
                 language={prefs.language}
@@ -208,6 +227,12 @@ export function Workbench() {
             <div ref={end} />
           </div>
           <Composer
+            providerConsentText={providerConsentCopy[prefs.language]}
+            draftStatus={
+              input
+                ? draftCopy[prefs.language][draft.unavailable ? 1 : 0]
+                : undefined
+            }
             research={research}
             voice={voice}
             t={t}

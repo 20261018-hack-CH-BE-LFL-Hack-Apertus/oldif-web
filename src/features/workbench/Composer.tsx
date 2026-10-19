@@ -14,6 +14,8 @@ export function Composer({
   setInput,
   inputRef,
   send,
+  draftStatus,
+  providerConsentText,
 }: {
   research: ReturnType<typeof useResearch>;
   voice: ReturnType<typeof useVoice>;
@@ -22,9 +24,23 @@ export function Composer({
   setInput: (value: string) => void;
   inputRef: RefObject<HTMLTextAreaElement | null>;
   send: () => void;
+  draftStatus?: string;
+  providerConsentText: string;
 }) {
   return (
     <div className={`${s.composerWrap} ${w.composerWrap}`}>
+      {research.needsProviderConsent && (
+        <label className={s.sideItem}>
+          <input
+            type="checkbox"
+            checked={research.providerConfirmed}
+            onChange={(event) =>
+              research.setProviderConfirmed(event.target.checked)
+            }
+          />
+          <span>{providerConsentText}</span>
+        </label>
+      )}
       {research.error && (
         <p role="alert" className={s.error}>
           {research.error}{" "}
@@ -169,6 +185,7 @@ export function Composer({
                 type="button"
                 className={s.button}
                 onClick={research.cancel}
+                disabled={research.awaitingAcknowledgement}
                 title={t.cancel}
               >
                 ■ {t.cancel}
@@ -178,6 +195,9 @@ export function Composer({
               type="button"
               className={s.primary}
               disabled={
+                research.awaitingAcknowledgement ||
+                (research.needsProviderConsent &&
+                  !research.providerConfirmed) ||
                 !input.trim() ||
                 !research.ready ||
                 !research.models.find((m) => m.id === research.model)?.available
@@ -190,6 +210,7 @@ export function Composer({
           </div>
         </div>
       </div>
+      {draftStatus && <output className={s.composerHint}>{draftStatus}</output>}
       <p className={s.composerHint}>{t.commandHint}</p>
     </div>
   );
