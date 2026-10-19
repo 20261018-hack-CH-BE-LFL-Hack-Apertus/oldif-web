@@ -1,0 +1,78 @@
+{
+  "batch_id": "bern-reference-20261019-five-models",
+  "sources": [
+    {
+      "batch_id": "bern-reference-20261019T125310",
+      "sha256": "cc36064755398108335b65c4e2ade3724998f31d4abe10df70e415a67b28ef71"
+    },
+    {
+      "batch_id": "bern-reference-20261019T125846",
+      "sha256": "d88ed4d4ef95d142879c119ce8553b201c55e1a19a884076f66848e8884ead01"
+    }
+  ],
+  "independent_human_gold": false,
+  "distinct_source_documents": 1,
+  "questions_per_language": 2,
+  "languages": [
+    "en",
+    "es",
+    "de",
+    "de-CH",
+    "fr",
+    "it",
+    "rm"
+  ],
+  "confidence_interval": null,
+  "models": [
+    {
+      "model": "apertus-v1-5-70b",
+      "cases": 14,
+      "completed": 14,
+      "reference_case_passes": 13,
+      "abstentions": 6,
+      "tokens": 111262,
+      "mean_seconds": 13.37,
+      "with_exact_quote": 7
+    },
+    {
+      "model": "apertus-v1-5-8b",
+      "cases": 14,
+      "completed": 13,
+      "reference_case_passes": 6,
+      "abstentions": 5,
+      "tokens": 103080,
+      "mean_seconds": 6.04,
+      "with_exact_quote": 4
+    },
+    {
+      "model": "apertus-v1-5-8b-thinking",
+      "cases": 14,
+      "completed": 10,
+      "reference_case_passes": 6,
+      "abstentions": 5,
+      "tokens": 74584,
+      "mean_seconds": 4.1,
+      "with_exact_quote": 4
+    },
+    {
+      "model": "apertus-v1-5-70b-thinking",
+      "cases": 14,
+      "completed": 14,
+      "reference_case_passes": 12,
+      "abstentions": 5,
+      "tokens": 107467,
+      "mean_seconds": 13.0,
+      "with_exact_quote": 7
+    },
+    {
+      "model": "gpt-6-astra",
+      "cases": 14,
+      "completed": 14,
+      "reference_case_passes": 14,
+      "abstentions": 7,
+      "tokens": 89463,
+      "mean_seconds": 23.16,
+      "with_exact_quote": 7
+    }
+  ]
+}

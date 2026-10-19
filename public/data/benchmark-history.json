@@ -1,0 +1,33 @@
+{
+  "batch_id": "eval-20261019T102053",
+  "source_artifact_sha256": "766c58b65f108a31b60caac55d836ba3a1baba74afe89a1d36ed916031056557",
+  "source_text_sha256": "ffcb8050b1895e5db11892fc46701c3e332f75202ebbd5ecec433758dde5184e",
+  "question": "Summarize what the source says about schooling. Use one short exact quotation from source.text and note source bias. Read the supplied source once; do not search other records.",
+  "test_class": "live_workflow_smoke_not_held_out_quality_benchmark",
+  "human_gold_documents": 0,
+  "challenge_1000_page_throughput": "NOT_RUN",
+  "challenge_80_percent_usability": "NOT_RUN",
+  "challenge_under_5_percent_structural_errors": "NOT_RUN",
+  "historical_snapshot": true,
+  "current_deployment_benchmark": false,
+  "models": [
+    {
+      "model": "apertus-v1-5-8b",
+      "cases": 7,
+      "completed": 7,
+      "abstentions": 6,
+      "with_exact_quote": 3,
+      "mean_seconds": 7.05,
+      "tokens": 51630
+    },
+    {
+      "model": "gpt-6-astra",
+      "cases": 7,
+      "completed": 7,
+      "abstentions": 0,
+      "with_exact_quote": 7,
+      "mean_seconds": 34.34514285714286,
+      "tokens": 61932
+    }
+  ]
+}
