@@ -111,6 +111,15 @@ export function ResultTable({
               <cite>
                 {c.title || c.source_id} {c.page ? `· p. ${c.page}` : ""}
               </cite>
+              {c.transcription_method && (
+                <p className={s.warning}>
+                  {c.transcription_method} ·{" "}
+                  {c.transcription_review_status || "unverified"}
+                </p>
+              )}
+              {c.text_sha256 && (
+                <p className={s.hash}>SHA-256 · {c.text_sha256}</p>
+              )}
             </blockquote>
           ))}
           {selected.result?.interpretation_draft?.answer && (

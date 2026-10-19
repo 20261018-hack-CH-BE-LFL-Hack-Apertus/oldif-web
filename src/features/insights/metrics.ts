@@ -15,6 +15,9 @@ export type StoredRun = {
       quote?: string;
       page?: number;
       title?: string;
+      transcription_method?: string;
+      transcription_review_status?: string;
+      text_sha256?: string;
     }>;
     abstained?: boolean;
     evidence_only?: boolean;
