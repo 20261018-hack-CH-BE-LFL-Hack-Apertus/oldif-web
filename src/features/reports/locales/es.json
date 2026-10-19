@@ -1,0 +1,132 @@
+{
+  "title": "Archivos, con pruebas.",
+  "subtitle": "Un espacio de investigación reproducible para el reto de la Universidad de Berna.",
+  "technical": "Informe técnico",
+  "pitch": "Presentación",
+  "exportPdf": "Exportar PDF",
+  "printHint": "Abre el diálogo de impresión. Elige Guardar como PDF. Seis páginas con capturas y referencias.",
+  "fullscreen": "Pantalla completa",
+  "exitFullscreen": "Salir de pantalla completa",
+  "fullscreenError": "Este navegador no permite pantalla completa.",
+  "previous": "Anterior",
+  "next": "Siguiente",
+  "page": "Página",
+  "contents": "En este informe",
+  "snapshot": "Registro de pruebas",
+  "source": "Fuente",
+  "openWorkspace": "Abrir espacio de trabajo",
+  "downloadEvidence": "Descargar registro de pruebas",
+  "keyboard": "Usa ← / →, Inicio y Fin. Escape sale de pantalla completa.",
+  "records": "registros fuente",
+  "checks": "comprobaciones HTTP públicas",
+  "runs": "ejecuciones públicas acotadas",
+  "languages": "idiomas de interfaz",
+  "model": "Modelo",
+  "completed": "Completadas",
+  "failed": "Fallidas",
+  "abstained": "Abstenciones",
+  "comparison": "Comparación anterior: una fuente, siete idiomas y cinco modelos. Completar no equivale a exactitud histórica.",
+  "original": "Registro original",
+  "quoteLabel": "Un pasaje exacto sobre la enseñanza prevista",
+  "notPage": "Localizador de registro; sin número de página inventado.",
+  "intention": "Expresa una intención de enseñar, no demuestra resultados de aprendizaje.",
+  "workflow": [
+    "Conservar original",
+    "Normalizar por separado",
+    "Estructurar y marcar",
+    "Enriquecer metadatos",
+    "Verificar pruebas",
+    "Revisar y exportar"
+  ],
+  "architecture": [
+    "Espacio web",
+    "Backend Rust",
+    "Core: Apertus + herramientas",
+    "Servicio de datos",
+    "Revisión OpenClaw"
+  ],
+  "trust": "Las credenciales de proveedores permanecen en core. Los documentos originales y las sugerencias del modelo se separan.",
+  "voice": "Se probó WebRTC público con audio sintético. Una prueba local separada de Nemotron3 en CPU identificó dos hablantes anónimos en cuatro turnos sintéticos. No se midieron micrófonos físicos ni precisión en audio real.",
+  "research": "La investigación orienta el diseño; cada integración necesita pruebas propias.",
+  "researchItems": [
+    "AutoData: ciclos versionados de generación, inspección y evaluación. No se reprodujo metaentrenamiento.",
+    "MDASH: agentes especialistas, validación y deduplicación de un sistema de seguridad. Sin integración MDASH.",
+    "NVIDIA: la diarización Nemotron3 fijada pasó una prueba local sintética con dos hablantes. El análisis de páginas y la recuperación multimodal siguen siendo integraciones estudiadas."
+  ],
+  "limits": [
+    "Sin medición de 1.000 páginas en dos horas.",
+    "Sin referencia humana que demuestre 80% de usabilidad o menos de 5% de errores estructurales.",
+    "Una cita exacta no garantiza una interpretación correcta."
+  ],
+  "references": "Fuentes y reproducibilidad",
+  "reviewNotice": "Sigue siendo necesaria la revisión humana.",
+  "dateLabel": "Observado",
+  "pages": [
+    {
+      "label": "01 / Objetivo",
+      "title": "Hacer utilizable el archivo. Conservar las pruebas.",
+      "intro": "Oldif conecta registros históricos públicos con un espacio de investigación basado en Apertus. La primera colección verificada contiene 105 transcripciones publicadas de la encuesta Stapfer.",
+      "bullets": [
+        "El registro fuente permanece visible junto a la respuesta.",
+        "Cada pregunta genera una traza, citas y un resultado revisable.",
+        "El informe separa comprobaciones ejecutadas de objetivos aún no medidos."
+      ],
+      "caption": "Espacio verificado anterior,19 de octubre de 2026. Las capturas de la actualización final se identifican por separado."
+    },
+    {
+      "label": "02 / Procedencia",
+      "title": "Cada transformación necesita un rastro.",
+      "intro": "Un identificador y hashes del archivo original, del registro y del texto conectan la respuesta con los datos publicados.",
+      "bullets": [
+        "Conservar el texto original y una representación normalizada separada.",
+        "Usar localizadores reales para documentos paginados; esta muestra tiene page:null.",
+        "Exportar juntos citas, posiciones, decisiones de revisión y estado de las pruebas."
+      ],
+      "caption": "Revisión técnica real durante la comparación explícita con Astra. La aceptación fue una prueba, no una aprobación histórica."
+    },
+    {
+      "label": "03 / Método",
+      "title": "Un proceso que se puede inspeccionar y corregir.",
+      "intro": "Apertus investiga por defecto. Planificación, lectura, verificación y propuestas opcionales quedan acotadas y registradas. Astra es una alternativa o comparación explícita.",
+      "bullets": [
+        "Validar mecánicamente identificadores, citas exactas y hashes.",
+        "Tratar textos fuente y resultados de herramientas como datos no confiables.",
+        "Mantener las interpretaciones dudosas en revisión; no convertir sugerencias en hechos."
+      ],
+      "caption": "Lienzo de actividad real de la aplicación anterior. Los nodos muestran actividad registrada, no exactitud."
+    },
+    {
+      "label": "04 / Resultados",
+      "title": "Mostrar éxitos y fallos claros.",
+      "intro": "Tres ejecuciones públicas acotadas produjeron un fallo de contrato JSON y dos finalizaciones. La última prueba breve superó 9 comprobaciones funcionales.",
+      "bullets": [
+        "Una respuesta completa se rechazó por atribuciones y resultados sin apoyo suficiente.",
+        "Una aceptación técnica temporal verificó JSON/TSV; el rechazo eliminó sus filas.",
+        "La comparación anterior de 35 casos tuvo 19 finalizaciones y 16 fallos. No es un benchmark independiente."
+      ],
+      "caption": "Mediciones fechadas de recibos conservados. No se mezclan versiones distintas como una clasificación de calidad."
+    },
+    {
+      "label": "05 / Sistema",
+      "title": "Capacidades con límites claros.",
+      "intro": "La web pública conecta con backend, datos, core y covenant privados. Core controla proveedores; OpenClaw solicita inferencia mediante core.",
+      "bullets": [
+        "HTTPS, gRPC privado y eventos WebSocket conectan la aplicación.",
+        "Solo la web es pública; PostgreSQL conserva resultados y un volumen guarda diarios de core.",
+        "Se probó WebRTC público con audio sintético. Una prueba local separada de Nemotron3 en CPU identificó dos hablantes anónimos en cuatro turnos sintéticos. No se midieron micrófonos físicos ni precisión en audio real."
+      ],
+      "caption": "Prueba real de navegador público con audio sintético. No demuestra rendimiento del micrófono físico ni diarización."
+    },
+    {
+      "label": "06 / Próximas pruebas",
+      "title": "Respaldar mejores afirmaciones con mejores pruebas.",
+      "intro": "La próxima evaluación necesita un corpus de páginas fijo y autorizado, etiquetas expertas independientes y especificaciones de máquina declaradas.",
+      "bullets": [
+        "Medir estructura, manuscritos, páginas ausentes y exactitud de metadatos.",
+        "Separar entrenamiento, desarrollo y evaluación reservada.",
+        "Publicar fallos, límites de cómputo y revisiones con cada versión del conjunto."
+      ],
+      "caption": "Las referencias describen métodos externos. Su rendimiento publicado no es un resultado de Oldif."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "file": "workspace-baseline.jpg",
+    "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-workspace-dark.jpg",
+    "sha256": "062083d3af247b8a9d63402e8ab24940f8f76a65edb96564e39618adcd74cf11",
+    "description": "Earlier archive workspace, dark mode",
+    "date": "2026-10-19",
+    "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+  },
+  {
+    "file": "canvas-baseline.jpg",
+    "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-canvas-selected.jpg",
+    "sha256": "60bb5c2167b0f424adafa11ed793da3902f1283da0bf265ec3cdb9b7cd1d769a",
+    "description": "Earlier activity canvas with selected evidence",
+    "date": "2026-10-19",
+    "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+  },
+  {
+    "file": "review-baseline.jpg",
+    "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-evidence-accepted.jpg",
+    "sha256": "efed4745d7ef59549f90d034a46c34aa3b67f56f3e139d0c34a98df28c4d3e97",
+    "description": "Earlier explicit Astra comparison and engineering review",
+    "date": "2026-10-19",
+    "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+  },
+  {
+    "file": "voice-baseline.png",
+    "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/voice-public-e2e.png",
+    "sha256": "558163897ee8ee8444ecdaef0fab087458219e95461c0fe44248855edf66dab3",
+    "description": "Public browser synthetic-audio voice test",
+    "date": "2026-10-19",
+    "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+  }
+]

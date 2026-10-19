@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "observed_at": "2026-10-19T11:59:49.149271+00:00",
+  "dataset": {
+    "id": "stapfer-1799",
+    "records": 105,
+    "source_id": "stapfer-2027",
+    "quote": "diese sollen im schreiben l\u00e4sen und rechnen unterrichtet werden",
+    "page": null,
+    "char_start": 2410,
+    "char_end": 2473,
+    "record_sha256": "390853416efd296bdd4bfb1efec937b0a77669392728fbba2b25b212bee12dbc",
+    "text_sha256": "ffcb8050b1895e5db11892fc46701c3e332f75202ebbd5ecec433758dde5184e",
+    "source_url": "https://opendata.swiss/de/dataset/stapfer-enquete-schule-in-der-schweiz-17991",
+    "licence_url": "https://opendata.swiss/de/terms-of-use#terms_open",
+    "original_artifact_sha256": "766c58b65f108a31b60caac55d836ba3a1baba74afe89a1d36ed916031056557"
+  },
+  "public_checks": {
+    "http_preflight_passed": 16,
+    "http_preflight_failed": 0,
+    "websocket_preflight_passed": 2,
+    "provider_attempts": 3,
+    "provider_attempts_failed": 1,
+    "provider_attempts_completed": 2,
+    "latest_workflow_checks_passed": 9,
+    "latest_workflow_checks_failed": 0,
+    "accepted_export_checks_passed": 8,
+    "rejected_export_checks_passed": 5,
+    "cancellation_passed": true,
+    "failed_run_review_guard_passed": true,
+    "has_independently_validated_exact_quote": true,
+    "scholarly_interpretation_approved": false,
+    "final_review_decision": "rejected",
+    "final_core_regression_has_exact_quote": true,
+    "final_core_regression_review": "not_submitted",
+    "reviewed_workflow_final_decision": "rejected"
+  },
+  "historical_comparison": {
+    "batch_id": "eval-20261019T100838",
+    "class": "live_workflow_smoke_not_held_out_quality_benchmark",
+    "expected_cases": 35,
+    "completed_cases": 19,
+    "failed_cases": 16,
+    "human_gold_documents": 0,
+    "models": [
+      {
+        "model": "apertus-v1-5-70b",
+        "cases": 7,
+        "completed": 6,
+        "failed": 1,
+        "abstained": 0,
+        "exact_quote_cases": 6
+      },
+      {
+        "model": "apertus-v1-5-70b-thinking",
+        "cases": 7,
+        "completed": 4,
+        "failed": 3,
+        "abstained": 0,
+        "exact_quote_cases": 4
+      },
+      {
+        "model": "apertus-v1-5-8b",
+        "cases": 7,
+        "completed": 2,
+        "failed": 5,
+        "abstained": 1,
+        "exact_quote_cases": 2
+      },
+      {
+        "model": "apertus-v1-5-8b-thinking",
+        "cases": 7,
+        "completed": 0,
+        "failed": 7,
+        "abstained": 0,
+        "exact_quote_cases": 0
+      },
+      {
+        "model": "gpt-6-astra",
+        "cases": 7,
+        "completed": 7,
+        "failed": 0,
+        "abstained": 0,
+        "exact_quote_cases": 7
+      }
+    ],
+    "comparability": "Earlier source/runtime snapshot, one source, seven locales. Not a held-out quality benchmark or comparison with the current revised pipeline."
+  },
+  "deployment": {
+    "apps": 5,
+    "terraform_no_drift": {
+      "checked_at": "2026-10-19T11:59:49.149271+00:00",
+      "terraform_exit_code": 0,
+      "result": "No changes. Your infrastructure matches the configuration.",
+      "sources": {
+        "back": "72dc552",
+        "core": "c869c25",
+        "web": "b926219",
+        "covenant": "364d330"
+      }
+    },
+    "only_web_public": true,
+    "provider_keys_owner": "core"
+  },
+  "limitations": [
+    "No1000-page throughput measurement",
+    "No held-out archival accuracy benchmark",
+    "No verified physical microphone or real-world diarization accuracy",
+    "Machine verifier is not human approval"
+  ],
+  "source_receipts": [
+    "public-e2e-infra.json",
+    "dataset-source.json",
+    "azure-deployment.json",
+    "seven-locale-evaluation.json",
+    "voice-public-e2e.json",
+    "diarization/api-validation.json"
+  ],
+  "screenshot_manifest": [
+    {
+      "file": "workspace-baseline.jpg",
+      "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-workspace-dark.jpg",
+      "sha256": "062083d3af247b8a9d63402e8ab24940f8f76a65edb96564e39618adcd74cf11",
+      "description": "Earlier archive workspace, dark mode",
+      "date": "2026-10-19",
+      "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+    },
+    {
+      "file": "canvas-baseline.jpg",
+      "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-canvas-selected.jpg",
+      "sha256": "60bb5c2167b0f424adafa11ed793da3902f1283da0bf265ec3cdb9b7cd1d769a",
+      "description": "Earlier activity canvas with selected evidence",
+      "date": "2026-10-19",
+      "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+    },
+    {
+      "file": "review-baseline.jpg",
+      "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/frontend-evidence-accepted.jpg",
+      "sha256": "efed4745d7ef59549f90d034a46c34aa3b67f56f3e139d0c34a98df28c4d3e97",
+      "description": "Earlier explicit Astra comparison and engineering review",
+      "date": "2026-10-19",
+      "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+    },
+    {
+      "file": "voice-baseline.png",
+      "original": "knowledge-graph/project-knowledge-graph/oldif-implementation/evidence/voice-public-e2e.png",
+      "sha256": "558163897ee8ee8444ecdaef0fab087458219e95461c0fe44248855edf66dab3",
+      "description": "Public browser synthetic-audio voice test",
+      "date": "2026-10-19",
+      "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+    }
+  ],
+  "upgrade_diarization": {
+    "class": "real authenticated core HTTP through pinned Apple Container CPU runtime; synthetic fixture",
+    "observed_at": "2026-10-19T12:54:55.961186+00:00",
+    "checks_passed": 15,
+    "fixture_seconds": 37.978625,
+    "speaker_count": 2,
+    "segments": [
+      {
+        "end": 8.089,
+        "speaker": "speaker_1",
+        "start": 0.0
+      },
+      {
+        "end": 17.859,
+        "speaker": "speaker_2",
+        "start": 8.961
+      },
+      {
+        "end": 27.089,
+        "speaker": "speaker_1",
+        "start": 18.721
+      },
+      {
+        "end": 36.859,
+        "speaker": "speaker_2",
+        "start": 27.931
+      }
+    ],
+    "model_sha256": "08456d9e22cd9a323c0364d98375f3746d6e68507ebb705cd46438c534c7a3a1",
+    "runtime_version": "0.2.0",
+    "public_deployment_verified": false,
+    "limitations": [
+      "No human microphone",
+      "No listening review",
+      "No transcript",
+      "No real-world diarization error-rate benchmark"
+    ]
+  }
+}

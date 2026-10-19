@@ -1,0 +1,132 @@
+{
+  "title": "Archiv, mit Beläg.",
+  "subtitle": "En reproduzierbare Forschigsraum für d Challenge vo de Universität Bern.",
+  "technical": "Technische Bricht",
+  "pitch": "Präsentation",
+  "exportPdf": "PDF exportiere",
+  "printHint": "Öffnet de Druckdialog. Als PDF speichere wähle. Sächs Siite mit Screenshots und Quelle.",
+  "fullscreen": "Vollbild",
+  "exitFullscreen": "Vollbild beände",
+  "fullscreenError": "Vollbild gaht i dem Browser nöd.",
+  "previous": "Zrugg",
+  "next": "Wiiter",
+  "page": "Siite",
+  "contents": "I dem Bricht",
+  "snapshot": "Stand vo de Beläg",
+  "source": "Quälle",
+  "openWorkspace": "Arbeitsbereich öffne",
+  "downloadEvidence": "Beläg abelade",
+  "keyboard": "← / →, Home und End bruuche. Escape beändet s Vollbild.",
+  "records": "Quelldatensätz",
+  "checks": "öffentlechi HTTP-Prüefige",
+  "runs": "begrenzti öffentlechi Läuf",
+  "languages": "Oberflächesprache",
+  "model": "Modell",
+  "completed": "Abgschlosse",
+  "failed": "Gschiiteret",
+  "abstained": "Enthaltige",
+  "comparison": "Früehere Vergliich: ei Quälle, sibe Sprache, füf Modell. En Abschluss isch kei historischi Richtigkeitsgarantie.",
+  "original": "Originaldatensatz",
+  "quoteLabel": "En genaue Abschnitt zum vorgsehne Unterricht",
+  "notPage": "Datensatzreferenz; kei erfundeni Siitenummere.",
+  "intention": "Das beschreibt e Unterrichtsabsicht, kei bewiesene Lernerfolg.",
+  "workflow": [
+    "Original erhalte",
+    "Separat normalisiere",
+    "Strukturiere und markiere",
+    "Metadate ergänze",
+    "Beläg prüefe",
+    "Prüefe und exportiere"
+  ],
+  "architecture": [
+    "Web-Arbeitsbereich",
+    "Rust-Backend",
+    "Core: Apertus + Wärchzüg",
+    "Dateservice",
+    "OpenClaw-Prüefig"
+  ],
+  "trust": "D Anbieterschlüssel bliibed i core. Original und Modellvorschläg bliibed trennt.",
+  "voice": "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde.",
+  "research": "Forschig hilft bim Design; Integratiöne bruuched eigni Beläg.",
+  "researchItems": [
+    "AutoData: versionierti Erzüügigs-, Inspektions- und Evaluationsschlaufe. Kei Meta-Training reproduziert.",
+    "MDASH: spezialisierti Agente, Validierig und Deduplizierig us de Sicherheitsanalyse. Kei MDASH-Integration.",
+    "NVIDIA: D fixiert Nemotron3-Diarisierig het en lokale synthetische Zwei-Sprecher-Test bestande. Siiteanalys und multimodali Suechi blibed untersuechti Erweiterige."
+  ],
+  "limits": [
+    "Kei Messig vo 1.000 Siite i zwei Stunde.",
+    "Kei menschliche Goldstandard für 80% Nutzbarkeit oder under 5% Strukturfehler.",
+    "Es exakts Zitat macht d Interpretation nöd automatisch richtig."
+  ],
+  "references": "Quälle und Reproduzierbarkeit",
+  "reviewNotice": "Menschlichi Prüefig bliibt nötig.",
+  "dateLabel": "Beobachtet",
+  "pages": [
+    {
+      "label": "01 / Ziil",
+      "title": "Archiv nutzbar mache. D Beläg erhalte.",
+      "intro": "Oldif verbindet öffentlechi historischi Datensätz mit eme Apertus-Forschigsraum. D erscht verifizierte Sammlig het 105 publizierti Stapfer-Transkriptione.",
+      "bullets": [
+        "D Quälle bliibt nebed de Antwort sichtbar.",
+        "E Frag git en Ablauf, Zitat und es prüefbars Resultat.",
+        "De Bricht trennt gmacht Prüefige vo nöd gmessne Ziil."
+      ],
+      "caption": "Früehere verifizierte Arbeitsbereich,19.Oktober 2026. Screenshots vom finale Upgrade werded separat bezeichnet."
+    },
+    {
+      "label": "02 / Herkunft",
+      "title": "Jedi Veränderig bruucht e Spur.",
+      "intro": "Quälle-ID und Hashes vo Original, Datensatz und Text verbinded d Antwort mit de publizierte Date.",
+      "bullets": [
+        "Originaltext und separati Normalisierig erhalte.",
+        "Echti Siitereferenze für paginierti Uploads; die Stichprob het page:null.",
+        "Zitat, Zeichepositione, Prüefentscheid und Evidenzstatus zäme exportiere."
+      ],
+      "caption": "Echti technisches Prüefe bim explizite Astra-Vergliich. D Annahm isch en Test gsi, kei historischi Freigab."
+    },
+    {
+      "label": "03 / Methode",
+      "title": "En Ablauf zum Prüefe und Korrigiere.",
+      "intro": "Apertus isch s Standardmodell. Planig, Quälleläse, Verifikation und Vorschläg sind begrenzt und protokolliert. Astra wird bewusst usgwählt.",
+      "bullets": [
+        "IDs, exakti Zitat und Hashes maschinell prüefe.",
+        "Quälle und Wärchzüguusgabe als nöd vertrauenswürdigi Date behandle.",
+        "Zwiifelhafte Interpretatione prüefe; Vorschläg sind kei Quällefakte."
+      ],
+      "caption": "Echte Aktivitäts-Canvas vo de früehere App. D Knote zeiged protokollierti Aktivität, kei Richtigkeitsgarantie."
+    },
+    {
+      "label": "04 / Resultat",
+      "title": "Erfolg und klari Fehler zeige.",
+      "intro": "Drei begrenzti öffentlechi Läuf händ ein JSON-Vertragsfehler und zwei Abschlüss gäh. De letscht churzi Quälletest het 9 Funktionsprüefige bestande.",
+      "bullets": [
+        "E fertigi Antwort isch wäge unbelegte Autorschaft und Ergebnisaussage abglehnt worde.",
+        "Temporäri technisches Akzeptiere het JSON/TSV prüeft; s Ablehne het d Zeile entfernt.",
+        "De früehere Vergliich mit 35 Fäll het 19 Abschlüss und 16 Fehler. Kei unabhängige Qualitätsbenchmark."
+      ],
+      "caption": "Datierti Messige us erhalte Beläg. Verschiedeni Laufziitständ sind kei einheitlichi Qualitätsranglischte."
+    },
+    {
+      "label": "05 / System",
+      "title": "Klari Grenze zwüsche de Fähigkeite.",
+      "intro": "S öffentliche Web erreicht privati Backend-, Date-, Core- und Covenant-Dienst. Nur core het Anbieterschlüssel; OpenClaw bruucht core.",
+      "bullets": [
+        "HTTPS, privats gRPC und WebSocket-Ereignis verbinded d App.",
+        "Nur web isch öffentlich; PostgreSQL speicheret Resultat und es Volume d Core-Journal.",
+        "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde."
+      ],
+      "caption": "Echte öffentliche Browsertest mit synthetischem Audio. Kei Beweis für physischs Mikrofon oder Sprechertrennig."
+    },
+    {
+      "label": "06 / Wiiteri Beläg",
+      "title": "Stärcheri Aussage bruuched stärcheri Tests.",
+      "intro": "D nächst Evaluation bruucht en fixe lizenzierte Siitekorpus, unabhängigi Expertelabel und deklarierte Hardware.",
+      "bullets": [
+        "Struktur, Handschriftmarkierig, fehlendi Siite und Metadate messe.",
+        "Training, Entwicklig und zrugghalteni Evaluation trenne.",
+        "Fehler, Rechegrenze und Prüefentscheid mit jeder Dateversion publiziere."
+      ],
+      "caption": "D Referenze beschriibed externi Methode. Ihri publizierti Leistig isch kei Oldif-Resultat."
+    }
+  ]
+}

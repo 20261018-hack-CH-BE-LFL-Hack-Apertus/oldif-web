@@ -1,0 +1,265 @@
+.reportRoot,
+.deckRoot {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100dvh;
+}
+.toolbar,
+.contents,
+.deckControls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  padding: var(--s5) var(--s6);
+}
+.toolbar h1 {
+  margin: 0;
+  font-size: var(--heading);
+}
+.toolbar p {
+  color: var(--secondary);
+  margin: var(--s2) 0 0;
+  max-width: 48rem;
+}
+.toolbar > div {
+  flex: 1 1 30rem;
+}
+.toolbar a,
+.contents a,
+.deckControls a {
+  color: var(--foreground);
+  text-underline-offset: var(--s1);
+}
+.contents {
+  padding-top: 0;
+  font-size: var(--meta);
+}
+.sheets {
+  display: grid;
+  gap: var(--s8);
+  padding: var(--s4);
+}
+.sheet,
+.slide {
+  background: var(--surface);
+  border: var(--line) solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s6);
+  margin: 0 auto;
+  padding: var(--s6);
+  width: 100%;
+  max-width: 70rem;
+}
+.pageHeading,
+.pageFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s4);
+}
+.wordmark {
+  font-size: var(--title);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+.eyebrow {
+  font-size: var(--meta);
+  color: var(--secondary);
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+.pageBody {
+  display: grid;
+  gap: var(--s6);
+  flex: 1;
+}
+.story h2 {
+  font-size: clamp(1.8rem, 4vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  margin: 0 0 var(--s5);
+  max-width: 18ch;
+}
+.story p {
+  line-height: 1.5;
+}
+.intro {
+  font-size: 1.0625rem;
+}
+.visual {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  justify-content: center;
+}
+.pageFooter {
+  padding-top: var(--s5);
+  border-top: var(--line) solid var(--border);
+  font-size: 0.6875rem;
+  color: var(--secondary);
+}
+.limits {
+  border-left: 0.1875rem solid var(--warning);
+}
+.stage {
+  padding: var(--s4);
+}
+.slide[data-active="false"] {
+  display: none;
+}
+.deckControls {
+  justify-content: center;
+  padding-bottom: var(--s2);
+}
+.keyboard {
+  text-align: center;
+  color: var(--secondary);
+  font-size: var(--meta);
+  margin: var(--s2) var(--s4) var(--s4);
+}
+.deckRoot:fullscreen {
+  overflow: auto;
+}
+.deckRoot:fullscreen .stage {
+  min-height: 75dvh;
+  display: grid;
+  align-items: center;
+}
+@media (min-width: 48rem) {
+  .sheets {
+    padding: var(--s8);
+  }
+  .sheet,
+  .slide {
+    padding: var(--s8);
+  }
+  .pageBody {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--s8);
+  }
+  .sheet {
+    min-height: 45rem;
+  }
+  .slide {
+    min-height: 38rem;
+    max-width: 90rem;
+  }
+  .slide .pageBody {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+@page technical {
+  size: A4 portrait;
+  margin: 12mm;
+}
+@page pitch {
+  size: 320mm 180mm;
+  margin: 9mm;
+}
+@media print {
+  .reportRoot,
+  .deckRoot {
+    --background: #fff;
+    --surface: #fff;
+    --muted: #f0f2eb;
+    --foreground: #151715;
+    --secondary: #555b52;
+    --border: #d4d8ce;
+    --accent: #dcee65;
+    --accent-ink: #17200d;
+    --warning: #986017;
+    background: #fff;
+    min-height: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .noPrint {
+    display: none;
+  }
+  .sheets,
+  .stage {
+    display: block;
+    padding: 0;
+  }
+  .sheet,
+  .slide,
+  .slide[data-active="false"] {
+    display: flex;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    gap: 5mm;
+    width: 100%;
+    max-width: none;
+    break-after: page;
+    break-inside: avoid;
+    margin: 0;
+  }
+  .sheet {
+    page: technical;
+    min-height: 269mm;
+  }
+  .slide {
+    page: pitch;
+    min-height: 161mm;
+  }
+  .sheet:last-child,
+  .slide:last-child {
+    break-after: auto;
+  }
+  .sheet .pageBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+  }
+  .sheet .story h2 {
+    font-size: 25pt;
+    max-width: 26ch;
+    margin-bottom: 3mm;
+  }
+  .sheet .intro {
+    font-size: 10pt;
+  }
+  .sheet .story ul {
+    font-size: 9pt;
+    margin: 3mm 0;
+  }
+  .sheet .story li {
+    margin: 1.2mm 0;
+  }
+  .sheet .visual {
+    gap: 3mm;
+  }
+  .pageHeading {
+    flex-shrink: 0;
+  }
+  .wordmark {
+    font-size: 22pt;
+  }
+  .eyebrow {
+    font-size: 8pt;
+  }
+  .pageFooter {
+    margin-top: auto;
+    font-size: 7pt;
+    padding-top: 3mm;
+  }
+  .slide .pageBody {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 8mm;
+  }
+  .slide .story h2 {
+    font-size: 28pt;
+  }
+  .slide .intro {
+    font-size: 11pt;
+  }
+  .slide .story li {
+    font-size: 10pt;
+  }
+}

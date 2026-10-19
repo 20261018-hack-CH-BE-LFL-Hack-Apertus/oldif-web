@@ -1,0 +1,250 @@
+.story ul,
+.research,
+.references ul {
+  padding-left: var(--s5);
+  margin: var(--s5) 0;
+}
+.story li,
+.research li {
+  line-height: 1.5;
+  margin: var(--s2) 0;
+}
+.figure {
+  margin: 0;
+}
+.figure img {
+  width: 100%;
+  height: auto;
+  max-height: 26rem;
+  object-fit: contain;
+  object-position: top;
+  border: var(--line) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+}
+.figure figcaption {
+  color: var(--secondary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-top: var(--s2);
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s2);
+  margin: 0;
+}
+.metrics > div {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: var(--s3);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.metrics dd {
+  font-size: var(--title);
+  font-weight: 750;
+  margin: 0;
+  letter-spacing: -0.05em;
+}
+.metrics dt {
+  font-size: var(--meta);
+}
+.provenance {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: var(--s5);
+}
+.provenance blockquote {
+  margin: var(--s5) 0;
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1.35;
+}
+.provenance p {
+  line-height: 1.5;
+}
+.provenance dt {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  margin-top: var(--s3);
+}
+.provenance dd {
+  margin: var(--s1) 0;
+  overflow-wrap: anywhere;
+  font-size: 0.75rem;
+}
+.provenance small {
+  color: var(--secondary);
+}
+.workflow {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s2);
+  list-style: none;
+}
+.workflow li {
+  background: var(--muted);
+  padding: var(--s3);
+  border-radius: var(--radius-sm);
+  font-size: var(--meta);
+}
+.workflow span {
+  display: block;
+  font-weight: 750;
+  color: var(--secondary);
+  font-size: var(--heading);
+  margin-bottom: var(--s2);
+}
+.architecture ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+.architecture li {
+  padding: var(--s3);
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: var(--radius-sm);
+  font-size: var(--meta);
+}
+.architecture p {
+  color: var(--secondary);
+  line-height: 1.4;
+  font-size: var(--meta);
+}
+.comparison p {
+  line-height: 1.5;
+}
+.comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+.comparison th,
+.comparison td {
+  border-bottom: var(--line) solid var(--border);
+  padding: var(--s3) var(--s2);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.comparison th:first-child {
+  max-width: 9rem;
+}
+.notice {
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: var(--s4);
+  border-radius: var(--radius-sm);
+}
+.references h3 {
+  margin: 0;
+  font-size: var(--heading);
+}
+.references ul {
+  line-height: 1.6;
+  margin: var(--s3) 0;
+}
+.references a {
+  color: var(--foreground);
+  text-underline-offset: 0.15em;
+}
+.references p,
+.references small {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+@media (min-width: 48rem) {
+  .metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .metrics dd {
+    font-size: 1.8rem;
+  }
+  .metrics dt {
+    font-size: 0.6875rem;
+  }
+}
+@media print {
+  .figure img {
+    max-height: 104mm;
+  }
+  .metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .metrics > div {
+    padding: 2.5mm;
+  }
+  .metrics dd {
+    font-size: 21pt;
+  }
+  .metrics dt {
+    font-size: 8pt;
+  }
+  .provenance {
+    padding: 5mm;
+  }
+  .provenance blockquote {
+    font-size: 20pt;
+  }
+  .provenance p,
+  .provenance dt,
+  .provenance dd,
+  .provenance small {
+    font-size: 9pt;
+  }
+  .workflow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .workflow li {
+    padding: 2mm;
+    font-size: 8pt;
+  }
+  .workflow span {
+    display: inline;
+    font-size: 12pt;
+    margin-right: 2mm;
+  }
+  .architecture li,
+  .architecture p {
+    font-size: 8pt;
+    padding: 2mm;
+  }
+  .comparison {
+    font-size: 10pt;
+  }
+  .comparison table {
+    font-size: 10pt;
+  }
+  .research {
+    font-size: 9pt;
+    margin: 0;
+  }
+  .references {
+    font-size: 9pt;
+  }
+  .references h3 {
+    font-size: 13pt;
+  }
+  .references p,
+  .references small {
+    font-size: 7pt;
+  }
+  .figure figcaption {
+    font-size: 7pt;
+  }
+  .figure img {
+    max-height: 93mm;
+  }
+  .research,
+  .references {
+    font-size: 10pt;
+  }
+}

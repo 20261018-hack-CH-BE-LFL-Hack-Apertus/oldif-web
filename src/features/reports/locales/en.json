@@ -1,0 +1,132 @@
+{
+  "title": "Archives, with evidence.",
+  "subtitle": "A reproducible research workspace for the University of Bern challenge.",
+  "technical": "Technical report",
+  "pitch": "Pitch deck",
+  "exportPdf": "Export PDF",
+  "printHint": "Opens the print dialog. Choose Save as PDF. Six pages; screenshots and references are included.",
+  "fullscreen": "Full screen",
+  "exitFullscreen": "Exit full screen",
+  "fullscreenError": "Full screen is unavailable in this browser.",
+  "previous": "Previous",
+  "next": "Next",
+  "page": "Page",
+  "contents": "In this report",
+  "snapshot": "Evidence snapshot",
+  "source": "Source",
+  "openWorkspace": "Open workspace",
+  "downloadEvidence": "Download evidence snapshot",
+  "keyboard": "Use ← / →, Home and End. Escape exits full screen.",
+  "records": "source records",
+  "checks": "public HTTP checks",
+  "runs": "bounded public runs",
+  "languages": "interface languages",
+  "model": "Model",
+  "completed": "Completed",
+  "failed": "Failed",
+  "abstained": "Abstained",
+  "comparison": "Earlier comparison: one source, seven locales, five models. Completion is not historical accuracy.",
+  "original": "Original record",
+  "quoteLabel": "An exact passage about intended instruction",
+  "notPage": "Record locator; no invented page number.",
+  "intention": "This states an intention to teach, not proof of observed learning.",
+  "workflow": [
+    "Preserve original",
+    "Normalize separately",
+    "Structure and flag",
+    "Enrich metadata",
+    "Verify evidence",
+    "Review and export"
+  ],
+  "architecture": [
+    "Web workspace",
+    "Rust backend",
+    "Core: Apertus + tools",
+    "Database service",
+    "OpenClaw review"
+  ],
+  "trust": "Provider credentials stay in core. Original documents and model suggestions remain separate.",
+  "voice": "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured.",
+  "research": "Research informs the design; integrations require their own evidence.",
+  "researchItems": [
+    "AutoData: versioned generation, inspection and evaluation loops. No meta-training reproduced.",
+    "MDASH: specialist agents, validation and deduplication from a security-scanning system. No MDASH integration.",
+    "NVIDIA: pinned Nemotron3 diarization passed a local synthetic two-speaker test. Parsing and multimodal retrieval remain optional researched integrations."
+  ],
+  "limits": [
+    "No measured 1,000-page / two-hour throughput result.",
+    "No human-gold benchmark establishing 80% usability or under 5% structural errors.",
+    "An exact quotation does not make the surrounding interpretation correct."
+  ],
+  "references": "Sources and reproducibility",
+  "reviewNotice": "Human review remains required.",
+  "dateLabel": "Observed",
+  "pages": [
+    {
+      "label": "01 / Purpose",
+      "title": "Make the archive usable. Keep the evidence intact.",
+      "intro": "Oldif connects public historical records to a research workspace powered by Apertus. Its first verified collection contains 105 published Stapfer survey transcriptions.",
+      "bullets": [
+        "The source record remains inspectable beside the answer.",
+        "A question produces a trace, citations and a reviewable result.",
+        "This report separates executed checks from challenge targets still unmeasured."
+      ],
+      "caption": "Earlier verified workspace,19 October 2026. Final upgrade screenshots are identified separately."
+    },
+    {
+      "label": "02 / Provenance",
+      "title": "Every transformation needs a trail.",
+      "intro": "A source identifier, original artifact hash, record hash and text hash preserve the connection between an answer and the published data.",
+      "bullets": [
+        "Keep the original text alongside a separately normalized representation.",
+        "Use actual page locators for paginated uploads; this transcription sample has page:null.",
+        "Export citations, passage offsets, review decisions and evidence-status fields together."
+      ],
+      "caption": "Actual engineering review during the explicit Astra comparison. Acceptance shown here was a test, not historian approval."
+    },
+    {
+      "label": "03 / Method",
+      "title": "A workflow that can be inspected and corrected.",
+      "intro": "Apertus is the default researcher. Planning, source reading, verification and optional proposals are bounded and recorded. Astra is an explicit backup or comparison choice.",
+      "bullets": [
+        "Validate source identifiers, exact quotations and hashes mechanically.",
+        "Treat source text and tool output as untrusted data.",
+        "Keep doubtful interpretations under review; do not convert suggestions into source facts."
+      ],
+      "caption": "Actual activity canvas from the earlier verified application. Nodes represent recorded activity, not proof of correctness."
+    },
+    {
+      "label": "04 / Results",
+      "title": "Show successful checks and clear failures.",
+      "intro": "Three bounded public runs produced one JSON-contract failure and two completions. The last short-source regression passed 9 functional checks.",
+      "bullets": [
+        "One completed answer was rejected for unsupported author and outcome claims.",
+        "Temporary engineering acceptance verified JSON/TSV export; rejection removed its rows.",
+        "The earlier 35-case comparison has 19 completions and 16 failures. It is a smoke test, not a held-out benchmark."
+      ],
+      "caption": "Dated measurements from retained receipts. Different source/runtime snapshots are not ranked as a single quality benchmark."
+    },
+    {
+      "label": "05 / System",
+      "title": "Keep capabilities behind clear boundaries.",
+      "intro": "The public web routes to private backend, database, core and covenant services. Core owns provider access; OpenClaw requests model work through core.",
+      "bullets": [
+        "HTTPS, private gRPC and WebSocket events connect the application.",
+        "Only web is public; completed runs persist in PostgreSQL and core journals use a mounted share.",
+        "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured."
+      ],
+      "caption": "Actual public synthetic-audio browser test. This does not establish physical microphone or diarization performance."
+    },
+    {
+      "label": "06 / Next evidence",
+      "title": "Earn stronger claims with stronger tests.",
+      "intro": "The next evaluation needs a frozen, licensed page corpus, independent expert labels and declared machine specifications.",
+      "bullets": [
+        "Measure page structure, handwriting flags, missing-page detection and metadata accuracy.",
+        "Keep train, development and held-out evaluation partitions separate.",
+        "Publish failures, compute limits and review outcomes with every dataset release."
+      ],
+      "caption": "References describe external methods and models. Their published performance is not an Oldif result."
+    }
+  ]
+}
