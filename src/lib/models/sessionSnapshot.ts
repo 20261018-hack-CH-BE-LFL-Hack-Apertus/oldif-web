@@ -1,3 +1,4 @@
+import { uniqueEvents } from "./eventIdentity";
 import type { Event, Result, Run } from "./types";
 export type SessionSnapshot = {
   runs?: Array<Record<string, unknown>>;
@@ -19,7 +20,9 @@ export function restoreRuns(data: SessionSnapshot): Run[] {
     const assistant = data.messages?.find(
       (message) => message.run_id === id && message.role === "assistant",
     );
-    const events = data.events?.filter((event) => event.run_id === id) ?? [];
+    const events = uniqueEvents(
+      data.events?.filter((event) => event.run_id === id) ?? [],
+    );
     const result = (assistant?.result ?? row.result ?? row.output) as
       | Result
       | undefined;
@@ -30,6 +33,9 @@ export function restoreRuns(data: SessionSnapshot): Run[] {
           ? Date.parse(row.created_at)
           : undefined,
       lastSequence: latestSequence(events),
+      eventIds: events.flatMap((event) =>
+        event.event_id ? [event.event_id] : [],
+      ),
       question: String(user?.content ?? row.message ?? row.question ?? ""),
       text: String(assistant?.content ?? ""),
       error: typeof row.error === "string" ? row.error : undefined,

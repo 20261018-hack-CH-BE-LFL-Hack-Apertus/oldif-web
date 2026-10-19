@@ -15,6 +15,7 @@ export function createSessionChannel(options: Options) {
   let socket: WebSocket | undefined;
   let session = "";
   let sequence = 0;
+  const eventIds = new Set<string>();
   let attempt = 0;
   let retry: ReturnType<typeof setTimeout> | undefined;
   let timeout: ReturnType<typeof setTimeout> | undefined;
@@ -38,12 +39,28 @@ export function createSessionChannel(options: Options) {
   function receive(ws: WebSocket, raw: unknown) {
     if (socket !== ws) return;
     const event = decodeEvent(String(raw));
-    if (!event || (event.session_id && event.session_id !== session)) return;
+    if (!event) {
+      options.onEvent({
+        type: "error",
+        data: {
+          message:
+            "Realtime response failed schema validation; reload after the service is corrected.",
+        },
+      });
+      session = "";
+      stopSocket();
+      return;
+    }
+    if (event.session_id && event.session_id !== session) return;
+    if (event.type === "run_reused" && event.data?.session_id !== session)
+      return;
     if (event.type === "resync_required") return ws.close();
     if (typeof event.sequence === "number" && Number.isFinite(event.sequence)) {
       if (event.sequence <= sequence) return;
       sequence = event.sequence;
     }
+    if (event.event_id && eventIds.has(event.event_id)) return;
+    if (event.event_id) eventIds.add(event.event_id);
     options.onEvent(event);
   }
   function start() {
@@ -96,6 +113,7 @@ export function createSessionChannel(options: Options) {
         settle(new Error("Realtime session changed"));
         session = id;
         sequence = afterSequence;
+        eventIds.clear();
         attempt = 0;
       }
       if (socket?.readyState === 1) return Promise.resolve();

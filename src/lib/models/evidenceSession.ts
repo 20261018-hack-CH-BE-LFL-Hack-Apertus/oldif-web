@@ -1,3 +1,4 @@
+import { uniqueEvents } from "./eventIdentity";
 import { latestSequence, type SessionSnapshot } from "./sessionSnapshot";
 import type { Event, Result } from "./types";
 export type EvidenceState = {
@@ -14,12 +15,17 @@ export function restoreEvidence(snapshot: SessionSnapshot): EvidenceState {
     )
       results[message.run_id] = message.result as Result;
   }
-  return { events: snapshot.events ?? [], results };
+  return { events: uniqueEvents(snapshot.events ?? []), results };
 }
 export function applyEvidenceEvent(
   state: EvidenceState,
   event: Event,
 ): EvidenceState {
+  if (
+    event.event_id &&
+    state.events.some((previous) => previous.event_id === event.event_id)
+  )
+    return state;
   if (
     typeof event.sequence === "number" &&
     event.sequence <= latestSequence(state.events)

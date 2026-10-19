@@ -1,18 +1,16 @@
+import { validEvent } from "./eventValidation";
 import type { Event, Result, Run } from "./types";
 export function decodeEvent(value: string): Event | undefined {
   try {
-    const parsed = JSON.parse(value);
-    return parsed &&
-      typeof parsed.type === "string" &&
-      (!parsed.data || typeof parsed.data === "object")
-      ? parsed
-      : undefined;
+    const parsed: unknown = JSON.parse(value);
+    return validEvent(parsed) ? parsed : undefined;
   } catch {
     return undefined;
   }
 }
 export function reduceRun(run: Run, event: Event): Run {
   if (event.run_id && event.run_id !== run.id) return run;
+  if (event.event_id && run.eventIds?.includes(event.event_id)) return run;
   if (
     typeof event.sequence === "number" &&
     event.sequence <= (run.lastSequence ?? -1)
@@ -20,7 +18,13 @@ export function reduceRun(run: Run, event: Event): Run {
     return run;
   const current =
     typeof event.sequence === "number"
-      ? { ...run, lastSequence: event.sequence }
+      ? {
+          ...run,
+          lastSequence: event.sequence,
+          eventIds: event.event_id
+            ? [...(run.eventIds ?? []), event.event_id]
+            : run.eventIds,
+        }
       : run;
   const data = event.data ?? {};
   if (event.type === "trace")
@@ -58,5 +62,5 @@ export function reduceRun(run: Run, event: Event): Run {
       status: "error",
       error: String(data.message ?? data.error ?? "Run failed"),
     };
-  return run;
+  return current;
 }

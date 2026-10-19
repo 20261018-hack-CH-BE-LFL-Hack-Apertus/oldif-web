@@ -27,7 +27,17 @@ function fixture() {
           this.onopen?.();
         },
         emit(event) {
-          this.onmessage?.({ data: JSON.stringify(event) });
+          const control = event.type === "resync_required";
+          const envelope = control
+            ? { data: { message: "Restore committed events" }, ...event }
+            : {
+                run_id: "r",
+                session_id: this.sent[0]?.session_id,
+                event_id: `r:${event.sequence}`,
+                data: {},
+                ...event,
+              };
+          this.onmessage?.({ data: JSON.stringify(envelope) });
         },
       };
       sockets.push(socket);
@@ -75,7 +85,7 @@ test("subscribes without URL secrets and replays after the latest unique sequenc
   f.sockets[1].open();
   expect(f.sockets[1].sent[0].after_sequence).toBe(4);
   f.sockets[1].emit({ type: "trace", sequence: 4 });
-  f.sockets[1].emit({ type: "done", sequence: 5 });
+  f.sockets[1].emit({ type: "trace", sequence: 5 });
   expect(f.events.map((e) => e.sequence)).toEqual([4, 5]);
   f.channel.close();
 });
@@ -87,7 +97,7 @@ test("changing sessions ignores late events and resets the replay cursor", async
   ready = f.channel.connect("b");
   f.sockets[1].open();
   await ready;
-  f.sockets[0].emit({ type: "done", sequence: 100 });
+  f.sockets[0].emit({ type: "trace", sequence: 100 });
   f.sockets[1].emit({ type: "trace", sequence: 1 });
   expect(f.sockets[1].sent[0].after_sequence).toBe(0);
   expect(f.events).toHaveLength(1);
@@ -115,5 +125,20 @@ test("connection timeout rejects the caller and keeps bounded retry available", 
   expect(await ready).toContain("timed out");
   f.retry();
   expect(f.sockets).toHaveLength(2);
+  f.channel.close();
+});
+
+test("event identity prevents a duplicate with a newer transport sequence", async () => {
+  const f = fixture();
+  const ready = f.channel.connect("a");
+  f.sockets[0].open();
+  await ready;
+  f.sockets[0].emit({ type: "trace", sequence: 1, event_id: "same-event" });
+  f.sockets[0].emit({ type: "trace", sequence: 2, event_id: "same-event" });
+  f.sockets[0].close();
+  f.retry();
+  f.sockets[1].open();
+  expect(f.events).toHaveLength(1);
+  expect(f.sockets[1].sent[0].after_sequence).toBe(2);
   f.channel.close();
 });

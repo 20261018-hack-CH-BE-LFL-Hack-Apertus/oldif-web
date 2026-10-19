@@ -6,6 +6,8 @@ export type Model = {
   capabilities?: string[];
 };
 export type Dataset = {
+  kind?: string;
+  document_id?: string;
   id: string;
   name?: string;
   title?: string;
@@ -20,11 +22,36 @@ export type Citation = {
   text?: string;
   quote?: string;
   url?: string;
-  page?: number;
+  page?: number | null;
+  sha256?: string;
+  text_sha256?: string;
+  char_start?: number;
+  char_end?: number;
+  licence?: string;
   dataset_id?: string;
   locator?: string;
 };
+export type Assertion = {
+  assertion_id: string;
+  kind: "title" | "date" | "entity" | "relation";
+  subject: string;
+  predicate: string;
+  value: string;
+  source_id: string;
+  state: "proposed";
+  human_reviewed: false;
+  evidence: Citation;
+  potential_conflict: boolean;
+  conflict_group: string | null;
+};
 export type Result = {
+  assertions?: Assertion[];
+  assertion_validation?: {
+    accepted: number;
+    rejected: number;
+    reasons: string[];
+    policy: string;
+  };
   abstained?: boolean;
   evidence_only?: boolean;
   interpretation_status?: string;
@@ -53,6 +80,8 @@ export type Trace = {
 export type Run = {
   startedAt?: number;
   lastSequence?: number;
+  eventIds?: string[];
+  idempotencyKey?: string;
   id: string;
   question: string;
   text: string;
@@ -64,11 +93,13 @@ export type Run = {
 export type Session = {
   id: string;
   title?: string;
-  created_at?: string;
+  created_at?: string | number;
   messages?: unknown[];
   runs?: unknown[];
 };
 export type Event = {
+  event_id?: string;
+  created_at?: string | number;
   type: string;
   run_id?: string;
   session_id?: string;

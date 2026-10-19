@@ -1,3 +1,13 @@
+import { validateResearchResponse } from "../models/researchValidation";
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
 export async function api<T>(
   path: string,
   options: RequestInit = {},
@@ -13,14 +23,17 @@ export async function api<T>(
   });
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
-    throw new Error(
+    throw new ApiError(
       typeof body.error === "string"
         ? body.error
         : `Request failed (${response.status})`,
+      response.status,
     );
   }
   if (response.status === 204) return {} as T;
-  return response.json();
+  const method = options.method ?? "GET";
+  const value = validateResearchResponse(path, method, await response.json());
+  return value as T;
 }
 export function post<T>(path: string, body: unknown = {}) {
   return api<T>(path, { method: "POST", body: JSON.stringify(body) });
