@@ -2,6 +2,7 @@
 import { PanelFrame, SplitPane } from "oldif-web-ui-components";
 import { type ReactNode, useState } from "react";
 import { navigationCopy } from "@/features/navigation/navigationCopy";
+import { LayoutSyncStatus } from "@/features/preferences/LayoutSyncStatus";
 import type { useWorkbenchLayout } from "@/hooks/useWorkbenchLayout";
 import type { Language } from "@/lib/models/types";
 import type { PanelId } from "@/lib/models/workbenchLayout";
@@ -28,7 +29,7 @@ export function WorkspacePanels({
   mobilePanel,
   onMobilePanel,
 }: Props) {
-  const { layout, update, reset, storageError } = settings;
+  const { layout, update, reset } = settings;
   const t = workbenchCopy[language];
   const [menuOpen, setMenuOpen] = useState(false);
   const content = { evidence, activity };
@@ -221,9 +222,7 @@ export function WorkspacePanels({
           </div>
         </details>
       </section>
-      {storageError && (
-        <output className={s.storageError}>{t.storageError}</output>
-      )}
+      <LayoutSyncStatus settings={settings} language={language} />
       <div className={s.workspaceBody}>{workspace}</div>
     </main>
   );

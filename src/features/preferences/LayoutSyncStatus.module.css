@@ -1,0 +1,28 @@
+.status {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  color: var(--secondary);
+}
+.status[data-layout-status="offline"],
+.status[data-layout-status="conflict"],
+.status[data-layout-status="invalid"] {
+  color: var(--foreground);
+  background: var(--surface);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.actions button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--foreground);
+  background: var(--elevated);
+  border: var(--line) solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.actions button:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
