@@ -1,0 +1,16 @@
+.viewer {
+  height: 30rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  background: var(--rail);
+}
+.viewer canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.viewer p {
+  padding: var(--s5);
+  color: var(--rail-ink);
+}

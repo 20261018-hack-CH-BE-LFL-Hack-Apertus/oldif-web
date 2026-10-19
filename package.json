@@ -3,26 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development bun server.mjs",
     "build": "next build",
-    "start": "next start",
+    "start": "bun server.mjs",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "ws": "8.22.0",
+    "oldif-web-ui-components": "git+ssh://git@github.com/20261018-hack-CH-BE-LFL-Hack-Apertus/oldif-web-ui-components.git#3d5b7093a3fecc5142f95a91a7d4c74a7f9f4aea",
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",
-    "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/turbopack": "4.3.3",
+    "@types/node": "20.19.43",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "@types/three": "0.186.0"
   },
   "packageManager": "bun@1.4.3",
   "ignoreScripts": [
