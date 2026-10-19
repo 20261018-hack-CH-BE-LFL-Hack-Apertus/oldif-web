@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oldif Web
 
-## Getting Started
+Bun / Next.js evidence workspace for archival research. Includes the landing page, authentication, research conversation, source inspector and pitch route `/deck/202610191111`.
 
-First, run the development server:
+## Configuration and runtime
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Copy `.env.example` to `.env` and set `BACKEND_URL` to the Rust backend. All API and WebSocket traffic goes through the same-origin custom server. The browser receives no provider credentials. `PORT` and `HOSTNAME` configure the listener. Start the backend before using authentication or research.
+
+```sh
+container build --tag oldif-web:local .
+container run --rm --env-file .env -p 3000:3000 oldif-web:local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For Docker Compose, run `docker compose up --build`. Each image builds from this repository only.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+bun install --frozen-lockfile
+bun run typecheck
+bun test
+bun run build
+bun run start
+```
 
-## Learn More
+CSS Modules provide component styling; `src/styles/globals.css` owns semantic design tokens and global resets. Translations are complete key-aligned JSON dictionaries for English, Spanish, German, Swiss German, French, Italian and Romansh. The selected language is sent with every research request. Run the custom server rather than `next start` so API and WebSocket proxying remain enabled.
 
-To learn more about Next.js, take a look at the following resources:
+Private Git dependencies require an authorized SSH agent for container builds: `container build --ssh default --tag oldif-web:local .`. The build forwards the agent only during dependency installation with lifecycle scripts disabled. Public GitHub host keys are pinned in `container/github_known_hosts` from the official GitHub metadata API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`docker-compose.yml` is for local development only; production uses Azure Container Apps provisioned by Terraform. Every service has an HTTP health check, bounded resources, restart policy and rotating local logs. Set `IMAGE_TAG` for the local build tag. Start the separately configured backend before using the research surfaces.
