@@ -13,7 +13,10 @@ import {
   type Validator,
 } from "./strict";
 import { validStructure, validDiarization } from "./processingValidation";
-import { validTransformation } from "./transformationValidation";
+import {
+  validTransformation,
+  validNormalizationProvenance,
+} from "./transformationValidation";
 const strings = list(text);
 const hash = (v: unknown): v is string => text(v) && /^[0-9a-f]{64}$/.test(v);
 const maybeText = opt(nullable(text));
@@ -46,6 +49,8 @@ const annotation = (v: unknown): v is unknown =>
     missingness: text,
     handwriting_status: text,
     legibility_status: text,
+    missing_page: opt(bool),
+    reading_order_status: opt(oneOf("unknown", "verified", "uncertain")),
     note: text,
     method: opt(oneOf("human_annotation")),
   });
@@ -148,6 +153,7 @@ export const validArchiveSource = (v: unknown): v is unknown =>
     extraction_id: opt(text),
     queryable_by_default: opt(bool),
     transformation: opt(validTransformation),
+    normalization_provenance: opt(validNormalizationProvenance),
   });
 const revision = (v: unknown): v is unknown =>
   exact(v, {

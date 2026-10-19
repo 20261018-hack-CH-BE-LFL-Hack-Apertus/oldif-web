@@ -44,6 +44,8 @@ export type PageAnnotation = {
   missingness: string;
   handwriting_status: string;
   legibility_status: string;
+  missing_page?: boolean;
+  reading_order_status?: "unknown" | "verified" | "uncertain";
   note: string;
 };
 import type { Acquisition } from "./acquisition";

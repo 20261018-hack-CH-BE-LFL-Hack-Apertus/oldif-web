@@ -10,6 +10,7 @@ import { useArchiveLayout } from "./useArchiveLayout";
 import { LayoutSyncStatus } from "@/features/preferences/LayoutSyncStatus";
 import type { Language } from "@/lib/models/types";
 import { acquisitionCopy } from "./acquisitionCopy";
+import { exportBundleCopy } from "./exportBundleCopy";
 import s from "./ArchiveStyles.module.css";
 export function PageWorkspace({
   data,
@@ -25,6 +26,7 @@ export function PageWorkspace({
   const settings = useArchiveLayout(data.userId);
   const { layout, change, reset } = settings;
   const a = acquisitionCopy(language);
+  const bundle = exportBundleCopy(language);
   const [consent, setConsent] = useState(false);
   const [failed, setFailed] = useState("");
   const documentId = data.detail?.document.id;
@@ -41,6 +43,9 @@ export function PageWorkspace({
   const doc = detail.document;
   const exportAllowed =
     doc.acquisition?.allowed_uses?.includes("private_export") === true;
+  const publicExportAllowed =
+    doc.acquisition?.allowed_uses?.includes("public_export") === true &&
+    doc.review?.decision === "accepted";
   const providerAllowed =
     doc.acquisition?.allowed_uses?.includes("provider_processing") === true;
   const source = detail.pages.find((p) => p.page === data.page);
@@ -80,7 +85,7 @@ export function PageWorkspace({
       onClose={() => change({ review: false })}
     >
       <div className={s.scroll}>
-        <PageReview data={data} t={t} d={d} />
+        <PageReview data={data} t={t} d={d} language={language} />
       </div>
     </PanelFrame>
   );
@@ -218,6 +223,28 @@ export function PageWorkspace({
                 </a>
               ))}
           </div>
+          <div className={s.row}>
+            {exportAllowed && (
+              <a
+                className={s.link}
+                href={`${path}/export?format=bundle&scope=private`}
+                download
+              >
+                {bundle.private} ↓
+              </a>
+            )}
+            {publicExportAllowed && (
+              <a
+                className={s.link}
+                href={`${path}/export?format=bundle&scope=public`}
+                download
+              >
+                {bundle.public} ↓
+              </a>
+            )}
+          </div>
+          <p className={s.muted}>{bundle.contents}</p>
+          {!publicExportAllowed && <p className={s.muted}>{bundle.gate}</p>}
           {!exportAllowed && (
             <p className={s.muted}>
               {a.private_export}: {a.blocked}

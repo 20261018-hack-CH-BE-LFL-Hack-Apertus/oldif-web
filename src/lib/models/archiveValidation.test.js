@@ -111,4 +111,29 @@ describe("archive response boundaries", () => {
       validateArchiveResponse("/documents/synthetic", "GET", mismatched),
     ).toThrow();
   });
+  it("keeps legacy normalization unknown and rejects invented reviewer provenance", () => {
+    const value = clone(detail);
+    const provenance = {
+      schema_version: "1.0",
+      provenance_status: "legacy_unknown",
+      operation: "preserve_legacy_normalization_record",
+      reason: "Historical provenance absent",
+      actor: null,
+      run_id: null,
+      parent_revision: null,
+      timestamp: null,
+      timestamp_unit: "unix_seconds",
+      missing_fields: ["actor", "run_id", "parent_revision", "timestamp"],
+      original: {},
+      normalized: {},
+    };
+    value.pages[0].normalization_provenance = provenance;
+    expect(validateArchiveResponse("/documents/synthetic", "GET", value)).toBe(
+      value,
+    );
+    provenance.actor = "invented reviewer";
+    expect(() =>
+      validateArchiveResponse("/documents/synthetic", "GET", value),
+    ).toThrow();
+  });
 });
