@@ -72,7 +72,7 @@ test("subscribes without URL secrets and replays after the latest unique sequenc
   expect(f.sockets[0].sent[0]).toEqual({
     type: "subscribe",
     session_id: "session-a",
-    after_sequence: 3,
+    last_sequence: 3,
   });
   f.sockets[0].emit({ type: "trace", session_id: "session-a", sequence: 4 });
   f.sockets[0].emit({
@@ -83,7 +83,7 @@ test("subscribes without URL secrets and replays after the latest unique sequenc
   f.sockets[0].close();
   f.retry();
   f.sockets[1].open();
-  expect(f.sockets[1].sent[0].after_sequence).toBe(4);
+  expect(f.sockets[1].sent[0].last_sequence).toBe(4);
   f.sockets[1].emit({ type: "trace", sequence: 4 });
   f.sockets[1].emit({ type: "trace", sequence: 5 });
   expect(f.events.map((e) => e.sequence)).toEqual([4, 5]);
@@ -99,7 +99,7 @@ test("changing sessions ignores late events and resets the replay cursor", async
   await ready;
   f.sockets[0].emit({ type: "trace", sequence: 100 });
   f.sockets[1].emit({ type: "trace", sequence: 1 });
-  expect(f.sockets[1].sent[0].after_sequence).toBe(0);
+  expect(f.sockets[1].sent[0].last_sequence).toBe(0);
   expect(f.events).toHaveLength(1);
   f.channel.close();
   expect(f.timers.size).toBe(0);
@@ -139,6 +139,6 @@ test("event identity prevents a duplicate with a newer transport sequence", asyn
   f.retry();
   f.sockets[1].open();
   expect(f.events).toHaveLength(1);
-  expect(f.sockets[1].sent[0].after_sequence).toBe(2);
+  expect(f.sockets[1].sent[0].last_sequence).toBe(2);
   f.channel.close();
 });

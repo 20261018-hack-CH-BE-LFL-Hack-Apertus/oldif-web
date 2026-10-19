@@ -21,7 +21,11 @@ function eventData(type: string, value: unknown) {
   if (["evidence", "final", "done"].includes(type)) return validResult(value);
   if (type === "delta") return exact(value, { text, ...diagnostic });
   if (type === "error" || type === "cancelled")
-    return exact(value, { message: optional(text), error: optional(text), code: optional(text) });
+    return exact(value, {
+      message: optional(text),
+      error: optional(text),
+      code: optional(text),
+    });
   return object(value);
 }
 export function validEvent(value: unknown): value is Event {
@@ -49,7 +53,8 @@ export function validEvent(value: unknown): value is Event {
   )
     return exact(value, {
       type: oneOf("resync_required", "error"),
-      data: (v): v is unknown => exact(v, { message: text }),
+      data: (v): v is unknown =>
+        exact(v, { message: text, code: optional(text) }),
     });
   return (
     exact(value, {

@@ -81,7 +81,7 @@ export function createSessionChannel(options: Options) {
         JSON.stringify({
           type: "subscribe",
           session_id: session,
-          after_sequence: sequence,
+          last_sequence: sequence,
         }),
       );
       options.onConnection(true);

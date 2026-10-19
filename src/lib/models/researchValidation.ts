@@ -125,6 +125,7 @@ const run = (v: unknown): v is unknown =>
     finished_at: opt(timestamp),
     result: opt(validResult),
     error: opt(text),
+    error_code: opt(text),
     review: opt(review),
     idempotency_key: opt(text),
   });
