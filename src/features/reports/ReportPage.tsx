@@ -37,7 +37,7 @@ function PageVisual({ index, copy }: PageProps) {
   return (
     <>
       <Visual copy={copy} />
-      {[0, 2, 4].includes(index) && <ReportFigure index={index} copy={copy} />}
+      {[0, 1, 2, 4].includes(index) && <ReportFigure index={index} copy={copy} />}
     </>
   );
 }

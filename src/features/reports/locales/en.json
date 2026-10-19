@@ -83,7 +83,7 @@
         "Use actual page locators for paginated uploads; this transcription sample has page:null.",
         "Export citations, passage offsets, review decisions and evidence-status fields together."
       ],
-      "caption": "Actual engineering review during the explicit Astra comparison. Acceptance shown here was a test, not historian approval."
+      "caption": "Actual archive UI with a generated three-page fixture. Original page, extracted text and review stay separate; the fixture contains no historical facts."
     },
     {
       "label": "03 / Method",

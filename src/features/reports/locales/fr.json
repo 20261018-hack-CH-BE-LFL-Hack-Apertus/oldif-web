@@ -83,7 +83,7 @@
         "Employer de vraies pages pour les documents paginés; cet échantillon a page:null.",
         "Exporter ensemble citations, positions, décisions et statut des preuves."
       ],
-      "caption": "Révision technique réelle pendant la comparaison explicite avec Astra. L’acceptation était un test, pas une validation historique."
+      "caption": "Interface réelle avec un document synthétique de trois pages. Page originale, texte extrait et révision restent séparés ; cet exemple ne contient aucun fait historique."
     },
     {
       "label": "03 / Méthode",

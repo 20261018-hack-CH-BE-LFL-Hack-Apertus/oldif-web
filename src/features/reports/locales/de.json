@@ -83,7 +83,7 @@
         "Echte Seitenreferenzen für paginierte Uploads; diese Stichprobe hat page:null.",
         "Zitate, Zeichenpositionen, Prüfentscheidungen und Evidenzstatus gemeinsam exportieren."
       ],
-      "caption": "Tatsächliche technische Prüfung im expliziten Astra-Vergleich. Die Annahme war ein Test, keine fachhistorische Freigabe."
+      "caption": "Tatsächliche Archivoberfläche mit einer erzeugten dreiseitigen Testdatei. Originalseite, extrahierter Text und Prüfung bleiben getrennt; die Datei enthält keine historischen Fakten."
     },
     {
       "label": "03 / Methode",

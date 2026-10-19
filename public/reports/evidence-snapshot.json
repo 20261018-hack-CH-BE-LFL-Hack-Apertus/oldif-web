@@ -191,6 +191,15 @@
       "description": "Actual redesigned workspace running",
       "status": "Real browser with local backend/core; captured with8B before70B default selection; not a mockup",
       "run_id": "d684d9f0-37a9-40a7-a136-1c2587bfe2a1"
+    },
+    {
+      "file": "archive-workspace.png",
+      "original": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/outputs/archive-workspace.png",
+      "sha256": "edb009e6a206b3d2c23c542bacf18fd1bcb5443e5d5a191a67e0b9c056914603",
+      "date": "2026-10-19",
+      "description": "Actual archive original/text/review UI with safe generated3page acceptance fixture",
+      "status": "Captured and visually inspected by frontend and infra agents; contains no private archive source",
+      "synthetic": true
     }
   ],
   "upgrade_diarization": {
@@ -316,7 +325,7 @@
       "document-ocr-validation.json"
     ]
   },
-  "updated_at": "2026-10-19T13:26:02.105499+00:00",
+  "updated_at": "2026-10-19T13:28:40.630564+00:00",
   "baseline_observed_at": "2026-10-19T11:59:49.149271+00:00",
   "second_collection": {
     "validation_class": "actual local HTTP collection export and provenance checks",
