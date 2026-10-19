@@ -1,0 +1,8 @@
+.git
+.next
+node_modules
+.env
+.env.local
+.env.production
+implementation-reports
+*.tsbuildinfo

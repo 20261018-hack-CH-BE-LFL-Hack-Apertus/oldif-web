@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+stage_dir=$(mktemp -d /tmp/oldif-staged.XXXXXX)
+trap 'rm -rf "$stage_dir"' EXIT HUP INT TERM
+git diff --cached --check
+git checkout-index --all --prefix="$stage_dir/"
+container run --rm -v "$stage_dir:/scan:ro" ghcr.io/gitleaks/gitleaks:v8.30.1 dir /scan --redact --no-banner

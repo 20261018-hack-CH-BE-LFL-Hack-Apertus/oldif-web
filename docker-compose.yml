@@ -1,0 +1,36 @@
+# Local development only. Production is provisioned with Terraform on Azure.
+services:
+  oldif-web:
+    image: oldif-web:${IMAGE_TAG:-dev}
+    build:
+      context: .
+      ssh:
+        - default
+    env_file: .env
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    init: true
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "bun", "scripts/healthcheck.mjs"]
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 25s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 768M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
