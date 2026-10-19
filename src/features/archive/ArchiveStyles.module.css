@@ -173,6 +173,15 @@
   text-decoration: underline;
   text-underline-offset: var(--s1);
 }
+a.badge,
+a.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--control);
+  min-height: var(--control);
+  padding: var(--s2);
+}
 @media (min-width: 60rem) {
   .layout {
     grid-template-columns: 13rem minmax(0, 1fr);
