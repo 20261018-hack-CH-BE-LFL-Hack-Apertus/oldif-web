@@ -288,6 +288,9 @@
   .slide[data-page="2"] [data-provenance] dl {
     margin: 2mm 0;
   }
+  .slide [data-evidence-references] > small {
+    display: none;
+  }
   .sheet[data-page="2"] img {
     max-height: 78mm;
   }

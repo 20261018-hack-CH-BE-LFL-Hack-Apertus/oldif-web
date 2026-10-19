@@ -108,7 +108,7 @@ export function Comparison({ copy }: { copy: ReportCopy }) {
 }
 export function References({ copy }: { copy: ReportCopy }) {
   return (
-    <div className={s.references}>
+    <div className={s.references} data-evidence-references>
       <h3>{copy.references}</h3>
       <ul>
         {referenceLinks.map((r) => (
