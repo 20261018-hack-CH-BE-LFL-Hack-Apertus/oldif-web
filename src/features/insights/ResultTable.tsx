@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
 import { Button } from "oldif-web-ui-components";
-import { post } from "@/lib/api/client";
-import { metrics, type StoredRun, type StoredEvent } from "./metrics";
-import type { InsightsCopy } from "./copy";
+import { useEffect, useState } from "react";
 import s from "@/features/archive/ArchiveStyles.module.css";
+import { AssertionProposals } from "@/features/workbench/AssertionProposals";
+import { post } from "@/lib/api/client";
+import type { Language } from "@/lib/models/types";
+import type { InsightsCopy } from "./copy";
+import { metrics, type StoredEvent, type StoredRun } from "./metrics";
 export function ResultTable({
   runs,
   events,
   t,
   refresh,
+  language,
 }: {
   runs: StoredRun[];
   events: StoredEvent[];
   t: InsightsCopy;
   refresh: () => Promise<void>;
+  language: Language;
 }) {
   const [selected, setSelected] = useState<StoredRun>();
   const [reason, setReason] = useState("");
@@ -128,6 +132,9 @@ export function ResultTable({
               <p className={s.warning}>{t.draftLimit}</p>
               <p>{selected.result.interpretation_draft.answer}</p>
             </details>
+          )}
+          {selected.result && (
+            <AssertionProposals result={selected.result} language={language} />
           )}
           <p className={s.warning}>{t.limit}</p>
           {selected.status === "complete" && (

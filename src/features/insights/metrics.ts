@@ -1,3 +1,4 @@
+import type { Assertion } from "@/lib/models/types";
 export type StoredRun = {
   id: string;
   run_id?: string;
@@ -9,6 +10,13 @@ export type StoredRun = {
   finished_at?: number;
   version: number;
   result?: {
+    assertions?: Assertion[];
+    assertion_validation?: {
+      accepted: number;
+      rejected: number;
+      reasons: string[];
+      policy: string;
+    };
     answer?: string;
     citations?: Array<{
       source_id?: string;

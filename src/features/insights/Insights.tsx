@@ -1,14 +1,14 @@
 "use client";
 import { Button } from "oldif-web-ui-components";
-import { Header } from "@/features/workbench/Header";
-import { WorkspaceNavigation } from "@/features/navigation/WorkspaceNavigation";
-import { usePreferences } from "@/hooks/usePreferences";
-import { insightsCopy } from "./copy";
-import { useInsights } from "./useInsights";
-import { ResultTable } from "./ResultTable";
-import { Benchmark } from "./Benchmark";
-import { KnowledgeModel } from "./KnowledgeModel";
 import s from "@/features/archive/ArchiveStyles.module.css";
+import { WorkspaceNavigation } from "@/features/navigation/WorkspaceNavigation";
+import { Header } from "@/features/workbench/Header";
+import { usePreferences } from "@/hooks/usePreferences";
+import { Benchmark } from "./Benchmark";
+import { insightsCopy } from "./copy";
+import { KnowledgeModel } from "./KnowledgeModel";
+import { ResultTable } from "./ResultTable";
+import { useInsights } from "./useInsights";
 export function Insights({
   view,
 }: {
@@ -52,6 +52,7 @@ export function Insights({
           {view === "benchmarks" && <Benchmark t={t} data={data} />}
           {(view === "results" || view === "benchmarks") && (
             <ResultTable
+              language={prefs.language}
               runs={data.runs}
               events={data.events}
               t={t}

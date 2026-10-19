@@ -1,6 +1,7 @@
 import type { Copy } from "@/lib/i18n";
 import type { Citation, Language, Run } from "@/lib/models/types";
 import { Activity } from "./Activity";
+import { AssertionProposals } from "./AssertionProposals";
 import s from "./AppStyles.module.css";
 import { ResultVerification } from "./ResultVerification";
 import { Review } from "./Review";
@@ -66,7 +67,10 @@ export function Messages({
             ))}
           </div>
           {run.result && (
-            <ResultVerification result={run.result} language={language} />
+            <>
+              <ResultVerification result={run.result} language={language} />
+              <AssertionProposals result={run.result} language={language} onCitation={onCitation} />
+            </>
           )}
           {run.status === "done" && run.result && (
             <Review runId={run.id} version={run.result.review_version} t={t} />
