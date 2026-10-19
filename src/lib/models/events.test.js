@@ -74,3 +74,48 @@ describe("localization", () => {
     }
   });
 });
+
+describe("persisted replay", () => {
+  test("does not duplicate replayed traces or replace a newer review version", () => {
+    const loaded = {
+      ...initial,
+      status: "done",
+      lastSequence: 12,
+      traces: [{ sequence: 11, kind: "model.completed" }],
+      result: { answer: "Verified", review_version: 3 },
+    };
+    expect(
+      reduceRun(loaded, {
+        type: "trace",
+        run_id: "r1",
+        sequence: 11,
+        data: { kind: "model.completed" },
+      }),
+    ).toBe(loaded);
+    expect(
+      reduceRun(loaded, {
+        type: "done",
+        run_id: "r1",
+        sequence: 12,
+        data: { review_version: 2 },
+      }),
+    ).toBe(loaded);
+    const next = reduceRun(loaded, {
+      type: "done",
+      run_id: "r1",
+      sequence: 13,
+      data: { review_version: 2 },
+    });
+    expect(next.result.review_version).toBe(3);
+  });
+  test("new sequenced deltas apply exactly once", () => {
+    const event = {
+      type: "delta",
+      run_id: "r1",
+      sequence: 1,
+      data: { text: "A" },
+    };
+    const once = reduceRun(initial, event);
+    expect(reduceRun(once, event).text).toBe("A");
+  });
+});

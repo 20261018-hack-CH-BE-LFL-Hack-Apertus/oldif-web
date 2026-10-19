@@ -23,6 +23,7 @@ export function useResearch(language: Language) {
   const [ready, setReady] = useState(false);
   const socket = useRef<WebSocket | null>(null);
   const pending = useRef<string | null>(null);
+  const lastSequence = useRef(0);
   const active = useRef<string | null>(null);
   const currentLanguage = useRef(language);
   currentLanguage.current = language;
@@ -65,7 +66,6 @@ export function useResearch(language: Language) {
         setConnected(false);
         const url = new URL("/api/realtime", location.href);
         url.protocol = location.protocol === "https:" ? "wss:" : "ws:";
-        url.searchParams.set("session_id", id);
         const ws = new WebSocket(url);
         socket.current = ws;
         const timer = setTimeout(() => {
@@ -74,6 +74,13 @@ export function useResearch(language: Language) {
         }, 10000);
         ws.onopen = () => {
           clearTimeout(timer);
+          ws.send(
+            JSON.stringify({
+              type: "subscribe",
+              session_id: id,
+              after_sequence: lastSequence.current,
+            }),
+          );
           setConnected(true);
           resolve();
         };
@@ -88,6 +95,27 @@ export function useResearch(language: Language) {
         ws.onmessage = (message) => {
           const event = decodeEvent(String(message.data));
           if (!event) return;
+          if (typeof event.sequence === "number") {
+            if (event.sequence <= lastSequence.current) return;
+            lastSequence.current = event.sequence;
+          }
+          if (event.type === "error" && !event.run_id) {
+            const message = String(
+              event.data?.message ?? "Research request failed",
+            );
+            setError(message);
+            const failed = active.current;
+            setRuns((previous) =>
+              previous.map((run) =>
+                run.id === failed
+                  ? { ...run, status: "error", error: message }
+                  : run,
+              ),
+            );
+            pending.current = null;
+            active.current = null;
+            return;
+          }
           if (event.type === "transcript") {
             setTranscript(String(event.data?.text ?? ""));
             return;
@@ -112,14 +140,17 @@ export function useResearch(language: Language) {
       }),
     [refreshSessions],
   );
-  async function ensureSession() {
+  async function ensureSession(title: string) {
     if (sessionId) {
       if (!connected) await connect(sessionId);
       return sessionId;
     }
     const value = await post<
       Session & { session_id?: string; session?: Session }
-    >("/sessions", { title: "Research", language: currentLanguage.current });
+    >("/sessions", {
+      title: title.slice(0, 120),
+      language: currentLanguage.current,
+    });
     const id = value.id ?? value.session_id ?? value.session?.id;
     if (!id) throw new Error("Session response has no identifier");
     setSessionId(id);
@@ -130,7 +161,7 @@ export function useResearch(language: Language) {
     if (!message.trim()) return;
     setError("");
     try {
-      await ensureSession();
+      await ensureSession(message);
       const running = active.current;
       if (running) {
         socket.current?.send(
@@ -186,6 +217,7 @@ export function useResearch(language: Language) {
     setConnected(false);
     pending.current = null;
     active.current = null;
+    lastSequence.current = 0;
     setTranscript("");
   }
   async function loadSession(id: string) {
@@ -205,6 +237,10 @@ export function useResearch(language: Language) {
         }>;
       };
       setSessionId(id);
+      lastSequence.current = Math.max(
+        0,
+        ...(data.events ?? []).map((event) => event.sequence ?? 0),
+      );
       const loaded = data.runs ?? [];
       const messages = data.messages ?? [];
       const restored: Run[] = loaded.map((r) => {
@@ -217,8 +253,15 @@ export function useResearch(language: Language) {
         );
         return {
           id: runId,
+          lastSequence: Math.max(
+            0,
+            ...(data.events ?? [])
+              .filter((event) => event.run_id === runId)
+              .map((event) => event.sequence ?? 0),
+          ),
           question: String(user?.content ?? r.message ?? r.question ?? ""),
           text: String(assistant?.content ?? ""),
+          error: typeof r.error === "string" ? r.error : undefined,
           traces: (data.events ?? [])
             .filter((e) => e.run_id === runId && e.type === "trace")
             .map((e) => ({ ...e.data, sequence: e.sequence })),

@@ -25,6 +25,7 @@ export type Citation = {
   locator?: string;
 };
 export type Result = {
+  abstained?: boolean;
   answer?: string;
   citations?: Citation[];
   entities?: unknown[];
@@ -41,6 +42,7 @@ export type Trace = {
   [key: string]: unknown;
 };
 export type Run = {
+  lastSequence?: number;
   id: string;
   question: string;
   text: string;

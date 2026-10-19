@@ -28,7 +28,9 @@ export function Messages({
                   ? t.failed
                   : run.status === "cancelled"
                     ? t.cancel
-                    : t.evidence}
+                    : run.result?.abstained
+                      ? t.uncertain
+                      : t.evidence}
             </span>
           </div>
           {run.traces.length > 0 && (
