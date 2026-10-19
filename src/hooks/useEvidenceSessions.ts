@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api, post } from "@/lib/api/client";
 import {
   applyEvidenceEvent,
@@ -12,6 +12,7 @@ import {
 import type { Session } from "@/lib/models/types";
 import { useRealtimeChannel } from "./useRealtimeChannel";
 export function useEvidenceSessions() {
+  const [userId, setUserId] = useState("");
   const [sessions, setSessions] = useState<Session[]>([]);
   const [selected, setSelected] = useState("");
   const [state, setState] = useState(() => restoreEvidence({}));
@@ -23,7 +24,11 @@ export function useEvidenceSessions() {
   );
   const load = useCallback(async () => {
     try {
-      const response = await api<{ sessions: Session[] }>("/sessions");
+      const [response, auth] = await Promise.all([
+        api<{ sessions: Session[] }>("/sessions"),
+        api<{ user: { id: string } }>("/auth/session"),
+      ]);
+      setUserId(auth.user.id);
       setSessions(response.sessions ?? []);
       setReady(true);
       setError("");
@@ -69,11 +74,13 @@ export function useEvidenceSessions() {
         );
     }
   }
+  const results = useMemo(() => Object.values(state.results), [state.results]);
   return {
+    userId,
     sessions,
     selected,
     events: state.events,
-    results: Object.values(state.results),
+    results,
     connected: realtime.connected,
     error,
     ready,

@@ -4,7 +4,7 @@ import { LayoutStore } from "@/lib/api/layoutStore";
 import type { Validator } from "@/lib/models/strict";
 export function useServerLayout<T extends object>(
   userId: string,
-  scope: "workbench" | "archive",
+  scope: "workbench" | "archive" | "canvas",
   key: string,
   initial: T,
   validate: Validator<T>,

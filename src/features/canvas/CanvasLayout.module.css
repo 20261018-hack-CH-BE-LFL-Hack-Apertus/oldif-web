@@ -1,0 +1,58 @@
+.board {
+  overflow: auto;
+  min-width: 0;
+}
+.movable {
+  position: relative;
+  min-width: 0;
+  align-self: start;
+}
+.movable:focus-within {
+  z-index: 2;
+}
+.movable > button:last-child {
+  width: 100%;
+}
+.handle {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  min-width: var(--control);
+  min-height: var(--control);
+  padding: var(--s2) var(--s3);
+  border: var(--line) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--foreground);
+  cursor: grab;
+  touch-action: none;
+  font: inherit;
+}
+.handle:focus-visible {
+  outline: 0.1875rem solid var(--success);
+}
+.handle:active {
+  cursor: grabbing;
+}
+.guidance {
+  color: var(--secondary);
+  font-size: var(--meta);
+}
+.controls {
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--s4);
+}
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.sources {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}

@@ -15,7 +15,7 @@ export type LayoutSnapshot<T> = {
   storageError: boolean;
 };
 type Options<T> = {
-  scope: "workbench" | "archive";
+  scope: "workbench" | "archive" | "canvas";
   key: string;
   initial: T;
   validate: Validator<T>;

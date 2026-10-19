@@ -1,15 +1,21 @@
 "use client";
 import { Button, EvidenceCard } from "oldif-web-ui-components";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { SpatialGraph } from "@/components/ui/data-display/SpatialGraph/SpatialGraph";
+import { LayoutSyncStatus } from "@/features/preferences/LayoutSyncStatus";
+import { useCanvasLayout } from "@/hooks/useCanvasLayout";
 import { useEvidenceSessions } from "@/hooks/useEvidenceSessions";
 import { usePreferences } from "@/hooks/usePreferences";
+import { canvasCopy } from "./canvas/canvasCopy";
 import s from "./EvidenceSurface.module.css";
 import { SurfaceHeader } from "./SurfaceHeader";
 export function Graph() {
   const prefs = usePreferences();
   const data = useEvidenceSessions();
-  const [selected, setSelected] = useState("");
+  const settings = useCanvasLayout(data);
+  const selected = settings.layout.selected_source_id ?? "";
+  const setSelected = (id: string) =>
+    settings.update({ selected_source_id: id });
   const citations = useMemo(
     () => [
       ...new Map(
@@ -36,14 +42,19 @@ export function Graph() {
   );
   return (
     <main className={s.surface}>
-      <SurfaceHeader prefs={prefs} data={data} title={prefs.t.spatial} />
+      <SurfaceHeader
+        prefs={prefs}
+        data={{ ...data, select: settings.select }}
+        title={prefs.t.spatial}
+      />
+      <LayoutSyncStatus settings={settings} language={prefs.language} />
       <div className={s.grid}>
         <section>
           <p>{prefs.t.graphHint}</p>
           <SpatialGraph
             nodes={nodes}
             onSelect={setSelected}
-            unavailable={prefs.t.selectSource}
+            unavailable={canvasCopy[prefs.language].graphFallback}
           />
           <table className={s.table}>
             <caption>{prefs.t.sources}</caption>
