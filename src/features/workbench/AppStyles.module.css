@@ -638,3 +638,37 @@
     overflow: auto;
   }
 }
+
+.sideContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s6);
+}
+.mobileMenu {
+  display: none;
+}
+@media (max-width: 47.99rem) {
+  .promptGrid {display:none}
+  .mobileMenu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sideContent:not([data-expanded="true"]) {
+    display: none;
+  }
+  .sidebar {
+    padding: var(--s3);
+    align-self: start;
+  }
+  .welcome {
+    padding: var(--s5);
+    gap: var(--s3);
+  }
+  .welcome h1 {
+    font-size: var(--title);
+  }
+  .conversation {
+    min-height: 12rem;
+  }
+}
