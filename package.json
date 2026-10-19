@@ -16,7 +16,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "ws": "8.22.0",
-    "oldif-web-ui-components": "git+ssh://git@github.com/20261018-hack-CH-BE-LFL-Hack-Apertus/oldif-web-ui-components.git#3d5b7093a3fecc5142f95a91a7d4c74a7f9f4aea",
+    "oldif-web-ui-components": "git+ssh://git@github.com/20261018-hack-CH-BE-LFL-Hack-Apertus/oldif-web-ui-components.git#b4dbcb54143e62638bfeef5b325e5bd992ece6ce",
     "three": "0.186.1"
   },
   "devDependencies": {
