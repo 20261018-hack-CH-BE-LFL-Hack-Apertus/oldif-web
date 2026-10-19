@@ -17,7 +17,7 @@
   "openWorkspace": "Avrir il spazi da lavur",
   "downloadEvidence": "Telechargiar las cumprovas",
   "keyboard": "Dovra ← / →, Home ed End. Escape banduna il maletg entir.",
-  "records": "endataziuns da funtauna",
+  "records": "emprimas datas da funtauna",
   "checks": "controllas HTTP publicas",
   "runs": "execuziuns publicas limitadas",
   "languages": "linguas da l’interfatscha",
@@ -25,7 +25,7 @@
   "completed": "Terminadas",
   "failed": "Fallidas",
   "abstained": "Abstenziuns",
-  "comparison": "Cumparegliaziun anteriura: ina funtauna, set linguas, tschintg models. Terminar na garantescha betg exactezza istorica.",
+  "comparison": "Referenza fixada: ina transcripziun publitgada, duas dumondas e set linguas per model. Repetiziuns n’èn betg emprovas independentas da precisiun istorica.",
   "original": "Endataziun originala",
   "quoteLabel": "In passadi exact davart l’instrucziun previsa",
   "notPage": "Referenza a l’endataziun; nagin numer da pagina inventà.",
@@ -46,12 +46,13 @@
     "Revisiun OpenClaw"
   ],
   "trust": "Las clavs dals purschiders restan en core. Originals e propostas dal model restan separads.",
-  "voice": "WebRTC public è vegnì testà cun audio sintetic. In test local separà da Nemotron3 sin CPU ha identifitgà dus pledaders anonims en quatter turns sintetics. Nagina qualitad da microfons fisics u precisiun sin audio reala è vegnida mesirada.",
+  "voice": "WebRTC public è vegnì testà cun audio sintetic. In test local separà da Nemotron 3 sin CPU ha identifitgà dus pledaders anonims en quatter turns sintetics. Nagina qualitad da microfons fisics u precisiun sin audio reala è vegnida mesirada.",
   "research": "La perscrutaziun gida il design; mintga integraziun dovra atgnas cumprovas.",
   "researchItems": [
     "AutoData: ciclus versionads da generaziun, inspecziun ed evaluaziun. Nagin meta-trenament reproducì.",
     "MDASH: agents spezialisads, validaziun e deduplicaziun d’in sistem da segirezza. Nagina integraziun MDASH.",
-    "NVIDIA: la diarisation Nemotron3 fixada ha reussì in test local sintetic cun dus pledaders. L’analisa da paginas e la tschertga multimodala restan integraziuns studegiadas."
+    "NVIDIA: la diarisation Nemotron 3 fixada ha reussì in test local sintetic cun dus pledaders. L’analisa da paginas e la tschertga multimodala restan integraziuns studegiadas.",
+    "OpenShell 0.1.x e NemoClaw alfa èn opziuns da sandbox studegiadas; il process OpenClaw installà n’è betg ina sandbox OpenShell verifitgada."
   ],
   "limits": [
     "Naginas mesiraziuns da 1.000 paginas en duas uras.",
@@ -71,12 +72,12 @@
         "Mintga dumonda producescha ina fastizia, citats ed in resultat controllabel.",
         "Il rapport separa controllas fatgas da finamiras betg mesiradas."
       ],
-      "caption": "Spazi verifitgà anteriur,19 d’october 2026. Maletgs da l’actualisaziun finala vegnan identifitgads separadamain."
+      "caption": "Spazi da lavur redesignà real, 19 d’october 2026. La captura ha duvrà 8B avant la selecziun da 70B sco standard."
     },
     {
       "label": "02 / Provenienza",
       "title": "Mintga transfurmaziun dovra ina fastizia.",
-      "intro": "Identificatur e hashes da l’original, da l’endataziun e dal text collian la resposta cun las datas publitgadas.",
+      "intro": "In test local cun 202 paginas PDF ha reussì 34 controllas d’import, revisiun ed export senza transferiment al purschider. L’OCR sintetic ha reussì 24 controllas; zonas da text e tabellas candidatas restan derivats da reveder.",
       "bullets": [
         "Preservar il text original ed ina normalisaziun separada.",
         "Duvrar paginas realas per documents paginads; questa prova ha page:null.",
@@ -87,21 +88,21 @@
     {
       "label": "03 / Metoda",
       "title": "In process inspectabel e curregibel.",
-      "intro": "Apertus è il model da standard. Planisaziun, lectura, verificaziun e propostas èn limitadas e registradas. Astra è ina tscherna explicita.",
+      "intro": "Apertus 70B è il model da standard. Planisaziun, lectura, verificaziun e propostas èn limitadas e registradas. Astra è ina tscherna explicita.",
       "bullets": [
         "Verifitgar mecanicamain identificaturs, citats exacts e hashes.",
         "Tractar funtaunas e resultats d’utensils sco datas betg fidablas.",
         "Reveder interpretaziuns dubiusas; propostas n’èn betg fatgs da funtauna."
       ],
-      "caption": "Canvas d’activitad real da l’applicaziun anteriura. Ils nufs mussan activitad registrada, betg correctezza."
+      "caption": "Retschertga reala activa avant la fin. Status e fastizs èn visibels; correctadad pretenda controlla da las funtaunas."
     },
     {
       "label": "04 / Resultats",
       "title": "Mussar success e sbagls clers.",
-      "intro": "Trais execuziuns publicas limitadas han dà in sbagl dal contract JSON e dus resultats terminads. Il davos test curt ha passà 9 controllas funcziunalas.",
+      "intro": "Apertus 70B cun utensils ha reussì 13/14 controllas da passadis u abstenziuns spetgadas;8B ha reussì 6/14. Astra ha cuntanschì 14/14 sco cumparegl explicit.",
       "bullets": [
-        "Ina resposta terminada è vegnida refusada per attribuziuns e resultats senza cumprova.",
-        "Ina acceptaziun tecnica temporara ha verifitgà JSON/TSV; il refus ha allontanà las lingias.",
+        "Apertus 70B è il model standard tschernì cun questa pitschna referenza. Selecziun ed evaluaziun dovran la medema funtauna; ina verificaziun independenta pli vasta manca anc.",
+        "Ils tests publics anteriurs mantegnan in sbagl dal contract JSON ed ina resposta terminada refusada per interpretaziun senza cumprova. Ils controls d’acceptaziun e refusa dals exports èn vegnids testads.",
         "La cumparegliaziun anteriura cun 35 cas ha 19 terminaziuns e 16 sbagls. Quai n’è betg in benchmark independent."
       ],
       "caption": "Mesiraziuns datadas da cumprovas conservadas. Versiuns differentas na furman betg ina rangaziun unica da qualitad."
@@ -113,7 +114,7 @@
       "bullets": [
         "HTTPS, gRPC privat ed eveniments WebSocket collian l’applicaziun.",
         "Mo web è public; PostgreSQL conserva resultats ed in volumen ils journals core.",
-        "WebRTC public è vegnì testà cun audio sintetic. In test local separà da Nemotron3 sin CPU ha identifitgà dus pledaders anonims en quatter turns sintetics. Nagina qualitad da microfons fisics u precisiun sin audio reala è vegnida mesirada."
+        "WebRTC public è vegnì testà cun audio sintetic. In test local separà da Nemotron 3 sin CPU ha identifitgà dus pledaders anonims en quatter turns sintetics. Nagina qualitad da microfons fisics u precisiun sin audio reala è vegnida mesirada."
       ],
       "caption": "Test real dal navigatur public cun audio sintetic. Nagina cumprova da microfon fisic u separaziun da pledaders."
     },
@@ -128,5 +129,6 @@
       ],
       "caption": "Las referenzas descrivan metodas externas. Lur prestaziuns publitgadas n’èn betg resultats Oldif."
     }
-  ]
+  ],
+  "referencePasses": "Cas da referenza"
 }

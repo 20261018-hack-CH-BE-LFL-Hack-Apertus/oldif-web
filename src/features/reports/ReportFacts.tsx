@@ -68,26 +68,36 @@ export function Architecture({ copy }: { copy: ReportCopy }) {
     </div>
   );
 }
+function ComparisonHeader({ copy }: { copy: ReportCopy }) {
+  return (
+    <thead>
+      <tr>
+        {[copy.model, copy.completed, copy.referencePasses, copy.abstained].map(
+          (label) => (
+            <th key={label}>{label}</th>
+          ),
+        )}
+      </tr>
+    </thead>
+  );
+}
 export function Comparison({ copy }: { copy: ReportCopy }) {
   return (
     <div className={s.comparison}>
       <p>{copy.comparison}</p>
       <table>
-        <thead>
-          <tr>
-            <th>{copy.model}</th>
-            <th>{copy.completed}</th>
-            <th>{copy.failed}</th>
-            <th>{copy.abstained}</th>
-          </tr>
-        </thead>
+        <ComparisonHeader copy={copy} />
         <tbody>
-          {evidence.historical_comparison.models.map((m) => (
+          {evidence.reference_comparison.models.map((m) => (
             <tr key={m.model}>
               <th>{m.model}</th>
-              <td>{m.completed}/7</td>
-              <td>{m.failed}/7</td>
-              <td>{m.abstained}</td>
+              <td>
+                {m.completed}/{m.cases}
+              </td>
+              <td>
+                {m.reference_case_passes}/{m.cases}
+              </td>
+              <td>{m.abstentions}</td>
             </tr>
           ))}
         </tbody>

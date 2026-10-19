@@ -24,9 +24,9 @@ export const referenceLinks = [
   },
 ];
 export const figureFiles = [
-  "workspace-baseline.jpg",
+  "workspace-redesign-light.png",
   "review-baseline.jpg",
-  "canvas-baseline.jpg",
+  "workspace-redesign-running.png",
   null,
   "voice-baseline.png",
   null,

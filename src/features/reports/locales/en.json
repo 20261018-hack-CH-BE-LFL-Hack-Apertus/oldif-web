@@ -17,7 +17,7 @@
   "openWorkspace": "Open workspace",
   "downloadEvidence": "Download evidence snapshot",
   "keyboard": "Use ← / →, Home and End. Escape exits full screen.",
-  "records": "source records",
+  "records": "initial source records",
   "checks": "public HTTP checks",
   "runs": "bounded public runs",
   "languages": "interface languages",
@@ -25,7 +25,7 @@
   "completed": "Completed",
   "failed": "Failed",
   "abstained": "Abstained",
-  "comparison": "Earlier comparison: one source, seven locales, five models. Completion is not historical accuracy.",
+  "comparison": "Frozen reference: one published transcription, two questions and seven locales per model. These repeated cases are not independent historical-accuracy samples.",
   "original": "Original record",
   "quoteLabel": "An exact passage about intended instruction",
   "notPage": "Record locator; no invented page number.",
@@ -46,12 +46,13 @@
     "OpenClaw review"
   ],
   "trust": "Provider credentials stay in core. Original documents and model suggestions remain separate.",
-  "voice": "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured.",
+  "voice": "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron 3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured.",
   "research": "Research informs the design; integrations require their own evidence.",
   "researchItems": [
     "AutoData: versioned generation, inspection and evaluation loops. No meta-training reproduced.",
     "MDASH: specialist agents, validation and deduplication from a security-scanning system. No MDASH integration.",
-    "NVIDIA: pinned Nemotron3 diarization passed a local synthetic two-speaker test. Parsing and multimodal retrieval remain optional researched integrations."
+    "NVIDIA: pinned Nemotron 3 diarization passed a local synthetic two-speaker test. Parsing and multimodal retrieval remain optional researched integrations.",
+    "OpenShell 0.1.x and NemoClaw alpha are researched sandbox options; the deployed OpenClaw process is not a verified OpenShell sandbox."
   ],
   "limits": [
     "No measured 1,000-page / two-hour throughput result.",
@@ -71,12 +72,12 @@
         "A question produces a trace, citations and a reviewable result.",
         "This report separates executed checks from challenge targets still unmeasured."
       ],
-      "caption": "Earlier verified workspace,19 October 2026. Final upgrade screenshots are identified separately."
+      "caption": "Actual redesigned workspace, 19 October 2026. This capture used 8B before 70B was selected as default."
     },
     {
       "label": "02 / Provenance",
       "title": "Every transformation needs a trail.",
-      "intro": "A source identifier, original artifact hash, record hash and text hash preserve the connection between an answer and the published data.",
+      "intro": "A local 202-page PDF test passed 34 ingestion, review and export checks without provider transfer. Synthetic-page OCR passed 24 checks; text boxes and table candidates remain reviewable derivatives.",
       "bullets": [
         "Keep the original text alongside a separately normalized representation.",
         "Use actual page locators for paginated uploads; this transcription sample has page:null.",
@@ -87,21 +88,21 @@
     {
       "label": "03 / Method",
       "title": "A workflow that can be inspected and corrected.",
-      "intro": "Apertus is the default researcher. Planning, source reading, verification and optional proposals are bounded and recorded. Astra is an explicit backup or comparison choice.",
+      "intro": "Apertus 70B is the default researcher. Planning, source reading, verification and optional proposals are bounded and recorded. Astra is an explicit backup or comparison choice.",
       "bullets": [
         "Validate source identifiers, exact quotations and hashes mechanically.",
         "Treat source text and tool output as untrusted data.",
         "Keep doubtful interpretations under review; do not convert suggestions into source facts."
       ],
-      "caption": "Actual activity canvas from the earlier verified application. Nodes represent recorded activity, not proof of correctness."
+      "caption": "Actual active research before completion. Status and trace visibility are observable; correctness still requires source checks."
     },
     {
       "label": "04 / Results",
       "title": "Show successful checks and clear failures.",
-      "intro": "Three bounded public runs produced one JSON-contract failure and two completions. The last short-source regression passed 9 functional checks.",
+      "intro": "Tool-capable Apertus 70B passed 13/14 source-passage or expected-abstention checks;8B passed 6/14. Astra passed 14/14 as an explicit comparator.",
       "bullets": [
-        "One completed answer was rejected for unsupported author and outcome claims.",
-        "Temporary engineering acceptance verified JSON/TSV export; rejection removed its rows.",
+        "Apertus 70B is the default, selected on this small reference. The same source was used for selection and evaluation; stronger independent testing is still needed.",
+        "Earlier public runs retained one JSON-contract failure and one completed answer rejected for unsupported interpretation. Export acceptance and rejection guards were exercised.",
         "The earlier 35-case comparison has 19 completions and 16 failures. It is a smoke test, not a held-out benchmark."
       ],
       "caption": "Dated measurements from retained receipts. Different source/runtime snapshots are not ranked as a single quality benchmark."
@@ -113,7 +114,7 @@
       "bullets": [
         "HTTPS, private gRPC and WebSocket events connect the application.",
         "Only web is public; completed runs persist in PostgreSQL and core journals use a mounted share.",
-        "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured."
+        "Synthetic-audio WebRTC was exercised publicly. A separate local Nemotron 3 CPU test identified two anonymous speakers over four synthetic turns. No physical microphone fidelity or real-world diarization accuracy was measured."
       ],
       "caption": "Actual public synthetic-audio browser test. This does not establish physical microphone or diarization performance."
     },
@@ -128,5 +129,6 @@
       ],
       "caption": "References describe external methods and models. Their published performance is not an Oldif result."
     }
-  ]
+  ],
+  "referencePasses": "Reference passes"
 }

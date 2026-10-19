@@ -1,6 +1,5 @@
 {
   "schema_version": "1.0",
-  "observed_at": "2026-10-19T11:59:49.149271+00:00",
   "dataset": {
     "id": "stapfer-1799",
     "records": 105,
@@ -114,7 +113,10 @@
     "azure-deployment.json",
     "seven-locale-evaluation.json",
     "voice-public-e2e.json",
-    "diarization/api-validation.json"
+    "diarization/api-validation.json",
+    "bern-reference-upgrade/summary.json",
+    "bern-apertus-variants/summary.json",
+    "frontend-workbench-browser.json"
   ],
   "screenshot_manifest": [
     {
@@ -148,6 +150,46 @@
       "description": "Public browser synthetic-audio voice test",
       "date": "2026-10-19",
       "status": "actual screenshot from previous verified implementation; replace with final upgrade capture when available"
+    },
+    {
+      "file": "workspace-redesign-light.png",
+      "original": "/tmp/oldif-workbench-verified-light.png",
+      "sha256": "51a96575b9fc17d5eb76c16949d566f752b6f37e60aa82384979ff39b61b07f8",
+      "date": "2026-10-19",
+      "observed_at": "2026-10-19T13:03:07.480Z",
+      "description": "Actual redesigned workspace light",
+      "status": "Real browser with local backend/core; captured with8B before70B default selection; not a mockup",
+      "run_id": "d684d9f0-37a9-40a7-a136-1c2587bfe2a1"
+    },
+    {
+      "file": "workspace-redesign-dark.png",
+      "original": "/tmp/oldif-workbench-verified-dark.png",
+      "sha256": "745a17cbf5f975b5f1dfb50520a83f87c2e54f757a3ae86ccd66830ed44450ff",
+      "date": "2026-10-19",
+      "observed_at": "2026-10-19T13:03:07.480Z",
+      "description": "Actual redesigned workspace dark",
+      "status": "Real browser with local backend/core; captured with8B before70B default selection; not a mockup",
+      "run_id": "d684d9f0-37a9-40a7-a136-1c2587bfe2a1"
+    },
+    {
+      "file": "workspace-redesign-mobile.png",
+      "original": "/tmp/oldif-workbench-verified-mobile.png",
+      "sha256": "1d4cdc1b736c917987f1df35ed4f69c5b6a1b90df88746ce0aa51426d20802df",
+      "date": "2026-10-19",
+      "observed_at": "2026-10-19T13:03:07.480Z",
+      "description": "Actual redesigned workspace mobile",
+      "status": "Real browser with local backend/core; captured with8B before70B default selection; not a mockup",
+      "run_id": "d684d9f0-37a9-40a7-a136-1c2587bfe2a1"
+    },
+    {
+      "file": "workspace-redesign-running.png",
+      "original": "/tmp/oldif-workbench-verified-running.png",
+      "sha256": "ec1f7da51f53e5e4b83886bb5adc16ee134ef22c58a45e97977b379a234f1316",
+      "date": "2026-10-19",
+      "observed_at": "2026-10-19T13:03:07.480Z",
+      "description": "Actual redesigned workspace running",
+      "status": "Real browser with local backend/core; captured with8B before70B default selection; not a mockup",
+      "run_id": "d684d9f0-37a9-40a7-a136-1c2587bfe2a1"
     }
   ],
   "upgrade_diarization": {
@@ -187,5 +229,92 @@
       "No transcript",
       "No real-world diarization error-rate benchmark"
     ]
-  }
+  },
+  "reference_comparison": {
+    "batches": [
+      {
+        "id": "bern-reference-20261019T125310",
+        "path": "project-deciphering-archives/oldif-ai/oldif-ai-core/evidence/bern-reference-upgrade/summary.json",
+        "sha256": "cc36064755398108335b65c4e2ade3724998f31d4abe10df70e415a67b28ef71"
+      },
+      {
+        "id": "bern-reference-20261019T125846",
+        "path": "project-deciphering-archives/oldif-ai/oldif-ai-core/evidence/bern-apertus-variants/summary.json",
+        "sha256": "d88ed4d4ef95d142879c119ce8553b201c55e1a19a884076f66848e8884ead01"
+      }
+    ],
+    "fixture_sha256": "0a1a55857a3494d50e2c17a05ffac13639b82810202e7b97dc8e478d674a9d3e",
+    "source_documents": 1,
+    "questions_per_locale": 2,
+    "locales": 7,
+    "cases_per_model": 14,
+    "independent_human_gold": false,
+    "confidence_interval": null,
+    "confidence_interval_reason": "Repeated questions and translations of one source are not independent document samples.",
+    "default_model": "apertus-v1-5-70b",
+    "default_selection": "13/14 reference-case passes vs8B6/14; selected using this same one-source fixture, not independent held-out validation",
+    "models": [
+      {
+        "model": "apertus-v1-5-8b",
+        "cases": 14,
+        "completed": 13,
+        "reference_case_passes": 6,
+        "abstentions": 5,
+        "tokens": 103080
+      },
+      {
+        "model": "apertus-v1-5-8b-thinking",
+        "cases": 14,
+        "completed": 10,
+        "reference_case_passes": 6,
+        "abstentions": 5,
+        "tokens": 74584
+      },
+      {
+        "model": "apertus-v1-5-70b",
+        "cases": 14,
+        "completed": 14,
+        "reference_case_passes": 13,
+        "abstentions": 6,
+        "tokens": 111262
+      },
+      {
+        "model": "apertus-v1-5-70b-thinking",
+        "cases": 14,
+        "completed": 14,
+        "reference_case_passes": 12,
+        "abstentions": 5,
+        "tokens": 107467
+      },
+      {
+        "model": "gpt-6-astra",
+        "cases": 14,
+        "completed": 14,
+        "reference_case_passes": 14,
+        "abstentions": 7,
+        "tokens": 89463
+      }
+    ],
+    "recorded_at": "2026-10-19T13:12:39.731661+00:00"
+  },
+  "document_validation": {
+    "classification": "local functional checks; no historical accuracy benchmark",
+    "pdf_pages": 202,
+    "pdf_checks_passed": 34,
+    "pdf_empty_pages": 1,
+    "ocr_checks_passed": 24,
+    "ocr_fixture": "generated synthetic PDF",
+    "ocr_terms_recovered": 3,
+    "ocr_terms_expected": 3,
+    "semantic_table_claim": false,
+    "human_gold_quality": "NOT_RUN",
+    "historical_handwriting_accuracy": "NOT_RUN",
+    "thousand_page_throughput": "NOT_RUN",
+    "source_receipts": [
+      "document-pipeline-validation.json",
+      "document-ocr-validation.json"
+    ]
+  },
+  "updated_at": "2026-10-19T13:18:34.130730+00:00",
+  "baseline_observed_at": "2026-10-19T11:59:49.149271+00:00"
 }

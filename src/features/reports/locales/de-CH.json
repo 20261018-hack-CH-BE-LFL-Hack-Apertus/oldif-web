@@ -17,7 +17,7 @@
   "openWorkspace": "Arbeitsbereich öffne",
   "downloadEvidence": "Beläg abelade",
   "keyboard": "← / →, Home und End bruuche. Escape beändet s Vollbild.",
-  "records": "Quelldatensätz",
+  "records": "erscht Quelldatensätz",
   "checks": "öffentlechi HTTP-Prüefige",
   "runs": "begrenzti öffentlechi Läuf",
   "languages": "Oberflächesprache",
@@ -25,7 +25,7 @@
   "completed": "Abgschlosse",
   "failed": "Gschiiteret",
   "abstained": "Enthaltige",
-  "comparison": "Früehere Vergliich: ei Quälle, sibe Sprache, füf Modell. En Abschluss isch kei historischi Richtigkeitsgarantie.",
+  "comparison": "Fixierti Referenz: ei veröffentlichte Transkription, zwei Frage und sibe Sprache pro Modell. Wiederholigi sind kei unabhängigi Stichprobe vo historischer Genauigkeit.",
   "original": "Originaldatensatz",
   "quoteLabel": "En genaue Abschnitt zum vorgsehne Unterricht",
   "notPage": "Datensatzreferenz; kei erfundeni Siitenummere.",
@@ -46,12 +46,13 @@
     "OpenClaw-Prüefig"
   ],
   "trust": "D Anbieterschlüssel bliibed i core. Original und Modellvorschläg bliibed trennt.",
-  "voice": "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde.",
+  "voice": "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron 3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde.",
   "research": "Forschig hilft bim Design; Integratiöne bruuched eigni Beläg.",
   "researchItems": [
     "AutoData: versionierti Erzüügigs-, Inspektions- und Evaluationsschlaufe. Kei Meta-Training reproduziert.",
     "MDASH: spezialisierti Agente, Validierig und Deduplizierig us de Sicherheitsanalyse. Kei MDASH-Integration.",
-    "NVIDIA: D fixiert Nemotron3-Diarisierig het en lokale synthetische Zwei-Sprecher-Test bestande. Siiteanalys und multimodali Suechi blibed untersuechti Erweiterige."
+    "NVIDIA: D fixiert Nemotron 3-Diarisierig het en lokale synthetische Zwei-Sprecher-Test bestande. Siiteanalys und multimodali Suechi blibed untersuechti Erweiterige.",
+    "OpenShell 0.1.x und NemoClaw Alpha sind untersuechti Sandbox-Optione; de bereitgstellti OpenClaw-Prozess isch kei verifizierte OpenShell-Sandbox."
   ],
   "limits": [
     "Kei Messig vo 1.000 Siite i zwei Stunde.",
@@ -71,12 +72,12 @@
         "E Frag git en Ablauf, Zitat und es prüefbars Resultat.",
         "De Bricht trennt gmacht Prüefige vo nöd gmessne Ziil."
       ],
-      "caption": "Früehere verifizierte Arbeitsbereich,19.Oktober 2026. Screenshots vom finale Upgrade werded separat bezeichnet."
+      "caption": "De echt neu Arbeitsbereich, 19. Oktober 2026. D Ufnahm het 8B bruucht, bevor 70B als Standard gwählt worde isch."
     },
     {
       "label": "02 / Herkunft",
       "title": "Jedi Veränderig bruucht e Spur.",
-      "intro": "Quälle-ID und Hashes vo Original, Datensatz und Text verbinded d Antwort mit de publizierte Date.",
+      "intro": "En lokale Test mit 202 PDF-Siite het 34 Prüefige für Import, Review und Export ohni Übertragig a de Anbieter bestande. Synthetischi OCR het 24 Prüefige bestande; Textboxe und Tabelle-Kandidate blibed prüefbari Ableitige.",
       "bullets": [
         "Originaltext und separati Normalisierig erhalte.",
         "Echti Siitereferenze für paginierti Uploads; die Stichprob het page:null.",
@@ -87,21 +88,21 @@
     {
       "label": "03 / Methode",
       "title": "En Ablauf zum Prüefe und Korrigiere.",
-      "intro": "Apertus isch s Standardmodell. Planig, Quälleläse, Verifikation und Vorschläg sind begrenzt und protokolliert. Astra wird bewusst usgwählt.",
+      "intro": "Apertus 70B isch s Standardmodell. Planig, Quälleläse, Verifikation und Vorschläg sind begrenzt und protokolliert. Astra wird bewusst usgwählt.",
       "bullets": [
         "IDs, exakti Zitat und Hashes maschinell prüefe.",
         "Quälle und Wärchzüguusgabe als nöd vertrauenswürdigi Date behandle.",
         "Zwiifelhafte Interpretatione prüefe; Vorschläg sind kei Quällefakte."
       ],
-      "caption": "Echte Aktivitäts-Canvas vo de früehere App. D Knote zeiged protokollierti Aktivität, kei Richtigkeitsgarantie."
+      "caption": "Echt laufendi Recherche vor em Abschluss. Status und Spure sind sichtbar; Korrektheit bruucht Quelleprüefig."
     },
     {
       "label": "04 / Resultat",
       "title": "Erfolg und klari Fehler zeige.",
-      "intro": "Drei begrenzti öffentlechi Läuf händ ein JSON-Vertragsfehler und zwei Abschlüss gäh. De letscht churzi Quälletest het 9 Funktionsprüefige bestande.",
+      "intro": "Apertus 70B mit Werkzüg het 13/14 Prüefige uf passendi Quellpassage oder erwarteti Enthaltig bestande;8B het 6/14 bestande. Astra het 14/14 als explizite Vergliich erreicht.",
       "bullets": [
-        "E fertigi Antwort isch wäge unbelegte Autorschaft und Ergebnisaussage abglehnt worde.",
-        "Temporäri technisches Akzeptiere het JSON/TSV prüeft; s Ablehne het d Zeile entfernt.",
+        "Apertus 70B isch de Standard, gwählt mit dere chline Referenz. Uswahl und Bewertig nutzed dieselbi Quell; e breiteri unabhängigi Prüefig fehlt no.",
+        "Früehneri öffentlichi Läuf erhalted en JSON-Vertragsfehler und e fertigi Antwort, wo wäge unbelegter Deutig abglehnt worde isch. Exportfreigab und Ablehnig sind prüeft worde.",
         "De früehere Vergliich mit 35 Fäll het 19 Abschlüss und 16 Fehler. Kei unabhängige Qualitätsbenchmark."
       ],
       "caption": "Datierti Messige us erhalte Beläg. Verschiedeni Laufziitständ sind kei einheitlichi Qualitätsranglischte."
@@ -113,7 +114,7 @@
       "bullets": [
         "HTTPS, privats gRPC und WebSocket-Ereignis verbinded d App.",
         "Nur web isch öffentlich; PostgreSQL speicheret Resultat und es Volume d Core-Journal.",
-        "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde."
+        "S öffentliche WebRTC isch mit synthetischem Audio prüeft worde. En separate lokale Nemotron 3-CPU-Test het zwei anonymi Sprecher i vier synthetische Abschnitte erkennt. Physischi Mikrofon und d Genauigkeit bi echte Ufnahme sind nöd gmässe worde."
       ],
       "caption": "Echte öffentliche Browsertest mit synthetischem Audio. Kei Beweis für physischs Mikrofon oder Sprechertrennig."
     },
@@ -128,5 +129,6 @@
       ],
       "caption": "D Referenze beschriibed externi Methode. Ihri publizierti Leistig isch kei Oldif-Resultat."
     }
-  ]
+  ],
+  "referencePasses": "Referenzfäll"
 }

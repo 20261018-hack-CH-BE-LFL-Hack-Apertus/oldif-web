@@ -17,7 +17,7 @@
   "openWorkspace": "Ouvrir l’espace de travail",
   "downloadEvidence": "Télécharger les preuves",
   "keyboard": "Utiliser ← / →, Début et Fin. Échap quitte le plein écran.",
-  "records": "fiches sources",
+  "records": "premiers enregistrements",
   "checks": "contrôles HTTP publics",
   "runs": "exécutions publiques bornées",
   "languages": "langues d’interface",
@@ -25,7 +25,7 @@
   "completed": "Terminées",
   "failed": "Échecs",
   "abstained": "Abstentions",
-  "comparison": "Comparaison antérieure: une source, sept langues, cinq modèles. Terminer ne garantit pas l’exactitude historique.",
+  "comparison": "Référence figée : une transcription publiée, deux questions et sept langues par modèle. Ces répétitions ne sont pas des échantillons indépendants de précision historique.",
   "original": "Fiche originale",
   "quoteLabel": "Un passage exact sur l’enseignement prévu",
   "notPage": "Repère de fiche; aucun numéro de page inventé.",
@@ -46,12 +46,13 @@
     "Révision OpenClaw"
   ],
   "trust": "Les clés fournisseurs restent dans core. Les originaux et les suggestions du modèle restent distincts.",
-  "voice": "WebRTC public a été testé avec du son synthétique. Un test local distinct de Nemotron3 sur CPU a identifié deux locuteurs anonymes sur quatre tours synthétiques. Aucun microphone physique ni taux de précision en conditions réelles n’a été mesuré.",
+  "voice": "WebRTC public a été testé avec du son synthétique. Un test local distinct de Nemotron 3 sur CPU a identifié deux locuteurs anonymes sur quatre tours synthétiques. Aucun microphone physique ni taux de précision en conditions réelles n’a été mesuré.",
   "research": "La recherche guide la conception; les intégrations exigent leurs propres preuves.",
   "researchItems": [
     "AutoData: cycles versionnés de génération, inspection et évaluation. Aucun méta-entraînement reproduit.",
     "MDASH: agents spécialisés, validation et dédoublonnage issus d’un système de sécurité. Aucune intégration MDASH.",
-    "NVIDIA : la diarisation Nemotron3 figée a réussi un test local synthétique à deux locuteurs. L’analyse de pages et la recherche multimodale restent des intégrations étudiées."
+    "NVIDIA : la diarisation Nemotron 3 figée a réussi un test local synthétique à deux locuteurs. L’analyse de pages et la recherche multimodale restent des intégrations étudiées.",
+    "OpenShell 0.1.x et NemoClaw alpha sont des options de bac à sable étudiées ; le processus OpenClaw déployé n’est pas un bac à sable OpenShell vérifié."
   ],
   "limits": [
     "Aucune mesure de 1.000 pages en deux heures.",
@@ -71,12 +72,12 @@
         "Une question produit une trace, des citations et un résultat révisable.",
         "Le rapport distingue les contrôles réalisés des objectifs non mesurés."
       ],
-      "caption": "Espace vérifié antérieur,19 octobre 2026. Les captures de la mise à jour finale sont identifiées séparément."
+      "caption": "Véritable espace de travail remanié, 19 octobre 2026. Cette capture utilisait 8B avant le choix de 70B par défaut."
     },
     {
       "label": "02 / Provenance",
       "title": "Chaque transformation laisse une trace.",
-      "intro": "Identifiant et empreintes de l’original, de la fiche et du texte relient la réponse aux données publiées.",
+      "intro": "Un test local sur un PDF de 202 pages a réussi 34 contrôles d’importation, révision et export sans transfert au fournisseur. L’OCR synthétique a réussi 24 contrôles ; zones de texte et tableaux candidats restent à réviser.",
       "bullets": [
         "Conserver le texte original et une normalisation séparée.",
         "Employer de vraies pages pour les documents paginés; cet échantillon a page:null.",
@@ -87,21 +88,21 @@
     {
       "label": "03 / Méthode",
       "title": "Un processus inspectable et corrigeable.",
-      "intro": "Apertus est le modèle par défaut. Planification, lecture, vérification et propositions sont bornées et enregistrées. Astra est un choix explicite.",
+      "intro": "Apertus 70B est le modèle par défaut. Planification, lecture, vérification et propositions sont bornées et enregistrées. Astra est un choix explicite.",
       "bullets": [
         "Vérifier mécaniquement identifiants, citations exactes et empreintes.",
         "Traiter sources et sorties des outils comme des données non fiables.",
         "Réviser les interprétations douteuses; une suggestion n’est pas un fait source."
       ],
-      "caption": "Canevas d’activité réel de l’application antérieure. Les nœuds montrent des actions enregistrées, pas leur justesse."
+      "caption": "Recherche réellement active avant sa fin. État et traces sont observables ; la justesse exige une vérification des sources."
     },
     {
       "label": "04 / Résultats",
       "title": "Montrer les réussites et les échecs.",
-      "intro": "Trois exécutions publiques bornées ont produit un échec de contrat JSON et deux résultats terminés. Le dernier test court a réussi 9 contrôles fonctionnels.",
+      "intro": "Apertus 70B avec outils a réussi 13/14 vérifications de passage ou d’abstention attendue ;8B a réussi 6/14. Astra a atteint 14/14 comme comparateur explicite.",
       "bullets": [
-        "Une réponse terminée a été rejetée pour attribution et conclusions non étayées.",
-        "Une acceptation technique temporaire a vérifié JSON/TSV; le rejet a retiré les lignes.",
+        "Apertus 70B est le choix par défaut sur cette petite référence. Sélection et évaluation utilisent la même source ; une validation indépendante plus large reste nécessaire.",
+        "Les essais publics précédents conservent un échec du contrat JSON et une réponse achevée rejetée pour interprétation non étayée. Les contrôles d’acceptation et de rejet des exports ont été testés.",
         "L’ancienne comparaison de 35 cas comptait 19 finalisations et 16 échecs. Ce n’est pas un benchmark indépendant."
       ],
       "caption": "Mesures datées issues de preuves conservées. Les versions différentes ne forment pas un classement de qualité unique."
@@ -113,7 +114,7 @@
       "bullets": [
         "HTTPS, gRPC privé et événements WebSocket relient l’application.",
         "Seul web est public; PostgreSQL conserve les résultats et un volume les journaux core.",
-        "WebRTC public a été testé avec du son synthétique. Un test local distinct de Nemotron3 sur CPU a identifié deux locuteurs anonymes sur quatre tours synthétiques. Aucun microphone physique ni taux de précision en conditions réelles n’a été mesuré."
+        "WebRTC public a été testé avec du son synthétique. Un test local distinct de Nemotron 3 sur CPU a identifié deux locuteurs anonymes sur quatre tours synthétiques. Aucun microphone physique ni taux de précision en conditions réelles n’a été mesuré."
       ],
       "caption": "Test réel du navigateur public avec audio synthétique. Aucune preuve de performance du microphone physique ou de diarisation."
     },
@@ -128,5 +129,6 @@
       ],
       "caption": "Les références décrivent des méthodes externes. Leurs performances publiées ne sont pas des résultats Oldif."
     }
-  ]
+  ],
+  "referencePasses": "Cas de référence"
 }
