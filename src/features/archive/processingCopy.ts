@@ -1,6 +1,24 @@
 import type { Language } from "@/lib/models/types";
 const languages: Language[] = ["en", "es", "de", "de-CH", "fr", "it", "rm"];
 const text = {
+  retainLabels: [
+    "I agree to save the anonymous speaker labels and timings in a local download.",
+    "Acepto guardar las etiquetas de hablantes anónimos y los tiempos en una descarga local.",
+    "Ich stimme zu, anonyme Sprecherlabels und Zeitangaben lokal herunterzuladen.",
+    "Ich stimme zu, anonyme Sprecherlabels und Zeitangaben lokal herunterzuladen.",
+    "J’accepte de conserver les étiquettes de locuteurs anonymes et les temps dans un téléchargement local.",
+    "Accetto di salvare etichette dei parlanti anonimi e tempi in un download locale.",
+    "Jau accept da memorisar las etichettas da pledaders anonims e lur temps en ina telechargiada locala.",
+  ],
+  timingUncertainty: [
+    "Speaker labels and time boundaries are model estimates that have not been reviewed. The download includes this uncertainty and your retention consent, but no audio or personal identity.",
+    "Las etiquetas y los límites temporales son estimaciones del modelo sin revisar. La descarga incluye esta incertidumbre y tu consentimiento de conservación, sin audio ni identidad personal.",
+    "Sprecherlabels und Zeitgrenzen sind ungeprüfte Modellschätzungen. Der Download enthält diese Unsicherheit und Ihre Speicherzustimmung, aber kein Audio und keine persönliche Identität.",
+    "Sprecherlabels und Zeitgrenzen sind ungeprüfte Modellschätzungen. Der Download enthält diese Unsicherheit und Ihre Speicherzustimmung, aber kein Audio und keine persönliche Identität.",
+    "Les étiquettes et limites temporelles sont des estimations du modèle non révisées. Le téléchargement inclut cette incertitude et votre consentement de conservation, sans audio ni identité personnelle.",
+    "Le etichette e i confini temporali sono stime del modello non revisionate. Il download include questa incertezza e il consenso alla conservazione, senza audio o identità personali.",
+    "Las etichettas e cunfins temporals èn stimaziuns dal model betg controlladas. La telechargiada cuntegna questa incertezza e Voss consentiment da conservar, senza audio u identitad persunala.",
+  ],
   structure: [
     "Page structure and OCR",
     "Estructura de página y OCR",

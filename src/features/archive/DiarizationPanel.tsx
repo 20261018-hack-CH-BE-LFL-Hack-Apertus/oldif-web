@@ -25,24 +25,49 @@ export function DiarizationPanel({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [receipt, setReceipt] = useState<Receipt>();
+  const [retainedAt, setRetainedAt] = useState<string>();
   const [download, setDownload] = useState("");
   useEffect(() => {
-    if (!receipt) {
+    if (!receipt || !retainedAt) {
       setDownload("");
       return;
     }
     const url = URL.createObjectURL(
-      new Blob([JSON.stringify(receipt, null, 2)], {
-        type: "application/json",
-      }),
+      new Blob(
+        [
+          JSON.stringify(
+            {
+              schema_version: "1.0",
+              record_kind: "diarization-retention-receipt",
+              retention: {
+                consent: true,
+                consented_at: retainedAt,
+                destination: "user_download",
+              },
+              review: {
+                status: "unreviewed",
+                speaker_identity: "anonymous",
+                timing_accuracy: "unverified",
+              },
+              diarization: receipt,
+            },
+            null,
+            2,
+          ),
+        ],
+        {
+          type: "application/json",
+        },
+      ),
     );
     setDownload(url);
     return () => URL.revokeObjectURL(url);
-  }, [receipt]);
+  }, [receipt, retainedAt]);
   async function process() {
     if (!file || !consent) return;
     setError("");
     setReceipt(undefined);
+    setRetainedAt(undefined);
     if (!file.name.toLowerCase().endsWith(".wav") || file.size > 2900000) {
       setError(t.fileError);
       return;
@@ -82,6 +107,7 @@ export function DiarizationPanel({
           onChange={(e) => {
             setFile(e.target.files?.[0]);
             setReceipt(undefined);
+            setRetainedAt(undefined);
             setConsent(false);
             setError("");
           }}
@@ -137,6 +163,19 @@ export function DiarizationPanel({
               </tbody>
             </table>
           </div>
+          <p className={s.muted}>{t.timingUncertainty}</p>
+          <label className={s.check}>
+            <input
+              type="checkbox"
+              checked={Boolean(retainedAt)}
+              onChange={(e) =>
+                setRetainedAt(
+                  e.target.checked ? new Date().toISOString() : undefined,
+                )
+              }
+            />
+            {t.retainLabels}
+          </label>
           {download && (
             <a
               className={s.link}
