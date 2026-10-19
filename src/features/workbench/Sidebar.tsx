@@ -1,93 +1,95 @@
-import Link from "next/link";
-import { type RefObject, useState } from "react";
+import type { RefObject } from "react";
+import { WorkspaceNavigation } from "@/features/navigation/WorkspaceNavigation";
 import type { useResearch } from "@/hooks/useResearch";
 import type { useVoice } from "@/hooks/useVoice";
 import type { Copy } from "@/lib/i18n";
+import type { Language } from "@/lib/models/types";
 import s from "./AppStyles.module.css";
+import w from "./WorkbenchStyles.module.css";
 export function Sidebar({
   research,
   voice,
   t,
+  language,
   sourceRef,
   onNew,
   onExport,
   onLogout,
+  onNavigate,
 }: {
   research: ReturnType<typeof useResearch>;
   voice: ReturnType<typeof useVoice>;
   t: Copy;
+  language: Language;
   sourceRef: RefObject<HTMLDivElement | null>;
   onNew: () => void;
   onExport: () => void;
   onLogout: () => void;
+  onNavigate?: () => void;
 }) {
-  const [expanded, setExpanded] = useState(false);
   return (
-    <aside className={s.sidebar}>
-      <button
-        type="button"
-        className={`${s.button} ${s.mobileMenu}`}
-        aria-expanded={expanded}
-        aria-controls="collection-history"
-        onClick={() => setExpanded((value) => !value)}
-      >
-        {t.sources} · {t.history} {expanded ? "−" : "+"}
+    <aside className={w.sidebar}>
+      <button type="button" className={s.primary} onClick={onNew}>
+        ＋ {t.newChat}
       </button>
-      <div
-        id="collection-history"
-        className={s.sideContent}
-        data-expanded={expanded}
-      >
-        <button type="button" className={s.primary} onClick={onNew}>
-          ＋ {t.newChat}
-        </button>
-        <section ref={sourceRef} tabIndex={-1}>
-          <h2 className={s.eyebrow}>{t.sources}</h2>
-          <div className={s.sideList}>
-            {research.datasets.map((d) => (
-              <label key={d.id} className={s.sideItem}>
-                <input
-                  type="checkbox"
-                  checked={research.selected.includes(d.id)}
-                  onChange={() =>
-                    research.setSelected((previous) =>
-                      previous.includes(d.id)
-                        ? previous.filter((id) => id !== d.id)
-                        : [...previous, d.id],
-                    )
-                  }
-                />
-                <span>{d.title ?? d.name ?? d.id}</span>
-              </label>
-            ))}
-            {!research.datasets.length && (
-              <p className={s.small}>
-                {research.ready ? t.emptySources : t.loading}
-              </p>
-            )}
-          </div>
-        </section>
-        <section>
-          <h2 className={s.eyebrow}>{t.history}</h2>
-          <div className={s.sideList}>
-            {research.sessions.map((session) => (
-              <button
-                type="button"
-                key={session.id}
-                className={`${s.sideItem} ${s.historyItem}`}
-                onClick={() => {
-                  voice.stop();
-                  void research.loadSession(session.id);
-                }}
-              >
-                ↗ {session.title ?? session.id}
-              </button>
-            ))}
-            {!research.sessions.length && (
-              <p className={s.small}>{t.emptyHistory}</p>
-            )}
-          </div>
-        </section>
+      <WorkspaceNavigation
+        language={language}
+        activePath="/app"
+        compact
+        onNavigate={onNavigate}
+      />
+      <details className={w.sidebarSection} open>
+        <summary>{t.sources}</summary>
+        <div ref={sourceRef} tabIndex={-1} className={s.sideList}>
+          {research.datasets.map((dataset) => (
+            <label key={dataset.id} className={s.sideItem}>
+              <input
+                type="checkbox"
+                checked={research.selected.includes(dataset.id)}
+                onChange={() =>
+                  research.setSelected((previous) =>
+                    previous.includes(dataset.id)
+                      ? previous.filter((id) => id !== dataset.id)
+                      : [...previous, dataset.id],
+                  )
+                }
+              />
+              <span>{dataset.title ?? dataset.name ?? dataset.id}</span>
+            </label>
+          ))}
+          {!research.datasets.length && (
+            <p className={s.small}>
+              {research.ready ? t.emptySources : t.loading}
+            </p>
+          )}
+        </div>
+      </details>
+      <details className={w.sidebarSection} open>
+        <summary>{t.history}</summary>
+        <div className={s.sideList}>
+          {research.sessions.map((session) => (
+            <button
+              type="button"
+              key={session.id}
+              className={`${s.sideItem} ${s.historyItem}`}
+              aria-current={
+                research.sessionId === session.id ? "true" : undefined
+              }
+              onClick={() => {
+                voice.stop();
+                void research.loadSession(session.id);
+                onNavigate?.();
+              }}
+            >
+              ↗ {session.title ?? session.id}
+            </button>
+          ))}
+          {!research.sessions.length && (
+            <p className={s.small}>{t.emptyHistory}</p>
+          )}
+        </div>
+      </details>
+      <div className={w.sidebarActions}>
         <button
           type="button"
           className={s.button}
@@ -96,22 +98,18 @@ export function Sidebar({
         >
           ↓ {t.export}
         </button>
-        <a
-          className={s.button}
-          href={`/api/export?format=json&session_id=${encodeURIComponent(research.sessionId)}`}
-          download
-        >
-          {t.acceptedFindings} ↓
-        </a>
+        {research.sessionId && (
+          <a
+            className={s.button}
+            href={`/api/export?format=json&session_id=${encodeURIComponent(research.sessionId)}`}
+            download
+          >
+            {t.acceptedFindings} ↓
+          </a>
+        )}
         <button type="button" className={s.button} onClick={onLogout}>
           {t.logout} ↗
         </button>
-        <Link className={s.button} href="/canvas">
-          {t.canvas} ↗
-        </Link>
-        <Link className={s.button} href="/graph">
-          {t.spatial} ↗
-        </Link>
       </div>
     </aside>
   );

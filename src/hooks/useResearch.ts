@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, post } from "@/lib/api/client";
 import { decodeEvent, reduceRun } from "@/lib/models/events";
+import { defaultResearchModel } from "@/lib/models/modelSelection";
 import type {
   Dataset,
   Language,
@@ -21,6 +22,7 @@ export function useResearch(language: Language) {
   const [error, setError] = useState("");
   const [transcript, setTranscript] = useState("");
   const [ready, setReady] = useState(false);
+  const [userId, setUserId] = useState("");
   const socket = useRef<WebSocket | null>(null);
   const pending = useRef<string | null>(null);
   const lastSequence = useRef(0);
@@ -34,19 +36,16 @@ export function useResearch(language: Language) {
   useEffect(() => {
     let alive = true;
     Promise.all([
-      api<{ models: Model[] }>("/models"),
+      api<{ models: Model[]; default_model?: string }>("/models"),
       api<{ datasets: Dataset[] }>("/datasets"),
       api<{ sessions: Session[] }>("/sessions"),
-      api("/auth/session"),
+      api<{ user: { id: string } }>("/auth/session"),
     ])
-      .then(([m, d, s]) => {
+      .then(([m, d, s, auth]) => {
         if (!alive) return;
+        setUserId(auth.user.id);
         setModels(m.models ?? []);
-        setModel(
-          m.models?.find((x) => x.id === "apertus-v1-5-8b")?.id ??
-            m.models?.find((x) => x.id.startsWith("apertus"))?.id ??
-            "",
-        );
+        setModel(defaultResearchModel(m.models ?? [], m.default_model));
         setDatasets(d.datasets ?? []);
         setSessions(s.sessions ?? []);
         setReady(true);
@@ -188,7 +187,14 @@ export function useResearch(language: Language) {
       active.current = id;
       setRuns((prev) => [
         ...prev,
-        { id, question: message, text: "", traces: [], status: "running" },
+        {
+          id,
+          question: message,
+          text: "",
+          traces: [],
+          status: "running",
+          startedAt: Date.now(),
+        },
       ]);
       socket.current?.send(
         JSON.stringify({
@@ -253,6 +259,10 @@ export function useResearch(language: Language) {
         );
         return {
           id: runId,
+          startedAt:
+            typeof r.created_at === "string"
+              ? Date.parse(r.created_at)
+              : undefined,
           lastSequence: Math.max(
             0,
             ...(data.events ?? [])
@@ -291,6 +301,7 @@ export function useResearch(language: Language) {
     }
   }
   return {
+    userId,
     models,
     datasets,
     sessions,

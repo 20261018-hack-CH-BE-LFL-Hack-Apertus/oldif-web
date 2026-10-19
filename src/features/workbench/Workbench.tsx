@@ -4,18 +4,25 @@ import { useEffect, useRef, useState } from "react";
 import { usePreferences } from "@/hooks/usePreferences";
 import { useResearch } from "@/hooks/useResearch";
 import { useVoice } from "@/hooks/useVoice";
+import { useWorkbenchLayout } from "@/hooks/useWorkbenchLayout";
 import { post } from "@/lib/api/client";
 import type { Citation } from "@/lib/models/types";
+import { Activity } from "./Activity";
 import s from "./AppStyles.module.css";
 import { Composer } from "./Composer";
 import { Evidence } from "./Evidence";
 import { Header } from "./Header";
 import { Messages } from "./Messages";
 import { Sidebar } from "./Sidebar";
+import w from "./WorkbenchStyles.module.css";
+import { type MobilePanel, WorkspacePanels } from "./WorkspacePanels";
 export function Workbench() {
   const prefs = usePreferences();
   const { t } = prefs;
   const research = useResearch(prefs.language);
+  const settings = useWorkbenchLayout(research.userId);
+  const [mobilePanel, setMobilePanel] = useState<MobilePanel>("research");
+  const followConversation = useRef(true);
   const [input, setInput] = useState("");
   const [citation, setCitation] = useState<Citation>();
   const router = useRouter();
@@ -30,12 +37,16 @@ export function Workbench() {
   const latestRun = research.runs.at(-1);
   const latest = latestRun?.result;
   useEffect(() => {
+    if (latestRun?.id) setCitation(undefined);
+  }, [latestRun?.id]);
+  useEffect(() => {
     if (latestRun?.status === "done" && latest) voice.deliverResult(latest);
     if (latestRun?.status === "error")
       voice.deliverResult({ error: latestRun.error });
   }, [latestRun?.status, latestRun?.error, latest, voice.deliverResult]);
   useEffect(() => {
-    if (research.runs.length) end.current?.scrollIntoView({ block: "nearest" });
+    if (research.runs.length && followConversation.current)
+      end.current?.scrollIntoView({ block: "nearest" });
   }, [research.runs]);
   function exportDossier() {
     const blob = new Blob(
@@ -68,13 +79,17 @@ export function Workbench() {
       research.newSession();
       setCitation(undefined);
     } else if (text === "/export") exportDossier();
-    else if (text === "/sources") sourceRef.current?.focus();
-    else void research.send(text);
+    else if (text === "/sources") {
+      settings.update({ navigation: true });
+      setMobilePanel("navigation");
+      requestAnimationFrame(() => sourceRef.current?.focus());
+    } else void research.send(text);
     setInput("");
   }
   function selectCitation(value: Citation) {
     setCitation(value);
-    sourceRef.current?.scrollIntoView({ block: "nearest" });
+    settings.update({ evidence: true });
+    setMobilePanel("evidence");
   }
   async function logout() {
     try {
@@ -87,27 +102,51 @@ export function Workbench() {
   }
   return (
     <div className={s.shell}>
-      <a className={s.skip} href="#research">
+      <a
+        className={s.skip}
+        href="#research"
+        onFocus={() => setMobilePanel("research")}
+      >
         {t.workspace}
       </a>
       <Header prefs={prefs} workspace />
-      <main className={s.workspace}>
-        <Sidebar
-          research={research}
-          voice={voice}
-          t={t}
-          sourceRef={sourceRef}
-          onNew={() => {
-            voice.stop();
-            research.newSession();
-            setCitation(undefined);
-          }}
-          onExport={exportDossier}
-          onLogout={logout}
-        />
-
-        <section id="research" className={s.research}>
-          <header className={s.researchHeader}>
+      <WorkspacePanels
+        settings={settings}
+        language={prefs.language}
+        mobilePanel={mobilePanel}
+        onMobilePanel={setMobilePanel}
+        evidence={
+          <Evidence
+            citation={citation ?? latest?.citations?.[0]}
+            result={latest}
+            t={t}
+            language={prefs.language}
+          />
+        }
+        activity={
+          <Activity run={latestRun} language={prefs.language} expanded />
+        }
+        sidebar={
+          <Sidebar
+            research={research}
+            voice={voice}
+            t={t}
+            language={prefs.language}
+            onNavigate={() => setMobilePanel("research")}
+            sourceRef={sourceRef}
+            onNew={() => {
+              voice.stop();
+              research.newSession();
+              setCitation(undefined);
+              setMobilePanel("research");
+            }}
+            onExport={exportDossier}
+            onLogout={logout}
+          />
+        }
+      >
+        <section id="research" className={`${s.research} ${w.research}`}>
+          <header className={`${s.researchHeader} ${w.researchHeader}`}>
             <div>
               <span className={s.eyebrow}>{t.archive}</span>
               <h2>{t.workspace}</h2>
@@ -118,7 +157,15 @@ export function Workbench() {
             </span>
           </header>
           <div
-            className={s.conversation}
+            className={`${s.conversation} ${w.conversation}`}
+            onScroll={(event) => {
+              const element = event.currentTarget;
+              followConversation.current =
+                element.scrollHeight -
+                  element.scrollTop -
+                  element.clientHeight <
+                128;
+            }}
             role="log"
             aria-live="polite"
             aria-relevant="additions text"
@@ -127,23 +174,24 @@ export function Workbench() {
               <Messages
                 runs={research.runs}
                 t={t}
+                language={prefs.language}
                 onCitation={selectCitation}
               />
             ) : (
-              <div className={s.welcome}>
+              <div className={`${s.welcome} ${w.welcome}`}>
                 <span className={s.brandMark} aria-hidden="true">
                   o.
                 </span>
                 <span className={s.eyebrow}>{t.tagline}</span>
                 <h1>{t.welcome}</h1>
                 <p className={s.muted}>{t.intro}</p>
-                <div className={s.promptGrid}>
+                <div className={`${s.promptGrid} ${w.promptGrid}`}>
                   {[t.sourcePrompt, t.comparePrompt, t.reviewPrompt].map(
                     (prompt, i) => (
                       <button
                         type="button"
                         key={prompt}
-                        className={s.promptCard}
+                        className={`${s.promptCard} ${w.promptCard}`}
                         onClick={() => {
                           setInput(prompt);
                           inputRef.current?.focus();
@@ -169,8 +217,7 @@ export function Workbench() {
             send={send}
           />
         </section>
-        <Evidence citation={citation} result={latest} t={t} />
-      </main>
+      </WorkspacePanels>
     </div>
   );
 }

@@ -3,7 +3,9 @@ import type { RefObject } from "react";
 import type { useResearch } from "@/hooks/useResearch";
 import type { useVoice } from "@/hooks/useVoice";
 import type { Copy } from "@/lib/i18n";
+import { displayModel } from "@/lib/models/modelSelection";
 import s from "./AppStyles.module.css";
+import w from "./WorkbenchStyles.module.css";
 export function Composer({
   research,
   voice,
@@ -22,7 +24,7 @@ export function Composer({
   send: () => void;
 }) {
   return (
-    <div className={s.composerWrap}>
+    <div className={`${s.composerWrap} ${w.composerWrap}`}>
       {research.error && (
         <p role="alert" className={s.error}>
           {research.error}{" "}
@@ -141,7 +143,7 @@ export function Composer({
               .filter((m) => !m.id.includes("realtime"))
               .map((m) => (
                 <option key={m.id} value={m.id} disabled={!m.available}>
-                  {m.name}
+                  {displayModel(m)}
                   {m.id.includes("astra") ? ` · ${t.backup}` : ""}
                   {m.available ? "" : ` · ${t.unavailable}`}
                 </option>
