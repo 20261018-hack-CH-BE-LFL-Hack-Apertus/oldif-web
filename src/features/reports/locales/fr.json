@@ -54,7 +54,7 @@
     "AutoData: cycles versionnés de génération, inspection et évaluation. Aucun méta-entraînement reproduit.",
     "MDASH: agents spécialisés, validation et dédoublonnage issus d’un système de sécurité. Aucune intégration MDASH.",
     "NVIDIA : la diarisation Nemotron 3 figée a réussi un test local synthétique à deux locuteurs. L’analyse de pages et la recherche multimodale restent des intégrations étudiées.",
-    "OpenShell 0.1.4 a réussi 7 contrôles locaux ; le client NemoClaw fixé a appliqué une vraie politique. OpenClaw dans Azure n’a toujours pas d’isolation OpenShell vérifiée."
+    "Les revues OpenClaw dans Azure passent par une façade TLS privée vers OpenShell 0.1.4. 15 contrôles déployés ont réussi ; les sorties exigent une revue humaine."
   ],
   "limits": [
     "Aucune mesure de 1.000 pages en deux heures.",

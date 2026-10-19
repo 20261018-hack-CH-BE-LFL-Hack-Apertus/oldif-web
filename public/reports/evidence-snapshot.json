@@ -117,7 +117,15 @@
     "bern-reference-upgrade/summary.json",
     "bern-apertus-variants/summary.json",
     "frontend-workbench-browser.json",
-    "stapfer-collection-validation.json"
+    "stapfer-collection-validation.json",
+    "cloud-openshell-boundaries.json",
+    "cloud-openshell-final-boundaries.json",
+    "cloud-openshell-recovery.json",
+    "cloud-openshell-review.json",
+    "cloud-openshell-costs.json",
+    "cloud-final-identity-boundaries.json",
+    "core-provider-receipts-after-cloud-recovery.json",
+    "cloud-openshell-provider-receipt.json"
   ],
   "screenshot_manifest": [
     {
@@ -325,7 +333,7 @@
       "document-ocr-validation.json"
     ]
   },
-  "updated_at": "2026-10-19T13:28:40.630564+00:00",
+  "updated_at": "2026-10-19T17:33:36Z",
   "baseline_observed_at": "2026-10-19T11:59:49.149271+00:00",
   "second_collection": {
     "validation_class": "actual local HTTP collection export and provenance checks",
@@ -341,5 +349,144 @@
     "overlaps_initial_collection": true,
     "independent_total_not_claimed": true,
     "azure_validation": "NOT_RUN"
+  },
+  "cloud_isolation": {
+    "observed_at": "2026-10-19T17:33:36Z",
+    "status": "public_route_verified",
+    "scope": "OpenClaw reviewer; core remains a separate provider boundary; no claim that every model workflow runs inside OpenShell",
+    "route": [
+      "public HTTPS/backend",
+      "private ACA Covenant TLS facade",
+      "private VM TLS proxy10.71.3.4:18443",
+      "loopback OpenShell service forward127.0.0.1:18083",
+      "OpenShell0.1.4 rootless Podman worker8083",
+      "fixed reverse SSH connection to ACA core"
+    ],
+    "runtime_source": "f5cd9768e1080dc786e6ae99dc5a8e1a9be615ec",
+    "worker_image": "acroldif202610191031.azurecr.io/oldif-covenant-worker@sha256:2cb177e3a773bceb2481a856b118424dcd71f805d7e02e33313087bec6ea5469",
+    "boundary_checks": {
+      "passed": 15,
+      "total": 15
+    },
+    "boundary_observed_at": "2026-10-19T17:26:01.130Z",
+    "recovery": {
+      "passed": 14,
+      "total": 14,
+      "observed_at": "2026-10-19T17:23:52.876235+00:00",
+      "gateway_restart_replaced_terminal_worker": true,
+      "forward_and_ssh_reconnect_preserved_worker": true,
+      "no_request_replay_scope": "Unchanged persisted provider-receipt metadata; not proof of traffic failing before receipt persistence"
+    },
+    "public_review": {
+      "passed": 5,
+      "total": 5,
+      "requests_submitted": 1,
+      "automatic_retries": 0,
+      "status": 200,
+      "duration_ms": 32754,
+      "model": "apertus-v1-5-70b",
+      "result_state": "proposed",
+      "human_review": false,
+      "original_run_final_decision": "rejected",
+      "scholarly_approval": false,
+      "historical_interpretation_quality": "NOT_PASSED",
+      "observed_unapproved_claims": [
+        "Reviewer says original model abstained despite original abstained:false/evidence_only:true",
+        "Reviewer treats physical pagination as necessary for interpreting the statement without supporting evidence"
+      ],
+      "observed_new_provider_completions": 1,
+      "upstream_weight_revision_exposed": false
+    },
+    "filesystem": {
+      "podman_readonly_rootfs": false,
+      "enforcement": "Landlock path policies; actual /app and unrelated writes denied",
+      "network_mode": "none",
+      "uid": 1000,
+      "effective_capabilities": 0,
+      "cpu": 1,
+      "memory_mib": 1536,
+      "pids_limit": 256
+    },
+    "nemoclaw": {
+      "integration": "Pinned official typed policy client",
+      "source_commit": "b01bb7ffc1bc0e1e7c8b015c7103039998aa9a6e",
+      "successful_policy_operations": 5,
+      "effective_revision": 1,
+      "effective_policy_sha256": "467092d00d0654bdc72b2283da6791eeba3f2c69fd46b1675d2f2815ae73e72a",
+      "full_installer_enabled": false
+    },
+    "aca_identity_checks": {
+      "identity_lifecycle_none": {
+        "passed": 2,
+        "total": 2
+      },
+      "actual_token_requests_denied": {
+        "passed": 3,
+        "total": 3
+      },
+      "health_and_readiness": {
+        "passed": 3,
+        "total": 3
+      }
+    },
+    "incremental_cost": {
+      "currency": "USD",
+      "hours": 730,
+      "monthly_baseline": 76.687,
+      "estimate_not_invoice": true,
+      "components": {
+        "vm_compute": 31.536,
+        "disk": 2.738,
+        "nat": 32.85,
+        "nat_ipv4": 3.65,
+        "future_sidecar_idle_gross": 5.913,
+        "total_incremental_baseline": 76.687,
+        "excluded": "NAT data processing0.045/GB, internet egress, active ACA, logs, KV, storage operations, tax; no invoice prediction"
+      },
+      "vm_public_ip": false,
+      "nat_public_egress_ip": true,
+      "existing_application_baseline_excluded": true
+    },
+    "source_receipts": [
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-boundaries.json",
+        "sha256": "e2e90b950f7abe4a8d66b77a7ba92536fb3398766a2bbf339a3415023d8be140"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-final-boundaries.json",
+        "sha256": "aa4d15fa3aa5edd831e98ba39cd572647ccf85392502e6cde5898cb343b47d36"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-recovery.json",
+        "sha256": "36d608bbc5f75fe68555c1e08c2f75eae05ab796f501619751bd4b30474d834e"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-review.json",
+        "sha256": "5717889c14d2b208535545472b64f2df6ed866326cd49babe4d4c23c6cca689f"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-costs.json",
+        "sha256": "66538bbf5cec6b5f0826666cbd5e7d25b5d896ebdb0709791e477df7d3305d8a"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-final-identity-boundaries.json",
+        "sha256": "2dd203702ff1d5f5fdc1be1456d494bd5ecce92e5323a72c56cb2097870e569f"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/core-provider-receipts-after-cloud-recovery.json",
+        "sha256": "02c2fbcb0cd07ca8b5e54c2ae0a4e4243b9696124879f22ff5e50ac113274f43"
+      },
+      {
+        "path": "knowledge-graph/project-knowledge-graph/oldif-workspace-upgrade/evidence/cloud-openshell-provider-receipt.json",
+        "sha256": "742de388544afdf1487a9c00c2cb807957df571b58e024a5c3eb67d84a03d934"
+      }
+    ],
+    "limits": [
+      "Boundary checks do not establish resistance to every host escape",
+      "OpenClaw internal sandbox is off; outer OpenShell enforces the recorded boundary",
+      "Typed NemoClaw policy client only, not full installer",
+      "Reviewer output requires independent human assessment",
+      "Original local failures and cloud recovery/certificate failures remain in receipts"
+    ]
   }
 }
