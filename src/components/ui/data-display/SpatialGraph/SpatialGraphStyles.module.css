@@ -10,7 +10,8 @@
   height: 100%;
   display: block;
 }
-.viewer p {
+.viewer output {
+  display: block;
   padding: var(--s5);
   color: var(--rail-ink);
 }
