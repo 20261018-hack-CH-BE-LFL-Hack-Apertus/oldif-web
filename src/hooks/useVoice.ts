@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Language } from "@/lib/models/types";
+import { createVoiceState, updateTranscript } from "@/lib/models/voice";
 export function useVoice({
   language,
   onTranscript,
@@ -19,10 +20,19 @@ export function useVoice({
   const stream = useRef<MediaStream | null>(null);
   const audio = useRef<HTMLAudioElement | null>(null);
   const channel = useRef<RTCDataChannel | null>(null);
-  const pendingCalls = useRef<string[]>([]);
+  const voiceState = useRef(createVoiceState());
+  const generation = useRef(0);
   const callbacks = useRef({ onTranscript, onTool });
   callbacks.current = { onTranscript, onTool };
-  function cleanup() {
+  const cleanup = useCallback(() => {
+    generation.current += 1;
+    voiceState.current = createVoiceState();
+    callbacks.current.onTranscript("");
+    if (channel.current) channel.current.onmessage = null;
+    if (peer.current) {
+      peer.current.onconnectionstatechange = null;
+      peer.current.ontrack = null;
+    }
     channel.current?.close();
     peer.current?.close();
     stream.current?.getTracks().forEach((track) => {
@@ -35,36 +45,24 @@ export function useVoice({
     peer.current = null;
     stream.current = null;
     channel.current = null;
-  }
-  useEffect(
-    () => () => {
-      channel.current?.close();
-      peer.current?.close();
-      stream.current?.getTracks().forEach((track) => {
-        track.stop();
-      });
-      if (audio.current) {
-        audio.current.pause();
-        audio.current.srcObject = null;
-      }
-    },
-    [],
-  );
+    audio.current = null;
+  }, []);
+  useEffect(() => cleanup, [cleanup]);
   function receive(message: MessageEvent) {
     try {
       const event = JSON.parse(message.data);
-      if (
-        event.type === "conversation.item.input_audio_transcription.completed"
-      )
-        callbacks.current.onTranscript(String(event.transcript ?? ""));
+      const transcript = updateTranscript(voiceState.current, event);
+      if (transcript !== undefined) callbacks.current.onTranscript(transcript);
       if (event.type === "response.function_call_arguments.done") {
         const args = JSON.parse(event.arguments ?? "{}");
         if (
           event.name === "research_archives" &&
-          typeof args.query === "string"
+          typeof args.query === "string" &&
+          typeof event.call_id === "string" &&
+          !voiceState.current.pendingCalls.includes(event.call_id)
         ) {
+          voiceState.current.pendingCalls.push(event.call_id);
           callbacks.current.onTool(args.query);
-          pendingCalls.current.push(event.call_id);
         }
       }
       if (event.type === "error")
@@ -74,6 +72,8 @@ export function useVoice({
     }
   }
   async function start() {
+    cleanup();
+    const attempt = generation.current;
     setStatus("connecting");
     setError("");
     try {
@@ -86,6 +86,12 @@ export function useVoice({
           autoGainControl: true,
         },
       });
+      if (attempt !== generation.current) {
+        media.getTracks().forEach((track) => {
+          track.stop();
+        });
+        return;
+      }
       stream.current = media;
       const pc = new RTCPeerConnection();
       peer.current = pc;
@@ -106,8 +112,11 @@ export function useVoice({
       });
       const dc = pc.createDataChannel("oai-events");
       channel.current = dc;
-      dc.onmessage = receive;
+      dc.onmessage = (event) => {
+        if (channel.current === dc) receive(event);
+      };
       dc.onopen = () => {
+        if (channel.current !== dc) return;
         setStatus("connected");
       };
       pc.onconnectionstatechange = () => {
@@ -125,6 +134,7 @@ export function useVoice({
         body: JSON.stringify({ sdp: offer.sdp, locale: language }),
         credentials: "same-origin",
       });
+      if (attempt !== generation.current) return;
       if (!response.ok)
         throw new Error(`Voice unavailable (${response.status})`);
       await pc.setRemoteDescription({
@@ -133,6 +143,7 @@ export function useVoice({
       });
       setMuted(false);
     } catch (e) {
+      if (attempt !== generation.current) return;
       cleanup();
       setStatus("error");
       setError(e instanceof Error ? e.message : "Voice failed");
@@ -152,7 +163,7 @@ export function useVoice({
     });
   }
   const deliverResult = useCallback((result: unknown) => {
-    const callId = pendingCalls.current.shift();
+    const callId = voiceState.current.pendingCalls.shift();
     if (!callId || channel.current?.readyState !== "open") return;
     channel.current.send(
       JSON.stringify({
