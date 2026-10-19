@@ -65,7 +65,7 @@ function PageStory({ index, copy }: PageProps) {
 function PageFooter({ index, copy }: PageProps) {
   return (
     <footer className={s.pageFooter}>
-      <span>HACK APERTUS · LIEBEFELD · 19.10.2026</span>
+      <span>HACK APERTUS · 19.10.2026 · {copy.team}: Jose OSPINA · Cristian OSPINA</span>
       <span>
         {copy.page} {index + 1} / {copy.pages.length}
       </span>
