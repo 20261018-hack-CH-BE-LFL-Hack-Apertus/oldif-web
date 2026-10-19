@@ -1,56 +1,80 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api, post } from "@/lib/api/client";
-import type { Event, Result, Session } from "@/lib/models/types";
+import {
+  applyEvidenceEvent,
+  restoreEvidence,
+} from "@/lib/models/evidenceSession";
+import {
+  latestSequence,
+  type SessionSnapshot,
+} from "@/lib/models/sessionSnapshot";
+import type { Session } from "@/lib/models/types";
+import { useRealtimeChannel } from "./useRealtimeChannel";
 export function useEvidenceSessions() {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [selected, setSelected] = useState("");
-  const [events, setEvents] = useState<Event[]>([]);
-  const [results, setResults] = useState<Result[]>([]);
+  const [state, setState] = useState(() => restoreEvidence({}));
   const [error, setError] = useState("");
   const [ready, setReady] = useState(false);
+  const generation = useRef(0);
+  const realtime = useRealtimeChannel((event) =>
+    setState((previous) => applyEvidenceEvent(previous, event)),
+  );
   const load = useCallback(async () => {
     try {
       const response = await api<{ sessions: Session[] }>("/sessions");
       setSessions(response.sessions ?? []);
       setReady(true);
       setError("");
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Request failed");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Request failed");
     }
   }, []);
   useEffect(() => {
     void load();
+    const focus = () => void load();
+    window.addEventListener("focus", focus);
+    return () => {
+      generation.current += 1;
+      window.removeEventListener("focus", focus);
+    };
   }, [load]);
   async function demo() {
     try {
       await post("/auth/demo");
       await load();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Login failed");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Login failed");
     }
   }
   async function select(id: string) {
+    const request = ++generation.current;
+    realtime.close();
     setSelected(id);
+    setState(restoreEvidence({}));
+    if (!id) return;
     try {
-      const value = await api<{
-        events: Event[];
-        messages: Array<{ result?: Result }>;
-      }>(`/sessions/${encodeURIComponent(id)}`);
-      setEvents(value.events ?? []);
-      setResults(
-        (value.messages ?? []).flatMap((m) => (m.result ? [m.result] : [])),
+      const value = await api<SessionSnapshot>(
+        `/sessions/${encodeURIComponent(id)}`,
       );
+      if (request !== generation.current) return;
+      setState(restoreEvidence(value));
       setError("");
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Session load failed");
+      await realtime.connect(id, latestSequence(value.events));
+    } catch (error) {
+      if (request === generation.current)
+        setError(
+          error instanceof Error ? error.message : "Session load failed",
+        );
     }
   }
   return {
     sessions,
     selected,
-    events,
-    results,
+    events: state.events,
+    results: Object.values(state.results),
+    connected: realtime.connected,
     error,
     ready,
     demo,

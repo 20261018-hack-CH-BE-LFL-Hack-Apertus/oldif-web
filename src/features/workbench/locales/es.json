@@ -39,5 +39,7 @@
   "verification": "Verificación de fuentes",
   "elapsed": "Transcurrido",
   "allActivity": "Ver toda la actividad",
-  "draft": "Borrador de interpretación sin revisar"
+  "draft": "Borrador de interpretación sin revisar",
+  "steering": "Aplicando tu indicación",
+  "cancelling": "Deteniendo la investigación"
 }

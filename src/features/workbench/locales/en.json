@@ -39,5 +39,7 @@
   "verification": "Source verification",
   "elapsed": "Elapsed",
   "allActivity": "Show all activity",
-  "draft": "Unreviewed interpretation draft"
+  "draft": "Unreviewed interpretation draft",
+  "steering": "Applying your update",
+  "cancelling": "Stopping the research"
 }

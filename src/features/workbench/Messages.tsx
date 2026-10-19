@@ -4,6 +4,7 @@ import { Activity } from "./Activity";
 import s from "./AppStyles.module.css";
 import { ResultVerification } from "./ResultVerification";
 import { Review } from "./Review";
+import { workbenchCopy } from "./workbenchCopy";
 export function Messages({
   runs,
   t,
@@ -31,7 +32,7 @@ export function Messages({
                 : run.status === "error"
                   ? t.failed
                   : run.status === "cancelled"
-                    ? t.cancel
+                    ? workbenchCopy[language].stopped
                     : run.result?.abstained
                       ? t.uncertain
                       : t.evidence}

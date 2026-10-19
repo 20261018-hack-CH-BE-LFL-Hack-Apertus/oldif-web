@@ -39,5 +39,7 @@
   "verification": "Vérification des sources",
   "elapsed": "Durée écoulée",
   "allActivity": "Voir toute l’activité",
-  "draft": "Brouillon d’interprétation non révisé"
+  "draft": "Brouillon d’interprétation non révisé",
+  "steering": "Application de votre consigne",
+  "cancelling": "Arrêt de la recherche"
 }

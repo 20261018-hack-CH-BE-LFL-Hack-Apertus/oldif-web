@@ -88,3 +88,37 @@
     align-content: start;
   }
 }
+
+.navigationMenu {
+  align-self: flex-start;
+  min-width: 12rem;
+  padding: var(--s2);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+}
+.navigationMenu > summary {
+  cursor: pointer;
+  padding: var(--s2);
+}
+.node[data-state="running"] {
+  border-color: var(--accent);
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+.table {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 40rem) {
+  .surface {
+    padding: var(--s3);
+  }
+  .toolbar select {
+    max-width: 100%;
+  }
+  .viewer {
+    height: 22rem;
+  }
+}

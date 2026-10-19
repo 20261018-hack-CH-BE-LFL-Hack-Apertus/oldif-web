@@ -107,3 +107,20 @@ test("workbench and navigation copy have complete seven-language parity", () => 
     }
   }
 });
+
+test("steering and cancellation use readable labels and cancelled calls stop", () => {
+  const items = summarizeActivity(
+    [
+      { kind: "steering.received" },
+      { kind: "cancellation.requested" },
+      { kind: "model.failed", call_id: "cancelled-call" },
+    ],
+    "cancelled",
+  );
+  expect(items.map((item) => item.label)).toEqual([
+    "steering",
+    "cancelling",
+    "updated",
+  ]);
+  expect(items.at(-1).state).toBe("stopped");
+});

@@ -39,5 +39,7 @@
   "verification": "Verifica delle fonti",
   "elapsed": "Tempo trascorso",
   "allActivity": "Mostra tutte le attività",
-  "draft": "Bozza di interpretazione non revisionata"
+  "draft": "Bozza di interpretazione non revisionata",
+  "steering": "Applicazione della tua indicazione",
+  "cancelling": "Interruzione della ricerca"
 }

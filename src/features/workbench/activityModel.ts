@@ -12,6 +12,9 @@ const text = (value: unknown) =>
   typeof value === "string" ? value.slice(0, 180) : undefined;
 function labelFor(trace: Trace): ActivityLabel {
   const kind = trace.kind ?? "";
+  if (kind === "steer" || kind === "steering.received") return "steering";
+  if (kind === "cancel" || kind === "cancellation.requested")
+    return "cancelling";
   if (kind === "review.output_bounded") return "reviewNeeded";
   if (kind === "proposals.withheld") return "withheld";
   if (kind === "proposals.unavailable") return "unavailable";
@@ -98,7 +101,8 @@ export function summarizeActivity(
       item.durationMs = trace.duration_ms;
   }
   return items.map((item) =>
-    item.state === "running" && status !== "running"
+    (item.state === "running" && status !== "running") ||
+    (item.state === "error" && status === "cancelled")
       ? { ...item, state: status === "error" ? "error" : "stopped" }
       : item,
   );
