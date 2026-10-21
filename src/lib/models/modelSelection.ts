@@ -1,4 +1,20 @@
 import type { Model } from "./types";
+export function benchmarkModels(
+  models: Model[],
+  configured?: string,
+): [string, string] {
+  const selected = models.find(
+    (model) =>
+      model.id === configured &&
+      model.id.startsWith("apertus-") &&
+      model.available === true,
+  );
+  if (!selected)
+    throw new Error(
+      "The configured Apertus model is unavailable. Refresh the model catalog before comparing.",
+    );
+  return [selected.id, "gpt-6-astra"];
+}
 export function defaultResearchModel(
   models: Model[],
   configured?: string,

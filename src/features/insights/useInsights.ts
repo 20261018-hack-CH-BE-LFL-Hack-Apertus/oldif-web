@@ -1,7 +1,8 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, post } from "@/lib/api/client";
-import type { Language } from "@/lib/models/types";
+import { benchmarkModels } from "@/lib/models/modelSelection";
+import type { Language, Model } from "@/lib/models/types";
 import type { StoredEvent, StoredRun } from "./metrics";
 export function useInsights(language: Language) {
   const [runs, setRuns] = useState<StoredRun[]>([]);
@@ -75,7 +76,13 @@ export function useInsights(language: Language) {
     const attempt = ++generation.current;
     setActive(["starting"]);
     try {
-      for (const model of ["apertus-v1-5-70b", "gpt-6-astra"]) {
+      const catalog = await api<{ models: Model[]; default_model?: string }>(
+        "/models",
+      );
+      for (const model of benchmarkModels(
+        catalog.models,
+        catalog.default_model,
+      )) {
         if (attempt !== generation.current) break;
         const created = await post<{ run_id: string; session_id: string }>(
           "/runs",
